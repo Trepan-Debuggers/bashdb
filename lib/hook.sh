@@ -47,6 +47,9 @@ typeset -i _Dbg_inside_skip=0
 # - A set return code 0 continues execution.
 typeset -i _Dbg_continue_rc=-1
 
+# Used to check whether the last command was a regular expression match
+typeset _Dbg_last_regmatch_command=''
+
 # ===================== FUNCTIONS =======================================
 
 # We come here after before statement is run. This is the function named
@@ -90,6 +93,12 @@ _Dbg_debug_trap_handler() {
 
     # Shift off "RETURN";  we do not need that any more.
     shift
+
+     # Check whether the last command was a regular expression match
+     if [[ "${_Dbg_bash_command}" != "${_Dbg_bash_command#* =~ }" ]]; then
+         # Save a flattened copy of the command string to freeze it in time
+         _Dbg_last_regmatch_command=$(eval echo \"$_Dbg_bash_command\")
+     fi
 
     _Dbg_bash_command=$1
     shift
@@ -265,6 +274,8 @@ _Dbg_hook_enter_debugger() {
     [[ 'noprint' != $2 ]] && _Dbg_print_location_and_command
     _Dbg_process_commands
     _Dbg_set_to_return_from_debugger 1
+    # Persist the user-space value of BASH_REMATCH in user space
+    eval $_Dbg_last_regmatch_command
     return $_Dbg_continue_rc
 }
 
