@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # -*- shell-script -*-
 t=${0##*/}; TEST_NAME=${t:5}   # basename $0 with 'test-' stripped off
 

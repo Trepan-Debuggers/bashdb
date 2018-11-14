@@ -1,569 +1,115 @@
-2016-07-06  Rocky Bernstein <rocky@gnu.org>
-
-	* ChangeLog, NEWS, configure.ac: Get ready for releaes 0.92
-
-2016-07-06  Rocky Bernstein <rocky@gnu.org>
-
-	* command/continue.sh, command/display.sh, command/enable.sh,
-	command/eval.sh, command/examine.sh, command/export.sh,
-	command/frame.sh, command/handle.sh, command/next.sh,
-	command/pwd.sh, command/quit.sh, command/return.sh, command/run.sh,
-	command/shell.sh, command/source.sh, command/stepping.sh: Markdown
-	format remaining commands.
-
-2016-06-27  rocky <rocky@gnu.org>
-
-	* command/help.sh, command/info_sub/breakpoints.sh,
-	command/info_sub/display.sh, command/info_sub/line.sh,
-	command/info_sub/program.sh, command/info_sub/source.sh,
-	command/info_sub/variables.sh, command/info_sub/warranty.sh,
-	command/set_sub/different.sh: Revise info help for RsT
-
-2016-06-26  rocky <rocky@gnu.org>
-
-	* command/set_sub/linetrace.sh, lib/filecache.sh: Small changes
-
-2016-06-25  rocky <rocky@gnu.org>
-
-	* command/edit.sh, command/set_sub/annotate.sh,
-	command/set_sub/args.sh, command/set_sub/autoeval.sh,
-	command/set_sub/autolist.sh, command/set_sub/basename.sh,
-	command/set_sub/different.sh, command/set_sub/editing.sh,
-	command/set_sub/highlight.sh, command/set_sub/history.sh,
-	command/set_sub/linetrace.sh, command/set_sub/listsize.sh,
-	command/set_sub/prompt.sh, command/set_sub/style.sh,
-	command/set_sub/width.sh, test/data/list.right: Revise help
-
-2016-06-25  rocky <rocky@gnu.org>
-
-	* command/alias.sh, command/backtrace.sh, command/break.sh,
-	command/complete.sh, command/condition.sh, command/delete.sh,
-	command/disable.sh, command/down.sh, command/help.sh,
-	command/kill.sh, command/list.sh, command/undisplay.sh,
-	command/up.sh, lib/help.sh, lib/info-help.sh, lib/info.sh,
-	test/data/list.right: Correct info help. Start rSt for commands
-
-2016-06-23  rocky <rocky@gnu.org>
-
-	* command/action.sh, command/alias.sh, command/help.sh,
-	command/set_sub/args.sh, command/set_sub/highlight.sh,
-	command/set_sub/style.sh, command/set_sub/width.sh,
-	command/trace.sh, lib/filecache.sh, lib/help.sh, lib/msg.sh,
-	lib/term-highlight.py: Start using ReStructuredText in help strings
-
-2016-06-22  rocky <rocky@gnu.org>
-
-	* dbg-opts.sh: Update year
-
-2016-06-22  rocky <rocky@gnu.org>
-
-	* command/set_sub/style.sh, lib/filecache.sh, lib/help.sh: small
-	changes and sync with bashdb * abbrevs in help set <command> set_sub/style.sh: on error show
-	columnized list.  Single check of whether term-highlight.py works
-
-2016-06-21  rocky <rocky@gnu.org>
-
-	* command/set_sub/style.sh, lib/help.sh: Small fixes
-
-2016-06-21  rocky <rocky@gnu.org>
-
-	* ChangeLog, circle.yml, command/set_sub/style.sh, dbg-opts.sh,
-	lib/help.sh, test/data/lopts.right: Small style fixes. Fix CircleCI?
-
-2016-06-21  rocky <rocky@gnu.org>
-
-	* circle.yml, command/set_sub/style.sh, command/show_sub/style.sh,
-	dbg-opts.sh: Add top-level set Style Address CircleCI failure?
-
-2016-06-21  rocky <rocky@gnu.org>
-
-	* lib/term-highlight.py: Add top-level option for setting style
-
-2016-06-21  rocky <rocky@gnu.org>
-
-	* command/set_sub/highlight.sh, command/set_sub/style.sh,
-	command/show_sub/highlight.sh, command/show_sub/style.sh,
-	lib/filecache.sh, lib/rstext.py, lib/term-highlight.py: Allow
-	setting pygments style Use set/show style to change
-
-2016-05-30  rocky <rocky@gnu.org>
-
-	* ChangeLog, NEWS, configure.ac: Get ready for release 4.3-0.92
-
-2016-05-30  rocky <rocky@gnu.org>
-
-	* ChangeLog, command/delete.sh, lib/break.sh,
-	test/data/brkpt1.right, test/data/brkpt3.right,
-	test/data/bug-break.right, test/data/delete.right,
-	test/data/watch1.right: Better breakpoint deletion status This helps frontends like realgud
-
-2016-03-13  rocky <rocky@gnu.org>
-
-	* : commit 3c3c938a4f84b68e5b22453cf4bfca3ee43ce953 Author: rocky
-	<rocky@gnu.org> Date:   Sun Mar 13 21:30:05 2016 -0400
-
-2016-03-13  rocky <rocky@gnu.org>
-
-	* .gitignore, Makefile.am, README-git.md, README.CVS,
-	htdocs/index.html~: Add instructions to install from git * gitignore ignore *~ * no longer use VCS * remove ~ file erroneously checked in
-
-2016-03-12  rocky <rocky@gnu.org>
-
-	* configure.ac: Use patch from Teej Tj to set AC_CONFIG_AUX_DIR
-
-2016-03-12  rocky <rocky@gnu.org>
-
-	* INSTALL: We don't do bash 3.0 anymore.
-
-2016-03-12  rocky <rocky@gnu.org>
-
-	* autogen.sh, configure.ac: Build adminstrivia fixed bug [#38] * autogen.sh - autoreconf does much of the heavy lifting now * configure.ac - adding AC_CONFIG_AUX_DIR allows configure to find
-	config.sub
-
-2015-10-26  rocky <rocky@gnu.org>
-
-	* configure.ac, test/data/complete.right, test/data/sig.cmd,
-	test/data/sig.right: Bash 4.4 compliance
-
-2015-10-26  rocky <rocky@gnu.org>
-
-	* test/data/Makefile.am, test/data/sig-43.cmd,
-	test/data/sig-43.right, test/integration/check-common.sh.in,
-	test/integration/test-sig.in: work aroud bash 4.3 signal handling
-	http://lists.gnu.org/archive/html/bug-bash/2015-08/msg00060.html See
-	bug #36 https://sourceforge.net/p/bashdb/bugs/36/ Work on bash 4.4
-	coming up...
-
-2015-10-15  rocky <rocky@gnu.org>
-
-	* doc/bashdb-man.pod, test/data/misc-output-41.right,
-	test/data/setshow.right, test/data/sig-43.right,
-	test/integration/test-sig.in: Nicholas Bamber's from issues #35 and
-	#36 bashdb-man.pod: spelling mistake SIGXFSZ in some envionments.
-	Here rather than just filtering out the signal handler from the test
-	results we set a handler to make it reproducible.  Debian got SIGSYS
-	signal on the kfreebsd platform so we just filtered it out.
-
-2015-07-11  rocky <rocky@gnu.org>
-
-	* : commit 54ed9443a4c83145185c2485d4e4a6f3704a8176 Author: rocky
-	<rocky@gnu.org> Date:   Sat Jul 11 09:31:53 2015 -0400
-
-2015-05-05  rocky <rocky@gnu.org>
-
-	* Makefile.am: Remove a trailing slash which might mess up rm path
-
-2015-04-27  rocky <rocky@gnu.org>
-
-	* htdocs/remake/index.html: make 3.81 -> make 4.1
-
-2015-04-27  rocky <rocky@gnu.org>
-
-	* command/set_sub/tty.sh, command/show_sub/tty.sh: Add tty set/show
-
-2015-04-27  rocky <rocky@gnu.org>
-
-	* htdocs/remake/download.html, htdocs/remake/features.html,
-	htdocs/remake/index.html, htdocs/remake/mdb-old.html,
-	htdocs/remake/mdb.html: Remake html (even though this isn't part of
-	bashdb per se)
-
-2015-04-13  rocky <rocky@gnu.org>
-
-	* Makefile.am, test/data/brkpt2.right, test/data/bug-break.right,
-	test/data/bug-source.right, test/data/sig-43.right,
-	test/data/sig-Darwin.right, test/data/sig.right,
-	test/data/tbreak.right, test/data/watch1.right: Guard against
-	install-data running rm /. Also, Line numbers in tracebacks have
-	changed.
-
-2015-01-23  rocky <rocky@gnu.org>
-
-	* command/eval.sh, command/set_sub/highlight.sh,
-	command/show_sub/highlight.sh, init/opts.sh, lib/filecache.sh,
-	lib/hist.sh, lib/msg.sh, lib/processor.sh, lib/term-highlight.py,
-	test/data/brkpt2.right, test/data/bug-break.right,
-	test/data/bug-source.right, test/data/sig-43.right,
-	test/data/sig-Darwin.right, test/data/sig.right,
-	test/data/tbreak.right, test/data/watch1.right,
-	test/integration/test-bug-loc, test/unit/test-filecache.sh.in,
-	test/unit/test-get-sourceline.sh.in, test/unit/test-msg.sh.in: 
-	--highlight changed from taking no parameters to
-	--highlight=dark|light. And we now accomdate dark terminals more
-	properly.
-
-2015-01-16  rocky <rocky@gnu.org>
-
-	* command/help.sh, test/data/misc-output-41.right,
-	test/data/misc.right: Add One more sectioning - to help: Available
-	commands
-
-2015-01-15  rocky <rocky@gnu.org>
-
-	* command/break.sh, lib/action.sh, lib/break.sh, lib/msg.sh,
-	test/data/action.right, test/data/brkpt1.right,
-	test/data/brkpt2.right, test/data/bug-loc.right,
-	test/data/delete.right, test/data/enable.right, test/data/file with
-	spaces.right, test/data/tbreak.right, test/data/watch1.right: Add
-	more sectioning commands and add lines under sectioning when syntax
-	highlight off.
-
-2014-12-14  rocky <rocky@gnu.org>
-
-	* ChangeLog, test/data/sig.right: Update sig right file for bash <
-	4.3
-
-2014-12-14  rocky <rocky@gnu.org>
-
-	* ChangeLog, Makefile.am, README, README.md, doc/Makefile.am,
-	make-check-filter.pl, test/data/bug-clear.right,
-	test/example/Makefile.am, test/example/bug-clear.sh,
-	test/example/clearbug.sh, test/integration/check-common.sh.in,
-	test/integration/test-bug-clear, test/integration/test-bug-loc: Make
-	"make distcheck" work
-
-2014-12-14  rocky <rocky@gnu.org>
-
-	* ChangeLog, Makefile.am, NEWS, command/info_sub/variables.sh,
-	command/set_sub/highlight.sh, configure.ac, init/opts.sh,
-	make-check-filter.rb, test/integration/check-common.sh.in,
-	test/unit/test-save-restore.sh.in: Get ready for 0.91 release.
-	test/unit: Correct save/restore test.  highlight.sh: doc is not just
-	source listsing make-check-filter.rb: handle weirdly encoded files
-	too variables: document "info variables" listings.  check-common:
-	Add explicit --no-highlight to be ready for when --highlight is the
-	default
-
-2014-12-11  rocky <rocky@gnu.org>
-
-	* lib/break.sh: Sync with zshdb
-
-2014-12-11  rocky <rocky@gnu.org>
-
-	* command/break.sh, lib/break.sh, test/data/Makefile.am,
-	test/data/bug-clear.cmd, test/data/bug-clear.right,
-	test/data/bug-loc.right, test/example/clearbug.sh,
-	test/integration/Makefile.am, test/integration/test-bug-clear: Fix a
-	bug where a "clear" command effectively disabled other breakpoints
-	in the same file at other lines. Bug reported by Alex.
-	test/data/bug-loc.right: Highight markup seems to have changed a
-	little which is probably pygments changing. If this causes a problem
-	in other setups, we may have to revise this test more.
-
-2014-11-06  rocky <rocky@gnu.org>
-
-	* lib/filecache.sh, lib/list.sh, test/data/Makefile.am,
-	test/data/bug-loc.cmd, test/data/bug-loc.right,
-	test/example/Makefile.am, test/example/bug-loc.sh,
-	test/example/library.sh, test/integration/Makefile.am,
-	test/integration/test-bug-loc: Fix bug in source code filename not
-	updating when stepping changes filenames to a cached highlighted
-	file.
-
-2014-11-04  rocky <rocky@gnu.org>
-
-	* command/set_sub/highlight.sh: Document "set highlight".
-
-2014-11-03  rocky <rockyb@sourceforge.net>
-
-	* lib/save-restore.sh: _Dbg_restore_user_vars(): got restore of
-	nullglob backwards. Thanks to John Purnell.
-
-2014-11-03  rocky <rockyb@sourceforge.net>
-
-	* lib/hook.sh, lib/save-restore.sh, test/data/sig-43.right,
-	test/data/sig-Darwin.right, test/integration/.gitignore: 
-	Save/restore shell option nullglob.
-
-2014-11-03  rocky <rockyb@sourceforge.net>
-
-	* test/integration/test-sig.in: Hook custom darwin sig test in
-	integration tests.
-
-2014-09-15  rocky <rocky@gnu.org>
-
-	* ChangeLog, NEWS, configure.ac: Release 4.3-0.9 - this time, for
-	sure!
-
-2014-09-13  rocky <rocky@gnu.org>
-
-	* test/data/bug-break.right, test/example/fib.sh: Some OS's don't
-	have seq installed
-
-2014-09-13  rocky <rocky@gnu.org>
-
-	* test/integration/test-interrupt.in, test/integration/test-sig.in: 
-	More OS's where we skip tests.
-
-2014-09-13  rocky <rocky@gnu.org>
-
-	* Makefile.am: Add "compute-prefix.sh" program
-
-2014-09-13  rocky <rocky@gnu.org>
-
-	* lib/fns.sh, test/integration/test-file-with-spaces: More portable
-	handling of assignment statement for eval?
-
-2014-09-13  rocky <rocky@gnu.org>
-
-	* configure.ac, init/opts.sh,
-	test/integration/test-file-with-spaces,
-	test/integration/test-sig.in: Update copyright. Skip sig test on
-	freebsd
-
-2014-09-13  rocky <rocky@gnu.org>
-
-	* .gitignore, ChangeLog, NEWS, command/info_sub/Makefile.am,
-	configure.ac, doc/notecase-HTML.sh, init/require.sh, lib/file.sh,
-	lib/frame.sh, test/integration/.gitignore,
-	test/integration/Makefile.am,
-	test/integration/test-file-with-spaces,
-	test/integration/test-file-with-spaces.in, test/unit/Makefile.am,
-	test/unit/test-get-sourceline.sh.in: tilde expansion reinstated,
-	some embedded blank in filenames reinstated. These had been broken
-	by changes in bash 4.3. Get ready for release 0.9 .gitignore: more ignore for new test autoconf generation
-	command/info_sub/Makefile.am: remove dup directory configure.ac: the
-	way to pass PIC for set0 has changed. get ready for release 0.9
-	lib/file.sh: adjust tilde expansion for bash 4.3 lib/frame.sh: add
-	missing _Dbg_frame_file test/integration/Makefile.am: remove some
-	fancy GNU functions not_dir and wildcard
-	test/integration/test-file-with-spaces.in: reinstate test
-	test/unit/test-get-sourceline.sh.in: reinstate test
-
-2014-06-14  rocky <rocky@gnu.org>
-
-	* doc/bashdb.texi, test/integration/test-file-with-spaces: 
-	Adjustments for bash 4.3. Something went on with texinfo too in
-	updating to Trusty Tahr.
-
-2014-02-27  R. Bernstein <rocky@gnu.org>
-
-	* configure.ac, test/data/Makefile.am, test/data/sig-43.right,
-	test/integration/test-file-with-spaces,
-	test/integration/test-file-with-spaces.in,
-	test/integration/test-sig.in: Rework tests to work around bash 4.3
-
-2014-01-10  rocky <rocky@gnu.org>
-
-	* doc/README.md: Add README.md that is used in the Files section of
-	sourceforge
-
-2013-09-24  rocky <rocky@gnu.org>
-
-	* Makefile.am: For reasons I don't understand, "make dist" doesn't
-	work because "make distdir" isn't done before "make dist" and "make
-	distdir" creates directories like "command". I'm guessing automake
-	changed things around. Adding a dependency like of "dist" on
-	"distdir" fixes this, although this seems to be a workaround for
-	what looks like an automake problem.
-
-2013-09-24  rocky <rocky@gnu.org>
-
-	* : commit 0437fbaaa986abc94f60d4b8343ef976eee23261 Author: rocky
-	<rocky@gnu.org> Date:   Tue Sep 24 07:13:24 2013 -0400
-
-2013-09-24  rocky <rocky@gnu.org>
-
-	* test/example/gcd.sh: Add typeset to gcd.sh
-
-2013-09-13  R. Bernstein <rocky@gnu.org>
-
-	* check-prefix.sh: check-prefix.sh: Don't use SH_PROG, but check_loc
-	in test
-
-2013-09-12  R. Bernstein <rocky@gnu.org>
-
-	* Makefile.am, test/integration/Makefile.am, test/unit/Makefile.am: 
-	Add tests to distribution (make dist)
-
-2013-05-28  rocky <rocky@gnu.org>
-
-	* : gcd.sh: who wrote this code?
-
-2013-04-04  R. Bernstein <rocky@gnu.org>
-
-	* command/file.sh, command/source.sh, lib/file.sh,
-	test/unit/test-file.sh.in: _Dbg_glob_filename ->
-	_Dbg_tilde_expand_filename
-
-2013-04-04  R. Bernstein <rocky@gnu.org>
-
-	* : commit 66dd836aec50a53c829e9182d8f8092b1bcb0074 Author: rocky
-	<rocky@gnu.org> Date:   Thu Apr 4 07:26:00 2013 -0400
-
-2013-03-25  rocky <rocky@gnu.org>
-
-	* autogen.sh, check-prefix.sh, compute-prefix.sh, configure.ac,
-	ltmain.sh: autogen.sh: deal with libtool.  rest: Add programs to
-	compute or check that --prefix option is reasonable.
-
-2013-02-17  rocky <rocky@gnu.org>
-
-	* configure.ac, lib/filecache.sh, test/unit/test-eval.sh.in,
-	test/unit/test-filecache.sh.in: lib/filecache.sh,
-	test/unit/filecache.sh.in: bug "set highlight on" when file is
-	already cached test/unit/test-eval.sh.in, configure.ac: test eval
-	substitutions
-
-2013-01-29  rocky <rocky@gnu.org>
-
-	* NEWS: Update NEWS
-
-2013-01-29  rocky <rocky@gnu.org>
-
-	* test/integration/test-action, test/integration/test-brkpt,
-	test/integration/test-bug-args, test/integration/test-bug-break,
-	test/integration/test-bug-source, test/integration/test-bug-step,
-	test/integration/test-bugI, test/integration/test-bugIFS,
-	test/integration/test-command, test/integration/test-complete,
+2018-11-04  rocky <rocky@gnu.org>
+
+	* lib/hook.sh: Preserve BASH_REMATCH - adapted from Micheal Wood,
+	Bug #56
+
+2017-04-30  rocky <rocky@gnu.org>
+
+	* : commit d55cb33b9b004c16ad92d10617a8f54c39787b34 Author: rocky
+	<rocky@lexumo.com> Date:   Sun Apr 30 12:14:55 2017 -0400
+
+2017-04-30  rocky <rocky@gnu.org>
+
+	* : commit 11ce2743742a83065ff714fa6169a0ea29305df9 Author: rocky
+	<rocky@lexumo.com> Date:   Sun Apr 30 12:12:39 2017 -0400
+
+2017-04-30  rocky <rocky@gnu.org>
+
+	* README.gitbranch.md: What's up with this branch?
+
+2017-04-30  rocky <rocky@lexumo.com>
+
+	* builtin/Makefile.am: Strip trailing whitespace
+
+2017-04-30  rocky <rocky@lexumo.com>
+
+	* rpm/bashdb-4.2-0.92.spec: Update spec
+
+2017-04-30  rocky <rocky@lexumo.com>
+
+	* .gitignore, ChangeLog, INSTALL, Makefile.am, NEWS, README,
+	README-git.md, README.CVS, README.md, autogen.sh, bashdb-part2.sh,
+	bashdb-trace.in, bashdb.in, builtin/readc.c, builtin/set0.c,
+	check-prefix.sh, command/action.sh, command/alias.sh,
+	command/backtrace.sh, command/break.sh, command/complete.sh,
+	command/condition.sh, command/continue.sh, command/delete.sh,
+	command/disable.sh, command/display.sh, command/down.sh,
+	command/edit.sh, command/enable.sh, command/eval.sh,
+	command/examine.sh, command/export.sh, command/file.sh,
+	command/frame.sh, command/handle.sh, command/help.sh,
+	command/info.sh, command/info_sub/Makefile.am,
+	command/info_sub/args.sh, command/info_sub/breakpoints.sh,
+	command/info_sub/display.sh, command/info_sub/files.sh,
+	command/info_sub/functions.sh, command/info_sub/handle.sh,
+	command/info_sub/line.sh, command/info_sub/program.sh,
+	command/info_sub/signals.sh, command/info_sub/source.sh,
+	command/info_sub/stack.sh, command/info_sub/variables.sh,
+	command/info_sub/warranty.sh, command/info_sub/watchpoints.sh,
+	command/kill.sh, command/list.sh, command/next.sh, command/pwd.sh,
+	command/quit.sh, command/return.sh, command/run.sh,
+	command/set_sub/annotate.sh, command/set_sub/args.sh,
+	command/set_sub/autoeval.sh, command/set_sub/autolist.sh,
+	command/set_sub/basename.sh, command/set_sub/different.sh,
+	command/set_sub/editing.sh, command/set_sub/highlight.sh,
+	command/set_sub/history.sh, command/set_sub/linetrace.sh,
+	command/set_sub/listsize.sh, command/set_sub/prompt.sh,
+	command/set_sub/width.sh, command/shell.sh, command/show.sh,
+	command/show_sub/commands.sh, command/show_sub/highlight.sh,
+	command/skip.sh, command/source.sh, command/step.sh,
+	command/trace.sh, command/tty.sh, command/undisplay.sh,
+	command/up.sh, compute-prefix.sh, configure.ac, doc/Makefile.am,
+	doc/README.md, doc/bashdb-man.pod, doc/bashdb.texi, doc/gpl.texi,
+	htdocs/index.html, htdocs/index.html~, init/opts.sh, init/pre.sh,
+	init/require.sh, lib/action.sh, lib/break.sh, lib/commands.sh,
+	lib/complete.sh, lib/display.sh, lib/file.sh, lib/filecache.sh,
+	lib/fns.sh, lib/frame.sh, lib/help.sh, lib/hist.sh, lib/hook.sh,
+	lib/info.sh, lib/list.sh, lib/msg.sh, lib/processor.sh,
+	lib/save-restore.sh, lib/sig.sh, lib/term-highlight.py, ltmain.sh,
+	make-check-filter.pl, make-check-filter.rb,
+	rpm/bashdb-4.2-0.8.spec, rpm/bashdb-4.2-0.92.spec,
+	test/data/Makefile.am, test/data/action.right,
+	test/data/brkpt1.right, test/data/brkpt2.right,
+	test/data/brkpt3.right, test/data/bug-break.cmd,
+	test/data/bug-break.right, test/data/bug-clear.cmd,
+	test/data/bug-clear.right, test/data/bug-loc.cmd,
+	test/data/bug-loc.right, test/data/bug-source.right,
+	test/data/bug-step.cmd, test/data/bug-step.right,
+	test/data/complete.right, test/data/delete.right,
+	test/data/enable.right, test/data/file with spaces.right,
+	test/data/frame.cmd, test/data/frame.right, test/data/lopts.right,
+	test/data/misc-output-41.right, test/data/misc.right,
+	test/data/setshow.right, test/data/sig-43.cmd,
+	test/data/sig-43.right, test/data/sig-Darwin.right,
+	test/data/sig.cmd, test/data/sig.right, test/data/tbreak.right,
+	test/data/watch1.right, test/example/Makefile.am,
+	test/example/bug-clear.sh, test/example/bug-loc.sh,
+	test/example/fib.sh, test/example/gcd.sh, test/example/library.sh,
+	test/example/sig-bug.sh, test/integration/.gitignore,
+	test/integration/Makefile.am, test/integration/check-common.sh.in,
+	test/integration/lopts.tests, test/integration/test-action,
+	test/integration/test-brkpt, test/integration/test-bug-args,
+	test/integration/test-bug-break, test/integration/test-bug-clear,
+	test/integration/test-bug-loc, test/integration/test-bug-source,
+	test/integration/test-bug-step, test/integration/test-bugI,
+	test/integration/test-bugIFS, test/integration/test-command,
+	test/integration/test-complete, test/integration/test-complete.in,
 	test/integration/test-display, test/integration/test-enable,
 	test/integration/test-file-with-spaces,
+	test/integration/test-file-with-spaces.in,
 	test/integration/test-finish, test/integration/test-frame,
-	test/integration/test-interrupt, test/integration/test-list,
+	test/integration/test-interrupt,
+	test/integration/test-interrupt.in, test/integration/test-list,
 	test/integration/test-lopts, test/integration/test-multi,
 	test/integration/test-restart, test/integration/test-search,
-	test/integration/test-skip, test/integration/test-sopts,
-	test/integration/test-tbreak, test/integration/test-watch1,
-	test/integration/test-watch2: /bin/bash -> /usr/bin/env bash for
-	OS's like FreeBSD or Solaris that don't have a /bin/bash.
-
-2013-01-28  rocky <rocky@gnu.org>
-
-	* doc/Makefile.am, test/data/misc-output-41.right,
-	test/data/setshow.right, test/unit/Makefile.am: doc/Makefile.am:
-	ignore DVI errors. test/unit/Makefile.am separate tests and helper
-	better. test/data/* tty command doesn't seem to exist any more.
-
-2013-01-28  rocky <rocky@gnu.org>
-
-	* test/integration/Makefile.am: A typo I think
-
-2012-11-11  rocky <rocky@gnu.org>
-
-	* command/info_sub/breakpoints.sh, command/show.sh, lib/help.sh,
-	test/data/misc-output-41.right, test/data/setshow.right: Add
-	set/show tty
-
-2012-11-10  rocky <rocky@gnu.org>
-
-	* : commit 9dc5a2b2c3aac1a3d1f9b3c2b7a4c5cd55da651e Author: rocky
-	<rocky@gnu.org> Date:   Sat Nov 10 12:03:14 2012 -0500
-
-2012-08-25  rocky <rocky@gnu.org>
-
-	* NEWS, command/delete.sh, command/up.sh, test/data/frame.cmd,
-	test/data/frame.right: Follow gdb better. alias 'u' for 'up'
-	removed.
-
-2012-07-10  rocky <rocky@gnu.org>
-
-	* htdocs/index.html: Typo in git link
-
-2012-07-10  rocky <rocky@gnu.org>
-
-	* configure.ac: Reduce the need for testing for a C compiler
-
-2012-06-07  rocky <rocky@gnu.org>
-
-	* lib/term-highlight.py: Some versions of pygments complain. Silence
-	that
-
-2012-03-06  rocky <rocky@gnu.org>
-
-	* test/data/bug-break.cmd, test/data/bug-break.right,
-	test/example/fib.sh, test/integration/Makefile.am,
-	test/integration/check-common.sh.in,
-	test/integration/test-bug-break: Add test for recent breakpoint bug.
-
-2012-03-06  rocky <rocky@gnu.org>
-
-	* configure.ac, lib/break.sh, test/data/Makefile.am,
-	test/data/bug-break.cmd, test/data/bug-break.right,
-	test/data/bug-step.cmd, test/data/bug-step.right,
-	test/example/Makefile.am, test/example/fib.sh, test/example/gcd.sh,
-	test/integration/check-common.sh.in,
-	test/integration/test-bug-break: Clear out step-over-fn flag in
-	"break".
-
-2012-01-27  R. Bernstein <rocky@gnu.org>
-
-	* bashdb-trace.in, configure.ac: bashdb-trace.in: Error out in
-	loading bashdb-trace if we don't have bash 4 or greater.
-	configure.ac: We are in 2012 and 09dev now.
-
-2012-01-02  rocky <rocky@gnu.org>
-
-	* Makefile.am: Makefile.am - add comment to make like the others
-
-2012-01-02  rocky <rocky@gnu.org>
-
-	* Makefile.am: Add "test" target to mean the same as "check" -
-	integration testing.
-
-2011-11-29  rocky <rocky@gnu.org>
-
-	* doc/bashdb.texi: I said update the copyright
-
-2011-11-29  rocky <rocky@gnu.org>
-
-	* doc/bashdb.texi: update copyright at least once every other year
-
-2011-11-29  rocky <rocky@gnu.org>
-
-	* doc/bashdb.texi: Remove not-very-well maintained and somewhat
-	historical sections on Edit front-ends. For emacs use emacs-dbgr.
-	And ddd is kind of stagnant. (Pot here: calling kettle black.)
-
-2011-11-26  rocky <rocky@gnu.org>
-
-	* htdocs/index.html: Update urls
-
-2011-11-26  rocky <rocky@gnu.org>
-
-	* htdocs/index.html: One more small index change
-
-2011-11-26  rocky <rocky@gnu.org>
-
-	* htdocs/index.html: Change outline manul link to Rod Smith's public
-	gallery.
-
-2011-11-26  rocky <rocky@gnu.org>
-
-	* doc/bashdb.texi: Take Rod Smith's suggestions, e.g. remove unused
-	function and variable indices. Spell check doc. Update help command
-	list and copyright.
-
-2011-11-19  rocky <rocky@gnu.org>
-
-	* ChangeLog, htdocs/index.html: Add pointer to Rod Smith's outline
-	manual of the bashdb manual.
-
-2011-10-04  rocky <rocky@gnu.org>
-
-	* INSTALL: --with-bash-src is no longer needed for readarray,
-	although it can be used for set0.
-
-2011-05-27  rocky <rocky@gnu.org>
-
-	* lib/hist.sh: Tag a couple of error messages as such
-
-2011-05-27  rocky <rocky@gnu.org>
-
-	* command/show_sub/commands.sh: Correct help text for "show command"
-
-2011-05-27  rocky <rocky@gnu.org>
-
-	* test/unit/.gitignore, test/unit/test-fns.sh.in: Administrivia:
-	update .gitnore. test-fns.sh.in: Remove extra slash in sourcing
-	files' .
-
-2011-05-27  rocky <rocky@gnu.org>
-
-	* command/eval.sh, command/frame.sh, configure.ac,
-	test/unit/.gitignore, test/unit/test-cmd-eval.sh.in,
-	test/unit/test-eval.sh.in, test/unit/test-lib-eval.sh.in: Completion
-	of empty eval or eval? will add source text line (for eval) or
-	extracted source text line (for eval?).
+	test/integration/test-sig.in, test/integration/test-skip,
+	test/integration/test-sopts, test/integration/test-tbreak,
+	test/integration/test-watch1, test/integration/test-watch2,
+	test/unit/.gitignore, test/unit/Makefile.am,
+	test/unit/test-cmd-eval.sh.in, test/unit/test-file.sh.in,
+	test/unit/test-filecache.sh.in, test/unit/test-fns.sh.in,
+	test/unit/test-get-sourceline.sh.in, test/unit/test-lib-eval.sh.in,
+	test/unit/test-msg.sh.in, test/unit/test-pre.sh.in,
+	test/unit/test-save-restore.sh.in: Backport from current bash part 2
 
 2011-05-18  rocky <rocky@gnu.org>
 
@@ -713,7 +259,7 @@
 2011-05-11  rocky <rocky@gnu.org>
 
 	* command/info.sh, command/info_sub/Makefile.am,
-	command/info_sub/breakpoints.sh, command/info_sub/brkpts.sh,
+	command/info_sub/{brkpts.sh => breakpoints.sh},
 	command/info_sub/display.sh, command/info_sub/files.sh,
 	command/info_sub/program.sh, command/info_sub/warranty.sh,
 	command/show_sub/warranty.sh, command/skip.sh, lib/hist.sh,
@@ -796,11 +342,11 @@
 2011-05-07  rocky <rocky@gnu.org>
 
 	* command/examine.sh, command/set_sub/debug.sh,
-	command/set_sub/debugging.sh, command/show_sub/debug.sh,
-	command/show_sub/debugging.sh, command/trace.sh, lib/fns.sh,
-	lib/help.sh, lib/hook.sh, lib/save-restore.sh, lib/shell.sh,
-	lib/sig.sh, test/data/misc-output-41.right,
-	test/unit/test-fns.sh.in: set debug -> set debugging to match gdb
+	command/set_sub/debugging.sh, command/show_sub/{debugging.sh =>
+	debug.sh}, command/trace.sh, lib/fns.sh, lib/help.sh, lib/hook.sh,
+	lib/save-restore.sh, lib/shell.sh, lib/sig.sh,
+	test/data/misc-output-41.right, test/unit/test-fns.sh.in: set debug
+	-> set debugging to match gdb
 
 2011-05-07  rocky <rocky@gnu.org>
 
@@ -1022,10 +568,10 @@
 
 2011-04-30  rocky <rocky@gnu.org>
 
-	* Makefile.am, command/up.sh, configure.ac, dbg-init.sh, dbg-io.sh,
-	dbg-main.sh, dbg-opts.sh, dbg-pre.sh, init/.gitignore,
-	init/Makefile.am, init/io.sh, init/opts.sh, init/pre.sh,
-	init/require.sh, init/vars.sh, lib/require.sh,
+	* Makefile.am, command/up.sh, configure.ac, dbg-main.sh,
+	init/.gitignore, init/Makefile.am, dbg-io.sh => init/io.sh,
+	dbg-opts.sh => init/opts.sh, dbg-pre.sh => init/pre.sh, {lib =>
+	init}/require.sh, dbg-init.sh => init/vars.sh,
 	test/integration/test-bug-step-subshell.in,
 	test/unit/test-action.sh.in, test/unit/test-bashdb-trace.sh.in,
 	test/unit/test-break.sh.in, test/unit/test-file.sh.in,
@@ -1179,8 +725,8 @@
 
 2011-03-14  rocky <rocky@gnu.org>
 
-	* command/Makefile.am, command/quit.sh, command/restart.sh,
-	command/run.sh, command/shell.sh, command/source.sh,
+	* command/Makefile.am, command/quit.sh, command/{restart.sh =>
+	run.sh}, command/shell.sh, command/source.sh,
 	test/data/misc-output-41.right: canonic debugger command "run" to
 	follow gdb, not "restart. More conventional shell-style indentation
 
@@ -1561,8 +1107,8 @@
 2010-12-02  rocky <rocky@gnu.org>
 
 	* ChangeLog, test/data/restart.cmd, test/data/restart.right,
-	test/example/Makefile.am, test/example/restart.sh,
-	test/example/restartbug.sh, test/integration/settrace.tests,
+	test/example/Makefile.am, test/example/{restartbug.sh =>
+	restart.sh}, test/integration/settrace.tests,
 	test/integration/sopts.tests, test/integration/test-restart,
 	test/integration/test-tbreak, test/integration/test-trace,
 	test/integration/trace.tests, test/integration/trace2.tests: More
@@ -1610,11 +1156,10 @@
 
 2010-11-30  rocky <rocky@gnu.org>
 
-	* test/example/Makefile.am, test/example/multi.sh,
+	* test/example/Makefile.am, test/{integration => example}/multi.sh,
 	test/integration/Makefile.am, test/integration/check-common.sh.in,
-	test/integration/multi.sh, test/integration/test-multi: More
-	clean-up and generalizatin of test integration code. Sync with
-	zshdb.
+	test/integration/test-multi: More clean-up and generalizatin of test
+	integration code. Sync with zshdb.
 
 2010-11-29  rocky <rocky@gnu.org>
 
@@ -1698,30 +1243,30 @@
 	emacs/Makefile.am, emacs/bashdb.el, emacs/dbg-test.el.in,
 	emacs/elk-test.el, emacs/gud.el, emacs/gud.el.diff, lib/frame.sh,
 	lib/list.sh, test/data/Makefile.am, test/data/sig-42.right,
-	test/example/Makefile.am, test/example/sig.sh,
-	test/integration/Makefile.am, test/integration/sig.sh,
-	test/integration/sig.tests, test/integration/test-debug,
-	test/integration/test-debug.in, test/integration/test-misc.in,
-	test/integration/test-sig, test/integration/test-sig.in: Closer to
-	bash 4.2 running tests. Remove emacs - please use emacs-dbg instead.
+	test/example/Makefile.am, test/{integration => example}/sig.sh,
+	test/integration/Makefile.am, test/integration/sig.tests,
+	test/integration/test-debug, test/integration/test-debug.in,
+	test/integration/test-misc.in, test/integration/test-sig,
+	test/integration/test-sig.in: Closer to bash 4.2 running tests.
+	Remove emacs - please use emacs-dbg instead.
 
 2010-11-23  rocky <rocky@gnu.org>
 
 	* command/Makefile.am, command/action.sh, command/alias.sh,
-	command/backtrace.sh, command/break.sh, command/commands.sh,
-	command/condition.sh, command/continue.sh, command/debug.sh,
-	command/disable.sh, command/display.sh, command/down.sh,
-	command/edit.sh, command/enable.sh, command/eval.sh,
-	command/examine.sh, command/file.sh, command/finish.sh,
-	command/frame.sh, command/handle.sh, command/help.sh,
-	command/history.sh, command/info.sh, command/kill.sh,
-	command/list.sh, command/load.sh, command/log.sh, command/next.sh,
-	command/pwd.sh, command/quit.sh, command/restart.sh,
-	command/return.sh, command/search.sh, command/set.sh,
-	command/show.sh, command/signal.sh, command/skip.sh,
-	command/source.sh, command/step.sh, command/trace.sh,
-	command/tracefn.sh, command/tty.sh, command/undisplay.sh,
-	command/up.sh, command/watch.sh, command/where.sh, dbg-main.sh,
+	command/{where.sh => backtrace.sh}, command/break.sh,
+	command/commands.sh, command/condition.sh, command/continue.sh,
+	command/debug.sh, command/disable.sh, command/display.sh,
+	command/down.sh, command/edit.sh, command/enable.sh,
+	command/eval.sh, command/examine.sh, command/file.sh,
+	command/finish.sh, command/frame.sh, command/handle.sh,
+	command/help.sh, command/history.sh, command/info.sh,
+	command/kill.sh, command/list.sh, command/load.sh, command/log.sh,
+	command/next.sh, command/pwd.sh, command/quit.sh,
+	command/restart.sh, command/return.sh, command/search.sh,
+	command/set.sh, command/show.sh, command/signal.sh,
+	command/skip.sh, command/source.sh, command/step.sh,
+	command/{tracefn.sh => trace.sh}, command/tty.sh,
+	command/undisplay.sh, command/up.sh, command/watch.sh, dbg-main.sh,
 	lib/Makefile.am, lib/commands.sh, lib/frame.sh, lib/help.sh,
 	lib/hook.sh, lib/list.sh, lib/processor.sh, lib/save-restore.sh,
 	lib/sig.sh, lib/stepping.sh, test/data/brkpt2.right,
@@ -1959,11 +1504,10 @@
 	command/info_sub/display.sh, command/info_sub/files.sh,
 	command/info_sub/functions.sh, command/info_sub/program.sh,
 	command/info_sub/variables.sh, command/info_sub/warranty.sh,
-	command/list.sh, command/next.sh, command/step.sh,
-	command/stepping.sh, lib/processor.sh: Break commands into smaller
-	files: "skip" and "next" separated from "step". Info subcommands are
-	now in info_sub and info subcommand names have been regularized to
-	_Dbg_do_info_xxx.
+	command/list.sh, command/next.sh, command/{stepping.sh => step.sh},
+	lib/processor.sh: Break commands into smaller files: "skip" and
+	"next" separated from "step". Info subcommands are now in info_sub
+	and info subcommand names have been regularized to _Dbg_do_info_xxx.
 
 2010-07-09  rocky <rocky@gnu.org>
 
@@ -2021,9 +1565,9 @@
 
 2010-07-08  rocky <rocky@gnu.org>
 
-	* .gitignore, configure.ac, dbg-main.sh, dbg-main.sh.in: dbg-main.sh
-	is no longer derived.  Default init file is now  $HOME/.bashdbrc
-	rather than $HOEM/.bashdbinit
+	* .gitignore, configure.ac, dbg-main.sh.in => dbg-main.sh: 
+	dbg-main.sh is no longer derived.  Default init file is now
+	$HOME/.bashdbrc rather than $HOEM/.bashdbinit
 
 2010-07-08  rocky <rocky@gnu.org>
 
@@ -2691,7 +2235,7 @@
 
 2008-11-08  rockyb <rockyb>
 
-	* lib/Makefile.am, lib/break.sh, lib/brk.sh,
+	* lib/Makefile.am, lib/{brk.sh => break.sh},
 	test/unit/test-break.sh.in: Synch up with zshdb.
 
 2008-11-08  rockyb <rockyb>
@@ -3206,9 +2750,9 @@
 
 2008-08-23  rockyb <rockyb>
 
-	* configure.ac, emacs/Makefile.am, emacs/bashdb-test.el.in,
-	emacs/dbg-test.el.in: Infrastructure more generic and common with
-	other *shdb debuggers
+	* configure.ac, emacs/Makefile.am, emacs/{bashdb-test.el.in =>
+	dbg-test.el.in}: Infrastructure more generic and common with other
+	*shdb debuggers
 
 2008-08-23  rockyb <rockyb>
 
@@ -3219,25 +2763,25 @@
 2008-08-23  rockyb <rockyb>
 
 	* configure.ac, test/.cvsignore, test/Makefile.am, test/README,
-	test/check-common.sh.in, test/data/settrace.right,
-	test/example/interrupt.sh, test/example/settrace.sh,
-	test/integration/Makefile.am, test/integration/check-common.sh.in,
-	test/integration/lopts.tests, test/integration/sopts.tests,
-	test/integration/test-action, test/integration/test-brkpt,
-	test/integration/test-bug-args, test/integration/test-bug-source,
-	test/integration/test-bugIFS, test/integration/test-command,
-	test/integration/test-complete, test/integration/test-debug,
-	test/integration/test-display, test/integration/test-finish,
-	test/integration/test-frame, test/integration/test-interrupt,
-	test/integration/test-list, test/integration/test-misc,
-	test/integration/test-multi, test/integration/test-opts,
-	test/integration/test-parm, test/integration/test-restart,
-	test/integration/test-search, test/integration/test-setshow,
-	test/integration/test-settrace, test/integration/test-sig,
-	test/integration/test-skip, test/integration/test-subshell,
-	test/integration/test-tbreak, test/integration/test-trace,
-	test/integration/test-watch1, test/integration/test-watch2: Move
-	check-common.sh.in into integration directory.
+	test/data/settrace.right, test/example/interrupt.sh,
+	test/example/settrace.sh, test/integration/Makefile.am, test/{ =>
+	integration}/check-common.sh.in, test/integration/lopts.tests,
+	test/integration/sopts.tests, test/integration/test-action,
+	test/integration/test-brkpt, test/integration/test-bug-args,
+	test/integration/test-bug-source, test/integration/test-bugIFS,
+	test/integration/test-command, test/integration/test-complete,
+	test/integration/test-debug, test/integration/test-display,
+	test/integration/test-finish, test/integration/test-frame,
+	test/integration/test-interrupt, test/integration/test-list,
+	test/integration/test-misc, test/integration/test-multi,
+	test/integration/test-opts, test/integration/test-parm,
+	test/integration/test-restart, test/integration/test-search,
+	test/integration/test-setshow, test/integration/test-settrace,
+	test/integration/test-sig, test/integration/test-skip,
+	test/integration/test-subshell, test/integration/test-tbreak,
+	test/integration/test-trace, test/integration/test-watch1,
+	test/integration/test-watch2: Move check-common.sh.in into
+	integration directory.
 
 2008-08-23  rockyb <rockyb>
 
@@ -3365,9 +2909,8 @@
 
 2008-08-22  rockyb <rockyb>
 
-	* test/example/interrupt.sh, test/example/skip.sh,
-	test/hanoi.sh.in, test/sig.sh, test/skip.sh: More cleanup from last
-	commit
+	* test/example/interrupt.sh, test/{ => example}/skip.sh,
+	test/hanoi.sh.in, test/sig.sh: More cleanup from last commit
 
 2008-08-22  rockyb <rockyb>
 
@@ -3380,17 +2923,16 @@
 	test/data/interrupt.right, test/data/list.cmd,
 	test/data/list.right, test/data/lopts.right, test/data/misc.cmd,
 	test/data/misc.right, test/data/prof2.cmd, test/data/watch1.cmd,
-	test/data/watch1.right, test/debug.sh, test/example/Makefile.am,
-	test/example/dbg-test1.sh, test/example/debug.sh,
-	test/example/hanoi.sh.in, test/example/interrupt.sh,
-	test/example/parm.sh, test/example/restartbug.sh,
-	test/example/settrace.sh, test/example/subshell.sh,
+	test/data/watch1.right, test/example/Makefile.am,
+	test/example/dbg-test1.sh, test/{ => example}/debug.sh,
+	test/example/hanoi.sh.in, test/example/interrupt.sh, test/{ =>
+	example}/parm.sh, test/example/restartbug.sh,
+	test/example/settrace.sh, test/{ => example}/subshell.sh,
 	test/interrupt.tests, test/lopts.tests, test/multi.sh,
-	test/parm.sh, test/restartbug.sh, test/setshow.tests,
-	test/settrace.tests, test/sig.tests, test/sopts.tests,
-	test/subshell.sh, test/subshell1.tests, test/subshell2.tests,
-	test/subshell3.tests, test/subshell4.tests, test/test-action,
-	test/test-all, test/test-brkpt, test/test-brkpt1,
+	test/restartbug.sh, test/setshow.tests, test/settrace.tests,
+	test/sig.tests, test/sopts.tests, test/subshell1.tests,
+	test/subshell2.tests, test/subshell3.tests, test/subshell4.tests,
+	test/test-action, test/test-all, test/test-brkpt, test/test-brkpt1,
 	test/test-bug-args, test/test-bug-source, test/test-bugIFS,
 	test/test-command, test/test-complete, test/test-debug,
 	test/test-display, test/test-finish, test/test-frame,
@@ -3470,12 +3012,12 @@
 	* command/alias.sh, test/Makefile.am, test/brkpt1.tests,
 	test/brkpt2.tests, test/brkpt3.tests, test/bug-source.tests,
 	test/check-common.sh.in, test/command.tests,
-	test/example/Makefile.am, test/example/settrace.sh,
+	test/example/Makefile.am, test/{ => example}/settrace.sh,
 	test/interrupt.tests, test/lopts.tests, test/setshow.tests,
-	test/settrace.sh, test/settrace.tests, test/sig.tests,
-	test/sopts.tests, test/subshell1.tests, test/subshell2.tests,
-	test/subshell3.tests, test/subshell4.tests, test/trace.tests,
-	test/trace2.tests: Remove more bashisms.
+	test/settrace.tests, test/sig.tests, test/sopts.tests,
+	test/subshell1.tests, test/subshell2.tests, test/subshell3.tests,
+	test/subshell4.tests, test/trace.tests, test/trace2.tests: Remove
+	more bashisms.
 
 2008-08-19  rockyb <rockyb>
 
@@ -3491,20 +3033,19 @@
 	test/data/brkpt1.right, test/data/brkpt2.cmd,
 	test/data/brkpt2.right, test/data/bug-source.right,
 	test/data/list.cmd, test/data/list.right, test/data/setshow.right,
-	test/data/watch1.cmd, test/data/watch1.right, test/dbg-test1.sh,
-	test/dbg-test1.sub, test/dbg-test2.sh, test/example/.cvsignore,
-	test/example/Makefile.am, test/example/README,
-	test/example/bug-args.sh.in, test/example/bugIFS.sh.in,
-	test/example/dbg-test1.sh, test/example/dbg-test1.sub,
-	test/example/dbg-test2.sh, test/example/interrupt.sh.in,
-	test/interrupt.sh.in, test/interrupt.tests, test/lopts.tests,
-	test/setshow.tests, test/sopts.tests, test/test-action,
-	test/test-bug-args, test/test-bugIFS, test/test-command,
-	test/test-complete, test/test-display, test/test-frame,
-	test/test-list, test/test-misc, test/test-search, test/test-tbreak,
-	test/test-watch1, test/test-watch2, test/trace.tests,
-	test/trace2.tests: Integration script programs moved to
-	test/example.
+	test/data/watch1.cmd, test/data/watch1.right,
+	test/example/.cvsignore, test/example/Makefile.am,
+	test/example/README, test/example/bug-args.sh.in,
+	test/example/bugIFS.sh.in, test/{ => example}/dbg-test1.sh, test/{
+	=> example}/dbg-test1.sub, test/{ => example}/dbg-test2.sh, test/{
+	=> example}/interrupt.sh.in, test/interrupt.tests,
+	test/lopts.tests, test/setshow.tests, test/sopts.tests,
+	test/test-action, test/test-bug-args, test/test-bugIFS,
+	test/test-command, test/test-complete, test/test-display,
+	test/test-frame, test/test-list, test/test-misc, test/test-search,
+	test/test-tbreak, test/test-watch1, test/test-watch2,
+	test/trace.tests, test/trace2.tests: Integration script programs
+	moved to test/example.
 
 2008-08-19  rockyb <rockyb>
 
@@ -3649,16 +3190,16 @@
 
 2008-08-10  rockyb <rockyb>
 
-	* command/Makefile.am, command/backtrace.sh, command/where.sh,
+	* command/Makefile.am, command/{backtrace.sh => where.sh},
 	test/data/tbreak.right: backtrace.sh -> where.sh (to match zshdb and
 	kshdb). Use _Dbg_not_running in it.
 
 2008-08-10  rockyb <rockyb>
 
-	* configure.ac, lib/Makefile.am, lib/frame.sh, lib/stack.sh,
+	* configure.ac, lib/Makefile.am, lib/{stack.sh => frame.sh},
 	test/unit/.cvsignore, test/unit/Makefile.am,
-	test/unit/test-frame.sh.in, test/unit/test-stack.sh.in: lib/stack.sh
-	-> lib/frame.sh to match kshdb and zshdb. Other small changes, e.g.
+	test/unit/{test-stack.sh.in => test-frame.sh.in}: lib/stack.sh ->
+	lib/frame.sh to match kshdb and zshdb. Other small changes, e.g.
 	typo: top_srcdir=@top_builddir@.
 
 2008-08-10  rockyb <rockyb>
@@ -3677,7 +3218,7 @@
 	test/bug-source.tests, test/check-common.sh.in, test/command.tests,
 	test/data/brkpt1.right, test/data/brkpt2.right,
 	test/data/bug-source.right, test/data/list.right,
-	test/data/sig.right, test/dbg-test1.sh, test/dbg-test1.sh.in,
+	test/data/sig.right, test/{dbg-test1.sh.in => dbg-test1.sh},
 	test/lopts.tests, test/search.tests, test/setshow.tests,
 	test/sig.tests, test/sopts.tests, test/subshell1.tests,
 	test/subshell2.tests, test/subshell3.tests, test/test-action,
@@ -3719,8 +3260,8 @@
 
 2008-08-09  rockyb <rockyb>
 
-	* ChangeLog, bashdb.in, command/restart.sh, dbg-init.inc,
-	dbg-init.sh, dbg-io.inc, dbg-io.sh, dbg-main.sh.in,
+	* ChangeLog, bashdb.in, command/restart.sh, dbg-init.inc =>
+	dbg-init.sh, dbg-io.inc => dbg-io.sh, dbg-main.sh.in,
 	test/check-common.sh.in, test/data/brkpt2.right,
 	test/data/bug-source.right, test/data/debug.right,
 	test/data/finish.right, test/data/frame.right,
@@ -3765,72 +3306,53 @@
 
 2008-08-08  rockyb <rockyb>
 
-	* configure.ac, test/Makefile.am, test/action.cmd,
-	test/action.right, test/action.tests, test/brkpt1.cmd,
-	test/brkpt1.right, test/brkpt1.tests, test/brkpt2.cmd,
-	test/brkpt2.right, test/brkpt2.tests, test/brkpt3.cmd,
-	test/brkpt3.right, test/brkpt3.tests, test/bug-args.cmd,
-	test/bug-args.right, test/bug-args.tests, test/bug-source.cmd,
-	test/bug-source.right, test/bug-source.tests, test/bugIFS.cmd,
-	test/bugIFS.right, test/command.cmd, test/command.right,
-	test/command.tests, test/complete.cmd, test/complete.right,
-	test/complete.tests, test/continue.cmd, test/data/Makefile.am,
-	test/data/action.cmd, test/data/action.right, test/data/brkpt1.cmd,
-	test/data/brkpt1.right, test/data/brkpt2.cmd,
-	test/data/brkpt2.right, test/data/brkpt3.cmd,
-	test/data/brkpt3.right, test/data/bug-args.cmd,
-	test/data/bug-args.right, test/data/bug-source.cmd,
-	test/data/bug-source.right, test/data/bugIFS.cmd,
-	test/data/bugIFS.right, test/data/command.cmd,
-	test/data/command.right, test/data/complete.cmd,
-	test/data/complete.right, test/data/continue.cmd,
-	test/data/debug.cmd, test/data/debug.right, test/data/debug2.cmd,
-	test/data/display.cmd, test/data/display.right,
-	test/data/finish.cmd, test/data/finish.right, test/data/frame.cmd,
-	test/data/frame.right, test/data/interrupt.right,
-	test/data/list.cmd, test/data/list.right, test/data/lopts.right,
-	test/data/misc-output.right, test/data/misc.cmd,
-	test/data/misc.right, test/data/multi1.cmd, test/data/multi1.right,
-	test/data/multi2.cmd, test/data/multi2.right, test/data/multi3.cmd,
-	test/data/multi3.right, test/data/multi4.cmd,
-	test/data/multi4.right, test/data/parm.cmd, test/data/parm.right,
-	test/data/prof1.cmd, test/data/prof2.cmd, test/data/quit.cmd,
-	test/data/restart.cmd, test/data/restart.right,
-	test/data/restart2.cmd, test/data/search.cmd,
-	test/data/search.right, test/data/setshow.cmd,
-	test/data/setshow.right, test/data/settrace.cmd,
-	test/data/settrace.right, test/data/sig.cmd, test/data/sig.right,
-	test/data/skip.cmd, test/data/skip.right, test/data/sopts.right,
-	test/data/subshell1.cmd, test/data/subshell1.right,
-	test/data/subshell2.cmd, test/data/subshell2.right,
-	test/data/subshell3.cmd, test/data/subshell3.right,
-	test/data/subshell4.cmd, test/data/subshell4.right,
-	test/data/tbreak.cmd, test/data/tbreak.right,
-	test/data/trace.right, test/data/trace2.right,
-	test/data/watch1.cmd, test/data/watch1.right, test/data/watch2.cmd,
-	test/data/watch2.right, test/debug.cmd, test/debug.right,
-	test/debug.tests, test/debug2.cmd, test/display.cmd,
-	test/display.right, test/finish.cmd, test/finish.right,
-	test/frame.cmd, test/frame.right, test/interrupt.right,
-	test/list.cmd, test/list.right, test/lopts.right,
-	test/misc-output.right, test/misc.cmd, test/misc.right,
-	test/multi1.cmd, test/multi1.right, test/multi2.cmd,
-	test/multi2.right, test/multi3.cmd, test/multi3.right,
-	test/multi4.cmd, test/multi4.right, test/parm.cmd, test/parm.right,
-	test/prof1.cmd, test/prof2.cmd, test/quit.cmd, test/restart.cmd,
-	test/restart.right, test/restart2.cmd, test/search.cmd,
-	test/search.right, test/setshow.cmd, test/setshow.right,
-	test/settrace.cmd, test/settrace.right, test/sig.cmd,
-	test/sig.right, test/skip.cmd, test/skip.right, test/sopts.right,
-	test/subshell1.cmd, test/subshell1.right, test/subshell2.cmd,
-	test/subshell2.right, test/subshell3.cmd, test/subshell3.right,
-	test/subshell4.cmd, test/subshell4.right, test/tbreak.cmd,
-	test/tbreak.right, test/test-action, test/test-brkpt,
-	test/test-brkpt1, test/test-bug-args, test/test-bug-source,
-	test/test-command, test/test-complete, test/test-debug,
-	test/trace.right, test/trace2.right, test/watch1.cmd,
-	test/watch1.right, test/watch2.cmd, test/watch2.right: Add data
-	directory. "make check" is broken until more tests are converted.
+	* configure.ac, test/Makefile.am, test/action.tests,
+	test/brkpt1.tests, test/brkpt2.tests, test/brkpt3.tests,
+	test/bug-args.tests, test/bug-source.tests, test/command.tests,
+	test/complete.tests, test/data/Makefile.am, test/{ =>
+	data}/action.cmd, test/{ => data}/action.right, test/{ =>
+	data}/brkpt1.cmd, test/{ => data}/brkpt1.right, test/{ =>
+	data}/brkpt2.cmd, test/{ => data}/brkpt2.right, test/{ =>
+	data}/brkpt3.cmd, test/{ => data}/brkpt3.right, test/{ =>
+	data}/bug-args.cmd, test/{ => data}/bug-args.right, test/{ =>
+	data}/bug-source.cmd, test/{ => data}/bug-source.right, test/{ =>
+	data}/bugIFS.cmd, test/{ => data}/bugIFS.right, test/{ =>
+	data}/command.cmd, test/{ => data}/command.right, test/{ =>
+	data}/complete.cmd, test/{ => data}/complete.right, test/{ =>
+	data}/continue.cmd, test/{ => data}/debug.cmd, test/{ =>
+	data}/debug.right, test/{ => data}/debug2.cmd, test/{ =>
+	data}/display.cmd, test/{ => data}/display.right, test/{ =>
+	data}/finish.cmd, test/{ => data}/finish.right, test/{ =>
+	data}/frame.cmd, test/{ => data}/frame.right, test/{ =>
+	data}/interrupt.right, test/{ => data}/list.cmd, test/{ =>
+	data}/list.right, test/{ => data}/lopts.right, test/{ =>
+	data}/misc-output.right, test/{ => data}/misc.cmd, test/{ =>
+	data}/misc.right, test/{ => data}/multi1.cmd, test/{ =>
+	data}/multi1.right, test/{ => data}/multi2.cmd, test/{ =>
+	data}/multi2.right, test/{ => data}/multi3.cmd, test/{ =>
+	data}/multi3.right, test/{ => data}/multi4.cmd, test/{ =>
+	data}/multi4.right, test/{ => data}/parm.cmd, test/{ =>
+	data}/parm.right, test/{ => data}/prof1.cmd, test/{ =>
+	data}/prof2.cmd, test/{ => data}/quit.cmd, test/{ =>
+	data}/restart.cmd, test/{ => data}/restart.right, test/{ =>
+	data}/restart2.cmd, test/{ => data}/search.cmd, test/{ =>
+	data}/search.right, test/{ => data}/setshow.cmd, test/{ =>
+	data}/setshow.right, test/{ => data}/settrace.cmd, test/{ =>
+	data}/settrace.right, test/{ => data}/sig.cmd, test/{ =>
+	data}/sig.right, test/{ => data}/skip.cmd, test/{ =>
+	data}/skip.right, test/{ => data}/sopts.right, test/{ =>
+	data}/subshell1.cmd, test/{ => data}/subshell1.right, test/{ =>
+	data}/subshell2.cmd, test/{ => data}/subshell2.right, test/{ =>
+	data}/subshell3.cmd, test/{ => data}/subshell3.right, test/{ =>
+	data}/subshell4.cmd, test/{ => data}/subshell4.right, test/{ =>
+	data}/tbreak.cmd, test/{ => data}/tbreak.right, test/{ =>
+	data}/trace.right, test/{ => data}/trace2.right, test/{ =>
+	data}/watch1.cmd, test/{ => data}/watch1.right, test/{ =>
+	data}/watch2.cmd, test/{ => data}/watch2.right, test/debug.tests,
+	test/test-action, test/test-brkpt, test/test-brkpt1,
+	test/test-bug-args, test/test-bug-source, test/test-command,
+	test/test-complete, test/test-debug: Add data directory. "make
+	check" is broken until more tests are converted.
 
 2008-08-08  rockyb <rockyb>
 
@@ -3843,16 +3365,15 @@
 
 2008-08-08  rockyb <rockyb>
 
-	* dbg-main.sh.in, lib/Makefile.am, lib/brk.inc, lib/brk.sh,
-	lib/commands.inc, lib/commands.sh, lib/complete.inc,
-	lib/complete.sh, lib/file.inc, lib/file.sh, lib/fns.inc,
-	lib/fns.sh, lib/help.inc, lib/help.sh, lib/hist.inc, lib/hist.sh,
-	lib/info.inc, lib/info.sh, lib/journal.inc, lib/journal.sh,
-	lib/list.inc, lib/list.sh, lib/processor.inc, lib/processor.sh,
-	lib/run.inc, lib/run.sh, lib/sig.inc, lib/sig.sh, lib/stack.inc,
-	lib/stack.sh, test/sig.right, test/unit/test-fns.sh.in,
-	test/unit/test-run.sh.in, test/unit/test-stack.sh.in: More .inc ->
-	.sh
+	* dbg-main.sh.in, lib/Makefile.am, lib/{brk.inc => brk.sh},
+	lib/{commands.inc => commands.sh}, lib/{complete.inc =>
+	complete.sh}, lib/{file.inc => file.sh}, lib/{fns.inc => fns.sh},
+	lib/{help.inc => help.sh}, lib/{hist.inc => hist.sh}, lib/{info.inc
+	=> info.sh}, lib/{journal.inc => journal.sh}, lib/{list.inc =>
+	list.sh}, lib/{processor.inc => processor.sh}, lib/{run.inc =>
+	run.sh}, lib/{sig.inc => sig.sh}, lib/{stack.inc => stack.sh},
+	test/sig.right, test/unit/test-fns.sh.in, test/unit/test-run.sh.in,
+	test/unit/test-stack.sh.in: More .inc -> .sh
 
 2008-08-08  rockyb <rockyb>
 
@@ -3908,34 +3429,30 @@
 2008-08-07  rockyb <rockyb>
 
 	* Makefile.am, bashdb-trace.in, bashdb.in, configure.ac,
-	dbg-init.inc, dbg-main.inc.in, dbg-main.sh.in, dbg-pre.sh,
-	lib/Makefile.am, lib/pre.inc.in, test/unit/test-pre.sh.in: More .inc
-	-> .sh
+	dbg-init.inc, dbg-main.inc.in => dbg-main.sh.in, lib/pre.inc.in =>
+	dbg-pre.sh, lib/Makefile.am, test/unit/test-pre.sh.in: More .inc ->
+	.sh
 
 2008-08-07  rockyb <rockyb>
 
-	* command/Makefile.am, command/backtrace.cmd, command/backtrace.sh,
-	command/break.cmd, command/break.sh, command/commands.cmd,
-	command/commands.sh, command/condition.cmd, command/condition.sh,
-	command/continue.cmd, command/continue.sh, command/debug.cmd,
-	command/debug.sh, command/delete.cmd, command/delete.sh,
-	command/disable.cmd, command/disable.sh, command/edit.cmd,
-	command/edit.sh, command/enable.cmd, command/enable.sh,
-	command/eval.cmd, command/eval.sh, command/examine.cmd,
-	command/examine.sh, command/file.cmd, command/file.sh,
-	command/frame.cmd, command/frame.sh, command/handle.cmd,
-	command/handle.sh, command/help.cmd, command/help.sh,
-	command/kill.cmd, command/kill.sh, command/linetrace.cmd,
-	command/linetrace.sh, command/load.cmd, command/load.sh,
-	command/log.cmd, command/log.sh, command/print.cmd,
-	command/print.sh, command/pwd.cmd, command/pwd.sh,
-	command/quit.cmd, command/quit.sh, command/restart.cmd,
-	command/restart.sh, command/set.cmd, command/set.sh,
-	command/show.cmd, command/show.sh, command/signal.cmd,
-	command/signal.sh, command/source.cmd, command/source.sh,
-	command/stepping.cmd, command/stepping.sh, command/tracefn.cmd,
-	command/tracefn.sh, command/tty.cmd, command/tty.sh,
-	command/undisplay.cmd, command/watch.cmd, command/watch.sh,
+	* command/Makefile.am, command/{backtrace.cmd => backtrace.sh},
+	command/{break.cmd => break.sh}, command/{commands.cmd =>
+	commands.sh}, command/{condition.cmd => condition.sh},
+	command/{continue.cmd => continue.sh}, command/{debug.cmd =>
+	debug.sh}, command/{delete.cmd => delete.sh}, command/{disable.cmd
+	=> disable.sh}, command/{edit.cmd => edit.sh}, command/{enable.cmd
+	=> enable.sh}, command/{eval.cmd => eval.sh}, command/{examine.cmd
+	=> examine.sh}, command/{file.cmd => file.sh}, command/{frame.cmd
+	=> frame.sh}, command/{handle.cmd => handle.sh}, command/{help.cmd
+	=> help.sh}, command/{kill.cmd => kill.sh}, command/{linetrace.cmd
+	=> linetrace.sh}, command/{load.cmd => load.sh}, command/{log.cmd
+	=> log.sh}, command/{print.cmd => print.sh}, command/{pwd.cmd =>
+	pwd.sh}, command/{quit.cmd => quit.sh}, command/{restart.cmd =>
+	restart.sh}, command/{set.cmd => set.sh}, command/{show.cmd =>
+	show.sh}, command/{signal.cmd => signal.sh}, command/{source.cmd =>
+	source.sh}, command/{stepping.cmd => stepping.sh},
+	command/{tracefn.cmd => tracefn.sh}, command/{tty.cmd => tty.sh},
+	command/undisplay.cmd, command/{watch.cmd => watch.sh},
 	dbg-main.inc.in, lib/brk.inc, test/sig.right,
 	test/unit/test-bashdb-trace.sh.in: *.cmd -> *.sh. Combine display
 	stuff in display.sh
@@ -3983,10 +3500,10 @@
 
 2008-08-06  rockyb <rockyb>
 
-	* command/Makefile.am, command/down.cmd, command/frame.cmd,
+	* command/Makefile.am, command/frame.cmd, lib/log.inc =>
 	command/log.cmd, command/restart.cmd, command/up.cmd,
-	lib/Makefile.am, lib/log.inc, lib/processor.inc, lib/run.inc: Move
-	more command things into command.
+	lib/Makefile.am, lib/processor.inc, command/down.cmd => lib/run.inc: 
+	Move more command things into command.
 
 2008-08-05  rockyb <rockyb>
 
@@ -4003,13 +3520,13 @@
 
 2008-08-04  rockyb <rockyb>
 
-	* builtin/set0.c, command/Makefile.am, command/tracefn.cmd,
-	lib/Makefile.am, lib/tracefn.inc, test/unit/test-bashdb-trace.sh.in: 
-	Set0 patches from Masatake-san:   Fix comments.         (set0_builtin): Free $0 before overwriting.         Return SUCCESS instead of FAILURE.  lib/tracefn.inc -> command/tracefn.cmd
+	* builtin/set0.c, command/Makefile.am, lib/tracefn.inc =>
+	command/tracefn.cmd, lib/Makefile.am,
+	test/unit/test-bashdb-trace.sh.in: Set0 patches from Masatake-san:   Fix comments.         (set0_builtin): Free $0 before overwriting.         Return SUCCESS instead of FAILURE.  lib/tracefn.inc -> command/tracefn.cmd
 
 2008-08-04  rockyb <rockyb>
 
-	* command/Makefile.am, command/linetrace.cmd, command/trace.cmd,
+	* command/Makefile.am, command/{trace.cmd => linetrace.cmd},
 	test/unit/shunit2, test/unit/test-fns.sh.in: Add set_dol_q test. Add
 	more is_function tests. trace.cmd->linetrace.cmd to distinguish
 	function trace.
@@ -4032,11 +3549,11 @@
 
 	* .cvsignore, ChangeLog, Makefile.am, builtin/.cvsignore,
 	command/Makefile.am, command/edit.cmd, command/file.cmd,
-	command/handle.cmd, command/set.cmd, command/show.cmd,
-	command/signal.cmd, command/watch.cmd, configure.ac, dbg-file.inc,
-	dbg-info.inc, dbg-pre.inc.in, lib/.cvsignore, lib/Makefile.am,
-	lib/brk.inc, lib/file.inc, lib/pre.inc.in, lib/set.inc,
-	lib/show.inc: See above.
+	command/handle.cmd, lib/set.inc => command/set.cmd, lib/show.inc =>
+	command/show.cmd, command/signal.cmd, command/watch.cmd,
+	configure.ac, dbg-info.inc, lib/.cvsignore, lib/Makefile.am,
+	lib/brk.inc, dbg-file.inc => lib/file.inc, dbg-pre.inc.in =>
+	lib/pre.inc.in: See above.
 
 2008-08-02  rockyb <rockyb>
 
@@ -4047,8 +3564,8 @@
 
 2008-08-02  rockyb <rockyb>
 
-	* ChangeLog, command/Makefile.am, dbg-fns.inc, dbg-main.inc.in,
-	dbg-stack.inc, lib/Makefile.am, lib/fns.inc, lib/stack.inc,
+	* ChangeLog, command/Makefile.am, dbg-main.inc.in, lib/Makefile.am,
+	dbg-fns.inc => lib/fns.inc, dbg-stack.inc => lib/stack.inc,
 	test/unit/test-fns.sh.in: More to lib. Fix install command location
 	(singular now, not plural). Should work when installed now.
 
@@ -4065,12 +3582,13 @@
 
 2008-08-02  rockyb <rockyb>
 
-	* ChangeLog, Makefile.am, dbg-commands.inc, dbg-complete.inc,
-	dbg-log.inc, dbg-main.inc.in, dbg-processor.inc, dbg-sig.inc,
-	dbg-tracefn.inc, lib/.cvsignore, lib/Makefile.am, lib/commands.inc,
-	lib/complete.inc, lib/log.inc, lib/processor.inc, lib/sig.inc,
-	lib/tracefn.inc, test/sig.right, test/unit/test-bashdb-trace.sh,
-	test/unit/test-bashdb-trace.sh.in: Move more files around.
+	* ChangeLog, Makefile.am, dbg-main.inc.in, lib/.cvsignore,
+	lib/Makefile.am, dbg-commands.inc => lib/commands.inc,
+	dbg-complete.inc => lib/complete.inc, dbg-log.inc => lib/log.inc,
+	dbg-processor.inc => lib/processor.inc, dbg-sig.inc => lib/sig.inc,
+	dbg-tracefn.inc => lib/tracefn.inc, test/sig.right,
+	test/unit/test-bashdb-trace.sh, test/unit/test-bashdb-trace.sh.in: 
+	Move more files around.
 
 2008-08-02  rockyb <rockyb>
 
@@ -4078,25 +3596,23 @@
 
 2008-08-02  rockyb <rockyb>
 
-	* ChangeLog, Makefile.am, command/.cvsignore, command/Makefile.am,
-	command/backtrace.cmd, command/debug.cmd, command/down.cmd,
-	command/edit.cmd, command/eval.cmd, command/examine.cmd,
-	command/file.cmd, command/frame.cmd, command/kill.cmd,
-	command/load.cmd, command/print.cmd, command/pwd.cmd,
-	command/quit.cmd, command/restart.cmd, command/source.cmd,
-	command/trace.cmd, command/tty.cmd, command/up.cmd,
-	commands/.cvsignore, commands/Makefile.am, commands/backtrace.cmd,
-	commands/debug.cmd, commands/down.cmd, commands/eval.cmd,
-	commands/examine.cmd, commands/file.cmd, commands/frame.cmd,
-	commands/kill.cmd, commands/load.cmd, commands/print.cmd,
-	commands/pwd.cmd, commands/quit.cmd, commands/restart.cmd,
-	commands/source.cmd, commands/trace.cmd, commands/tty.cmd,
-	commands/up.cmd, configure.ac, dbg-brk.inc, dbg-edit.inc,
-	dbg-file.inc, dbg-help.inc, dbg-hist.inc, dbg-list.inc,
-	dbg-main.inc.in, dbg-processor.inc, dbg-set-d-vars.inc,
-	dbg-set.inc, dbg-show.inc, lib/brk.inc, lib/help.inc, lib/hist.inc,
-	lib/list.inc, lib/set.inc, lib/show.inc: Start to move library files
-	into lib. More work sorting out command files.
+	* ChangeLog, Makefile.am, {commands => command}/.cvsignore,
+	{commands => command}/Makefile.am, {commands =>
+	command}/backtrace.cmd, {commands => command}/debug.cmd, {commands
+	=> command}/down.cmd, dbg-edit.inc => command/edit.cmd, {commands
+	=> command}/eval.cmd, {commands => command}/examine.cmd, {commands
+	=> command}/file.cmd, {commands => command}/frame.cmd, {commands =>
+	command}/kill.cmd, {commands => command}/load.cmd, {commands =>
+	command}/print.cmd, {commands => command}/pwd.cmd, {commands =>
+	command}/quit.cmd, {commands => command}/restart.cmd, {commands =>
+	command}/source.cmd, {commands => command}/trace.cmd, {commands =>
+	command}/tty.cmd, {commands => command}/up.cmd, configure.ac,
+	dbg-file.inc, dbg-main.inc.in, dbg-processor.inc,
+	dbg-set-d-vars.inc, dbg-brk.inc => lib/brk.inc, dbg-help.inc =>
+	lib/help.inc, dbg-hist.inc => lib/hist.inc, dbg-list.inc =>
+	lib/list.inc, dbg-set.inc => lib/set.inc, dbg-show.inc =>
+	lib/show.inc: Start to move library files into lib. More work
+	sorting out command files.
 
 2008-07-29  rockyb <rockyb>
 
@@ -4126,10 +3642,10 @@
 
 2008-07-26  rockyb <rockyb>
 
-	* Makefile.am, dbg-cmds.inc, dbg-processor.inc, test/brkpt2.right,
-	test/bug-source.right, test/debug.right, test/finish.right,
-	test/frame.right, test/parm.right, test/sig.right,
-	test/sopts.right, test/tbreak.right: dbg-cmds.inc ->
+	* Makefile.am, dbg-cmds.inc => dbg-processor.inc,
+	test/brkpt2.right, test/bug-source.right, test/debug.right,
+	test/finish.right, test/frame.right, test/parm.right,
+	test/sig.right, test/sopts.right, test/tbreak.right: dbg-cmds.inc ->
 	dbg-processor.inc to make more in line with ruby-debug name
 
 2008-07-26  rockyb <rockyb>
@@ -4325,9 +3841,9 @@
 
 2008-05-23  rockyb <rockyb>
 
-	* Makefile.am, builtin/Makefile.am, builtin/readarray.c,
-	builtin/set0.c, configure.ac, readarray.c: Add new builtin set0 to
-	set $0. Now that we have a couple of these, create a builtin
+	* Makefile.am, builtin/Makefile.am, readarray.c =>
+	builtin/readarray.c, builtin/set0.c, configure.ac: Add new builtin
+	set0 to set $0. Now that we have a couple of these, create a builtin
 	directory.
 
 2008-05-22  rockyb <rockyb>
@@ -4431,25 +3947,24 @@
 
 2007-11-13  rockyb <rockyb>
 
-	* test/Makefile.am, test/run-action, test/run-all, test/run-brkpt,
-	test/run-brkpt1, test/run-bug-args, test/run-bug-source,
-	test/run-bugIFS, test/run-command, test/run-complete,
-	test/run-debug, test/run-display, test/run-finish, test/run-frame,
-	test/run-interrupt, test/run-list, test/run-misc, test/run-multi,
-	test/run-opts, test/run-parm, test/run-restart, test/run-search,
-	test/run-setshow, test/run-settrace, test/run-sig, test/run-skip,
-	test/run-subshell, test/run-tbreak, test/run-trace,
-	test/run-watch1, test/test-action, test/test-all, test/test-brkpt,
-	test/test-brkpt1, test/test-bug-args, test/test-bug-source,
-	test/test-bugIFS, test/test-command, test/test-complete,
-	test/test-debug, test/test-display, test/test-finish,
-	test/test-frame, test/test-interrupt, test/test-list,
-	test/test-misc, test/test-multi, test/test-opts, test/test-parm,
-	test/test-restart, test/test-search, test/test-setshow,
-	test/test-settrace, test/test-sig, test/test-skip,
-	test/test-subshell, test/test-tbreak, test/test-trace,
-	test/test-watch1, test/test-watch2: run-* -> test-* to match other
-	debuggers.
+	* test/Makefile.am, test/{run-action => test-action}, test/{run-all
+	=> test-all}, test/{run-brkpt => test-brkpt}, test/{run-brkpt1 =>
+	test-brkpt1}, test/{run-bug-args => test-bug-args},
+	test/{run-bug-source => test-bug-source}, test/{run-bugIFS =>
+	test-bugIFS}, test/{run-command => test-command},
+	test/{run-complete => test-complete}, test/{run-debug =>
+	test-debug}, test/{run-display => test-display}, test/{run-finish
+	=> test-finish}, test/{run-frame => test-frame},
+	test/{run-interrupt => test-interrupt}, test/{run-list =>
+	test-list}, test/{run-misc => test-misc}, test/{run-multi =>
+	test-multi}, test/{run-opts => test-opts}, test/{run-parm =>
+	test-parm}, test/{run-restart => test-restart}, test/{run-search =>
+	test-search}, test/{run-setshow => test-setshow},
+	test/{run-settrace => test-settrace}, test/{run-sig => test-sig},
+	test/{run-skip => test-skip}, test/{run-subshell => test-subshell},
+	test/{run-tbreak => test-tbreak}, test/{run-trace => test-trace},
+	test/{run-watch1 => test-watch1}, test/test-watch2: run-* -> test-*
+	to match other debuggers.
 
 2007-11-13  rockyb <rockyb>
 
@@ -4903,14 +4418,14 @@
 
 2007-01-20  rockyb <rockyb>
 
-	* ChangeLog, configure.ac, emacs/Makefile.am, emacs/bashdb-test.el,
-	emacs/bashdb-test.el.in, test/Makefile.am, test/dbg-test1.sh: Things
+	* ChangeLog, configure.ac, emacs/Makefile.am, emacs/{bashdb-test.el
+	=> bashdb-test.el.in}, test/Makefile.am, test/dbg-test1.sh: Things
 	to make "make distcheck" work.
 
 2007-01-20  rockyb <rockyb>
 
 	* bashdb.in, configure.ac, doc/bashdb.texi, test/Makefile.am,
-	test/dbg-test1.sh, test/dbg-test1.sh.in, test/list.right,
+	test/{dbg-test1.sh => dbg-test1.sh.in}, test/list.right,
 	test/search.right: Change to make "make distcheck" work.
 
 2007-01-20  rockyb <rockyb>
@@ -5133,8 +4648,8 @@
 2006-12-10  rockyb <rockyb>
 
 	* ChangeLog, NEWS, configure.ac, test/Makefile.am,
-	test/bug-args.sh, test/bug-args.sh.in, test/hanoi.sh.in: 
-	bug-args.sh: More consistent with other tests of this ilk
+	test/{bug-args.sh => bug-args.sh.in}, test/hanoi.sh.in: bug-args.sh:
+	More consistent with other tests of this ilk
 
 2006-12-03  rockyb <rockyb>
 
@@ -5339,7 +4854,7 @@
 
 2006-08-21  myamato <myamato>
 
-	* readarray.c: (readarray_builtin): Added filename, arrayname,	code and intval as
+	* readarray.c: (readarray_builtin): Added filename, arrayname, code and intval as
 	new local variables. Use legal_number instead of atoi. Check if
 	filename or arrayname is not an empty string.
 
@@ -6058,7 +5573,7 @@
 
 2006-01-03  rockyb <rockyb>
 
-	* doc/bashdb.texi, doc/bashdb.texi.in: Subtitutions are in
+	* doc/{bashdb.texi.in => bashdb.texi}: Subtitutions are in
 	macros.texi.in.
 
 2006-01-02  rockyb <rockyb>

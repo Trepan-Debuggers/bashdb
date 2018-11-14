@@ -21,6 +21,7 @@ check_DATA =            \
 	restart.sh      \
 	settrace.sh     \
 	sig.sh          \
+	sig-bug.sh      \
 	skip.sh         \
 	stepping.sh     \
 	subshell.sh

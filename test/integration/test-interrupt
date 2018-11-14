@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 t=${0##*/}; TEST_NAME=${t:5}   # basename $0 with 'test-' stripped off
 
 [ -z "$builddir" ] && export builddir=$PWD
