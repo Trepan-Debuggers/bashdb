@@ -162,12 +162,12 @@ _Dbg_parse_options() {
 			_Dbg_set_highlight=$OPTLARG
 		    ;;
 		* )
-		    print "Expecting 'dark' or 'light', got \"${OPTLARG}\"" >&2
+		    printf "Expecting 'dark' or 'light', got \"${OPTLARG}\"" >&2
 		    exit 2
 		esac
 
 		if ! ( pygmentize --version || pygmentize -V ) 2>/dev/null 1>/dev/null ; then
-                    print "Can't run pygmentize. --highight forced off" >&2
+                    printf "Can't run pygmentize. --highlight forced off" >&2
 		    _Dbg_set_highlight=''
 
                 fi
