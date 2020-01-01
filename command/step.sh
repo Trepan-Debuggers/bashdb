@@ -43,7 +43,7 @@ _Dbg_help_add 'step+' \
 In contrast to \"step\", we ensure that the file and line position is
 different from the last one just stopped at.
 
-See also \"step-\" and \"set force\"."
+See also \"step-\" and \"set force\"." 0
 
 _Dbg_help_add 'step-' \
 "step- -- Single step a statement without the \`step force' setting.
@@ -51,7 +51,7 @@ _Dbg_help_add 'step-' \
 Set step force may have been set on. step- ensures we turn that off for
 this command.
 
-See also \"step\" and \"set force\"."
+See also \"step\" and \"set force\"." 0
 
 # Step command
 # $1 is command step+, step-, or step
@@ -68,7 +68,7 @@ _Dbg_do_step() {
   typeset suffix
   suffix=${_Dbg_last_next_step_cmd:${#_Dbg_last_step_next_cmd}-1:1}
 
-  case "suffix" in
+  case "$suffix" in
       '+' ) _Dbg_step_force=1 ;;
       '-' ) _Dbg_step_force=0 ;;
       *   ) _Dbg_step_force=$_Dbg_set_different ;;
