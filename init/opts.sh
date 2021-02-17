@@ -129,6 +129,7 @@ _Dbg_parse_options() {
 
     typeset -i _Dbg_o_quiet=0
     typeset -i _Dbg_o_version=0
+    typeset -i _Dbg_highlight_enabled=1
 
     while getopts_long A:Bc:x:hL:nqTt:Yy:VX opt \
         annotate     required_argument       \
@@ -176,10 +177,12 @@ _Dbg_parse_options() {
 
 		if (( ! _Dbg_have_working_pygmentize )) ; then
                     printf "Can't run pygmentize. --highlight forced off" >&2
+            _Dbg_highlight_enabled=0
 		    _Dbg_set_highlight=''
                 fi
                 ;;
             no-highlight )
+                _Dbg_highlight_enabled=0
                 _Dbg_set_highlight=''   ;;
             init-file )
                 set -x
@@ -249,25 +252,24 @@ welcome to change it and/or distribute copies of it under certain conditions.
     fi
     unset _Dbg_o_annotate _Dbg_o_version _Dbg_o_quiet
     _Dbg_script_args=("$@")
+
+    if (( _Dbg_have_working_pygmentize )) && (( _Dbg_highlight_enabled )) && [[ -z "$_Dbg_set_highlight" ]] ; then
+        # Honor DARK_BG if already set. If not set, set it.
+        if [[ -z "$DARK_BG" ]] ; then
+        . "${_Dbg_libdir}/init/term-background.sh" >/dev/null
+        fi
+
+        # DARK_BG is now either 0 or 1.
+        # Set _Dbg_set_highlight based on DARK_BG
+        # Note however that options processing has one more chance to
+        # change _Dbg_set_highlight
+        if (( $DARK_BG )); then
+        _Dbg_set_highlight="dark"
+        else
+        _Dbg_set_highlight="light"
+        fi
+    fi
 }
-
-if (( _Dbg_have_working_pygmentize )) && [[ -z "$_Dbg_set_highlight" ]] ; then
-    # Honor DARK_BG if already set. If not set, set it.
-    if [[ -z "$DARK_BG" ]] ; then
-	. "${_Dbg_libdir}/init/term-background.sh" >/dev/null
-    fi
-
-    # DARK_BG is now either 0 or 1.
-    # Set _Dbg_set_highlight based on DARK_BG
-    # Note however that options processing has one more chance to
-    # change _Dbg_set_highlight
-    if (( $DARK_BG )); then
-	_Dbg_set_highlight="dark"
-    else
-	_Dbg_set_highlight="light"
-    fi
-fi
-
 
 # Stand-alone Testing.
 if [[ -n "$_Dbg_dbg_opts_test" ]] ; then
