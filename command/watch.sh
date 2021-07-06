@@ -1,7 +1,7 @@
 # -*- shell-script -*-
 # gdb-like "watch" debugger command
 #
-#   Copyright (C) 2002, 2003, 2004, 2005, 2006, 2008 Rocky Bernstein
+#   Copyright (C) 2002, 2003, 2004, 2005, 2006, 2008, 2021 Rocky Bernstein
 #   rocky@gnu.org
 #
 #   This program is free software; you can redistribute it and/or
@@ -13,7 +13,7 @@
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 #   General Public License for more details.
-#   
+#
 #   You should have received a copy of the GNU General Public License
 #   along with this program; see the file COPYING.  If not, write to
 #   the Free Software Foundation, 59 Temple Place, Suite 330, Boston,
@@ -44,7 +44,7 @@ _Dbg_do_watch() {
 _Dbg_help_add watche \
 'watche [EXP] -- Set or clear a watch expression.'
 
-_Dbg_alias_add We 
+_Dbg_alias_add We
 
 _Dbg_do_watche() {
     _Dbg_do_watch_internal 1 "$_Dbg_args"
@@ -54,8 +54,8 @@ _Dbg_do_watche() {
 # Set or list watch command
 _Dbg_do_watch_internal() {
     if [ -z "$2" ]; then
-	_Dbg_clear_watch 
-    else 
+	_Dbg_clear_watch
+    else
 	typeset -i n=_Dbg_watch_max++
 	_Dbg_watch_arith[$n]="$1"
 	shift
@@ -64,8 +64,8 @@ _Dbg_do_watch_internal() {
 	_Dbg_watch_enable[$n]=1
 	_Dbg_watch_count[$n]=0
 	_Dbg_printf '%2d: %s==%s arith: %d' $n \
-	    "(${_Dbg_watch_exp[$n]})" ${_Dbg_watch_val[$n]} \
-	    ${_Dbg_watch_arith[$n]}
+	    "(${_Dbg_watch_exp[$n]})" "${_Dbg_watch_val[$n]}" \
+	    "${_Dbg_watch_arith[$n]}"
     fi
     return 0
 }
