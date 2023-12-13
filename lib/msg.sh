@@ -131,6 +131,21 @@ function _Dbg_printf_nocr {
     fi
 }
 
+# Like _Dbg_msg but does not evaluate escape sequences which are embedded in the arguments
+# print message to output device
+function _Dbg_msg_verbatim {
+    if (( _Dbg_logging )) ; then
+        builtin echo -E "$@" >>$_Dbg_logging_file
+    fi
+    if (( ! _Dbg_logging_redirect )) ; then
+        if [[ -n $_Dbg_tty  ]] && [[ $_Dbg_tty != '&1' ]] ; then
+            builtin echo -E "$@" >>$_Dbg_tty
+        else
+            builtin echo -E "$@"
+        fi
+    fi
+}
+
 typeset _Dbg_dashes='---------------------------------------------------'
 
 # print message to output device

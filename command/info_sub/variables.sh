@@ -17,7 +17,6 @@
 #   with bashdb; see the file COPYING.  If not, write to the Free Software
 #   Foundation, 59 Temple Place, Suite 330, Boston, MA 02111 USA.
 
-
 # V [![pat]] List variables and values for whose variables names which
 # match pat $1. If ! is used, list variables that *don't* match.
 # If pat ($1) is omitted, use * (everything) for the pattern.
@@ -56,147 +55,93 @@ See also:
 
 ' 1
 
-if ! typeset -F getopts_long >/dev/null 2>&1 ; then
+if ! typeset -F getopts_long >/dev/null 2>&1; then
+    # shellcheck source=./../../getopts_long.sh
     . "${_Dbg_libdir}/getopts_long.sh"
 fi
 
-# Should declare typset_flags before calling.
-# That it the implit returned value
+function _Dbg_do_info_variables {
+    declare _Dbg_typeset_flags=""
+    declare -i _Dbg_typeset_filtered=1
+    _Dbg_info_variables_parse_options "$@"
+    (($? != 0)) && return
+
+    # Create an indexed array of variable names which are matching our input flags,
+    # use a single pipeline command to avoid later evaluation of the output by Bash.
+    declare -a _Dbg_var_names=()
+    if ((_Dbg_typeset_filtered == 1)); then
+        # grepping for '=' to only accept variables with a value
+        mapfile -t _Dbg_var_names < <(declare -p $_Dbg_typeset_flags |
+            grep '=' |
+            grep -o '^declare -[^ ]\+ [^=]\+' |
+            cut -d ' ' -f 3- |
+            grep -v '^_Dbg_\|^_$\|^*$' |
+            sort -f 2>/dev/null)
+    else
+        mapfile -t _Dbg_var_names < <(declare -p $_Dbg_typeset_flags |
+            grep -o '^declare -[^ ]\+ [^=]\+' |
+            cut -d ' ' -f 3- |
+            grep -v '^_Dbg_\|^_$\|^*$' |
+            sort -f 2>/dev/null)
+    fi
+
+    (($? != 0 || ${#_Dbg_var_names} == 0)) && return
+
+    declare -i _Dbg_skipped_fields
+    ((_Dbg_skipped_fields = _Dbg_typeset_filtered + 2))
+
+    declare _Dbg_declare_output
+    _Dbg_declare_output="$(declare -p "${_Dbg_var_names[@]}" | cut -d ' ' -s -f ${_Dbg_skipped_fields}- 2>/dev/null)"
+    (($? != 0)) && return
+
+    _Dbg_msg_verbatim "$_Dbg_declare_output"
+}
+
+# Parse flags passed to the "info variables" command.
+# The caller should declare _Dbg_typeset_flags and _Dbg_typeset_filtered before calling,
+# which are implicitly returned values.
 function _Dbg_info_variables_parse_options {
-
-    typeset -i _Dbg_rc=0
-
     _Dbg_typeset_flags=""
     _Dbg_typeset_filtered=1
 
-    OPTLIND=''
-    while getopts_long irxaAtp opt  \
-	integer no_argument     \
-        readonly no_argument    \
-        exports no_argument     \
-        indexed no_argument     \
-        associative no_argument     \
-        trace no_argument     \
-        properties no_argument     \
-	'' $@
-    do
-	case "$opt" in
-	    i | integer )
-		_Dbg_typeset_flags="-i $_Dbg_typeset_flags";;
-	    r | readonly )
-		_Dbg_typeset_flags="-r _$_Dbg_typeset_flags";;
-	    x | exports )
-		_Dbg_typeset_flags="-x $_Dbg_typeset_flags";;
-	    a | indexed )
-		_Dbg_typeset_flags="-a $_Dbg_typeset_flags";;
-	    A | associative )
-		_Dbg_typeset_flags="-A $_Dbg_typeset_flags";;
-	    t | trace )
-		_Dbg_typeset_flags="-t $_Dbg_typeset_flags";;
-	    p | properties )
-		_Dbg_typeset_filtered=0;;
-	    * )
-		_Dbg_errmsg "Invalid argument in $@; use only -x, -i, -r, -a, -A, -t, or -p"
-		_Dbg_rc=1
-		;;
-	esac
+    typeset -i _Dbg_rc=0
+    typeset OPTLIND=''
+    while getopts_long irxaAtp opt \
+        integer no_argument \
+        readonly no_argument \
+        exports no_argument \
+        indexed no_argument \
+        associative no_argument \
+        trace no_argument \
+        properties no_argument \
+        '' "$*"; do
+        case "$opt" in
+        i | integer)
+            _Dbg_typeset_flags="-i $_Dbg_typeset_flags"
+            ;;
+        r | readonly)
+            _Dbg_typeset_flags="-r $_Dbg_typeset_flags"
+            ;;
+        x | exports)
+            _Dbg_typeset_flags="-x $_Dbg_typeset_flags"
+            ;;
+        a | indexed)
+            _Dbg_typeset_flags="-a $_Dbg_typeset_flags"
+            ;;
+        A | associative)
+            _Dbg_typeset_flags="-A $_Dbg_typeset_flags"
+            ;;
+        t | trace)
+            _Dbg_typeset_flags="-t $_Dbg_typeset_flags"
+            ;;
+        p | properties)
+            _Dbg_typeset_filtered=0
+            ;;
+        *)
+            _Dbg_errmsg "Invalid argument in $*; use only -x, -i, -r, -a, -A, -t, or -p"
+            _Dbg_rc=1
+            ;;
+        esac
     done
     return $_Dbg_rc
-}
-
-function _Dbg_do_info_variables {
-    _Dbg_typeset_flags=""
-    local -i _Dbg_typeset_filtered=1
-    _Dbg_info_variables_parse_options "$@"
-    (( $? != 0 )) && return
-
-    local _Dbg_old_glob="$GLOBIGNORE"
-    GLOBIGNORE="*"
-
-    _Dbg_match='*'
-    local _Dbg_list=$(declare -p $_Dbg_typeset_flags)
-    local _Dbg_old_ifs=${IFS}
-    IFS="
-"
-    local _Dbg_temp=${_Dbg_list}
-    _Dbg_list=""
-    local -i _Dbg_i=0
-    local -a _Dbg_list
-
-    # GLOBIGNORE protects us against using the result of
-    # a glob expansion, but it doesn't protect us from
-    # actually performing it, and this can bring bash down
-    # with a huge _Dbg_source_ variable being globbed.
-    # So here we disable globbing momentarily
-    set -o noglob
-    for _Dbg_item in ${_Dbg_temp}; do
-	_Dbg_list[${_Dbg_i}]="${_Dbg_item}"
-	_Dbg_i=${_Dbg_i}+1
-    done
-    set +o noglob
-    IFS=${_Dbg_old_ifs}
-    local _Dbg_item=""
-    local _Dbg_skip=0
-    local _Dbg_show_cmd=""
-    _Dbg_show_cmd=`echo -e "case \\${_Dbg_item} in \n${_Dbg_match})\n echo yes;;\n*)\necho no;; esac"`
-
-    for (( _Dbg_i=0; (( _Dbg_i < ${#_Dbg_list[@]} )) ; _Dbg_i++ )) ; do
-	_Dbg_item=${_Dbg_list[$_Dbg_i]}
-
-
-	# Ignore all _Dbg_ variables here because the following
-	# substitutions takes a long while when it encounters
-	# a big _Dbg_source_
-	if [[ ${_Dbg_item} =~ "_Dbg_" ]] ; then
-	    continue;
-	fi
-
-
-	case ${_Dbg_item} in
-	    *\ \(\)\ )
-		_Dbg_skip=1
-		;;
-	    \})
-		_Dbg_skip=0
-		continue
-	esac
-	if [[ _Dbg_skip -eq 1 ]]; then
-	    continue
-	fi
-	_Dbg_item=${_Dbg_item/=/==/}
-	_Dbg_item=${_Dbg_item%%=[^=]*}
-	case ${_Dbg_item} in
-	    _=);;
-	    *=)
-		_Dbg_item=${_Dbg_item%=}
-		local _Dbg_show=`eval $_Dbg_show_cmd`
-		if [[ "$_Dbg_show" != "$_Dbg_match_inverted" ]]; then
-		    if [[ -n ${_Dbg_item} ]]; then
-			local _Dbg_var=`declare -p ${_Dbg_typeset_flags} ${_Dbg_item} 2>/dev/null`
-			if [[ -n "$_Dbg_var" ]]; then
-			    # Uncomment the following 3 lines to use literal
-			    # linefeeds
-			    #		_Dbg_var=${_Dbg_var//\\\\n/\\n}
-			    #                _Dbg_var=${_Dbg_var//
-			    #/\n}
-			    # Comment the following 3 lines to use literal linefeeds
-			    _Dbg_var=${_Dbg_var//\\\\n/\\\\\\n}
-			    _Dbg_var=${_Dbg_var//
-				/\\n}
-			    if (( _Dbg_typeset_filtered == 1 )); then
-				_Dbg_var=${_Dbg_var#* * }
-			    else
-				_Dbg_var=${_Dbg_var#* }
-			    fi
-			    _Dbg_msg ${_Dbg_var}
-			fi
-		    fi
-		fi
-		;;
-	    *)
-		;;
-	esac
-
-    done
-    GLOBIGNORE=$_Dbg_old_glob
 }
