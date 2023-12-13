@@ -1,17 +1,18 @@
 #!@SH_PROG@
 # -*- shell-script -*-
-test_cmd_info_variables()
+_test_cmd_info_variables()
 {
     typeset -i test_cmd_integer=123
     typeset -x test_cmd_export=exported
     typeset -i too_permissive=0
     typeset -i found=0
+
     for line in $(_Dbg_do_info_variables -i); do
-	if [[ "$line" == 'test_cmd_integer="123"' ]]; then
-	    found=1
-	elif [[ "$line" == 'test_cmd_export="exported"' ]]; then
-	    too_permissive=1
-	fi
+        if [[ "$line" == 'test_cmd_integer="123"' ]]; then
+            found=1
+        elif [[ "$line" == 'test_cmd_export="exported"' ]]; then
+            too_permissive=1
+        fi
     done
 
     assertEquals "Filtering with -i must show integer variables" "1" "$found"
@@ -20,11 +21,11 @@ test_cmd_info_variables()
     found=0
     too_permissive=0
     for line in $(_Dbg_do_info_variables -x); do
-	if [[ "$line" == 'test_cmd_integer="123"' ]]; then
-	    too_permissive=1
-	elif [[ "$line" == 'test_cmd_export="exported"' ]]; then
-	    found=1
-	fi
+    if [[ "$line" == 'test_cmd_integer="123"' ]]; then
+        too_permissive=1
+    elif [[ "$line" == 'test_cmd_export="exported"' ]]; then
+        found=1
+    fi
     done
 
     assertEquals "Filtering with -x must show exported variables" "1" "$found"
@@ -32,18 +33,124 @@ test_cmd_info_variables()
     # FIXME try -x -i, and no options. try invalid opts
 }
 
+test_cmd_info_variables_filtered() {
+    # setup variables to test
+    typeset -i _test_integer=42
+
+    typeset _test_scalar="value"
+    typeset _test_scalar_spaces="value value"
+    typeset _test_scalar_linefeed=$'value\nvalue'
+    typeset _test_scalar_empty=""
+
+    typeset -a _test_array_empty=()
+    typeset -a _test_array_one=(first)
+    typeset -a _test_array_two=(first second)
+    typeset -a _test_array_two_linefeed=($'first with spaces\nand linefeed' $'second with spaces\nand linefeed')
+    typeset -a -g _test_array_global=(first)
+
+    typeset -A _test_assoc_array_empty=()
+    typeset -A _test_assoc_array_one=(["key_first"]=first)
+    typeset -A _test_assoc_array_two=(["key first"]=first ["key second"]=second)
+    typeset -A _test_assoc_array_two_linefeed=(
+        [$'key first\nwith\linefeed']=$'first with spaces\nand linefeed'
+        [$'key second\nwith\nlinefeed']=$'second with spaces\nand linefeed'
+    )
+
+    typeset expected_all
+
+    expected_all="$(
+        cat - <<'EOF'
+-- _test_scalar=value
+-- _test_scalar_linefeed=$'value\nvalue'
+-- _test_scalar_spaces='value value'
+-- _test_scalar_empty=
+-A _test_assoc_array_empty=()
+-A _test_assoc_array_one=([key_first]="first" )
+-A _test_assoc_array_two=(["key first"]="first" ["key second"]="second" )
+-A _test_assoc_array_two_linefeed=([$'key second\nwith\nlinefeed']=$'second with spaces\nand linefeed' [$'key first\nwith\\linefeed']=$'first with spaces\nand linefeed' )
+-a _test_array_empty=()
+-a _test_array_global=([0]="first")
+-a _test_array_one=([0]="first")
+-a _test_array_two=([0]="first" [1]="second")
+-a _test_array_two_linefeed=([0]=$'first with spaces\nand linefeed' [1]=$'second with spaces\nand linefeed')
+-i _test_integer=42
+EOF
+    )"
+
+    assertEquals "Output of 'info variables -p' must match" \
+        "$(echo "$expected_all" | sort)" \
+        "$(_Dbg_do_info_variables -p | grep -E '^-[^ ]+ _test' | sort)"
+
+    assertEquals "Output of 'info variables -p' must not contain _Dbg_ debugger variables" \
+        "" \
+        "$(_Dbg_do_info_variables -p | grep -E '^-[^ ]+ _Dbg_' | sort)"
+}
+
+test_cmd_info_variables_flags() {
+    # setup variables to test
+    typeset -i _test_integer=42
+
+    typeset _test_scalar="value"
+    typeset _test_scalar_spaces="value value"
+    typeset _test_scalar_linefeed=$'value\nvalue'
+
+    typeset -a _test_array_empty=()
+    typeset -a _test_array_one=(first)
+    typeset -a _test_array_two=(first second)
+    typeset -a _test_array_two_linefeed=($'first with spaces\nand linefeed' $'second with spaces\nand linefeed')
+    typeset -a -g _test_array_global=(first)
+
+    typeset -A _test_assoc_array_empty=()
+    typeset -A _test_assoc_array_one=(["key_first"]=first)
+    typeset -A _test_assoc_array_two=(["key first"]=first ["key second"]=second)
+    typeset -A _test_assoc_array_two_linefeed=(
+        [$'key first\nwith\linefeed']=$'first with spaces\nand linefeed'
+        [$'key second\nwith\nlinefeed']=$'second with spaces\nand linefeed'
+    )
+
+    typeset expected_array expected_integer
+
+    expected_array="$(
+        cat - <<'EOF'
+_test_array_empty=()
+_test_array_global=([0]="first")
+_test_array_one=([0]="first")
+_test_array_two=([0]="first" [1]="second")
+_test_array_two_linefeed=([0]=$'first with spaces\nand linefeed' [1]=$'second with spaces\nand linefeed')
+EOF
+    )"
+
+    expected_integer="$(
+        cat - <<'EOF'
+_test_integer=42
+EOF
+    )"
+
+    assertEquals "Output of 'info variables -a' must match" \
+        "$(echo "$expected_array" | sort)" \
+        "$(_Dbg_do_info_variables -a | grep -E '^_test' | sort)"
+
+    assertEquals "Output of 'info variables -i' must match" \
+        "$(echo "$expected_integer" | sort)" \
+        "$(_Dbg_do_info_variables -i | grep -E '^_test' | sort)"
+
+    assertEquals "Output of 'info variables' must not contain _Dbg_ debugger variables" \
+        "" \
+        "$(_Dbg_do_info_variables | grep -E '^_Dbg_' | sort)"
+}
+
 abs_top_srcdir=@abs_top_srcdir@
 if [ ! -d $abs_top_scrdir ] ; then
-  >&2 echo "Something is wrong in configuation: abs_top_srcdir is not set properly."
+  >&2 echo "Something is wrong in configuration: abs_top_srcdir is not set properly."
  exit 1
 fi
 
 # Make sure $abs_top_src has a trailing slash
 abs_top_srcdir=${abs_top_srcdir%%/}/
-. ${abs_top_srcdir}test/unit/helper.sh
-. $abs_top_srcdir/lib/help.sh
-. $abs_top_srcdir/lib/msg.sh
-. $abs_top_srcdir/command/info_sub/variables.sh
+. "${abs_top_srcdir}test/unit/helper.sh"
+. "${abs_top_srcdir}/lib/help.sh"
+. "${abs_top_srcdir}/lib/msg.sh"
+. "${abs_top_srcdir}/command/info_sub/variables.sh"
 
 set -- # reset $# so shunit2 doesn't get confused.
 
