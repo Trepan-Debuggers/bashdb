@@ -26,8 +26,8 @@ typeset -a _Dbg_matches; _Dbg_matches=()
 # We get the list of completions from _Dbg._*subcmd*_cmds.
 # If no completion, we return the empty list.
 _Dbg_subcmd_complete() {
-    subcmd=$1
-    text=$2
+    typeset subcmd=$1
+    typeset text=$2
     _Dbg_matches=()
     typeset list=''
     if [[ $subcmd == 'set' ]] ; then
