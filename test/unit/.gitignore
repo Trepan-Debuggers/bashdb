@@ -19,6 +19,7 @@
 /test-io.sh
 /test-lib-eval.sh
 /test-lib-list.sh
+/test-logging.sh
 /test-msg.sh
 /test-pre.sh
 /test-require.sh
