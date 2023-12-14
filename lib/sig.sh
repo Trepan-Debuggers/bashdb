@@ -79,6 +79,7 @@ _Dbg_save_handler() {
 _Dbg_subst_handler_var() {
   typeset -i i
   typeset result=''
+  typeset arg
   for arg in $* ; do
       case $arg in
 	  '$LINENO' )

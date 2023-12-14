@@ -34,13 +34,13 @@ _Dbg_alias_remove() {
     return 0
 }
 
-# Expand alias $1. The result is set in variable expanded_alias which
+# Expand alias $1. The result is set in variable _Dbg_expanded_alias which
 # could be declared local in the caller.
 _Dbg_alias_expand() {
     (( $# != 1 )) && return 1
-    expanded_alias="$1"
+    _Dbg_expanded_alias="$1"
     [[ -z "$1" ]] && return 0
-    [[ -n ${_Dbg_aliases[$1]} ]] && expanded_alias=${_Dbg_aliases[$1]}
+    [[ -n ${_Dbg_aliases[$1]} ]] && _Dbg_expanded_alias=${_Dbg_aliases[$1]}
     return 0
 }
 
