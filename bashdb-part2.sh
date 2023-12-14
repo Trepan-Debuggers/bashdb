@@ -30,6 +30,7 @@
 # I don't know why when this is done in dbg-opts.sh it doesn't have
 # an effect.
 ((OPTLIND > 0)) && shift "$((OPTLIND - 1))"
+unset OPTLIND
 
 if (($# == 0)) && [[ -z "$_Dbg_EXECUTION_STRING" ]] ; then
     echo >&2 "${_Dbg_pname}: need to give a script to debug or use the -c option."
