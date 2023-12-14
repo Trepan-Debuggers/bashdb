@@ -41,7 +41,7 @@ fi
 typeset -i _Dbg_need_input=1   # True if we need to reassign input.
 typeset -i _Dbg_brkpt_num=0    # If nonzero, the breakpoint number that we
                                # are currently stopped at.
-typeset last_next_step_cmd='s' # Default is step.
+typeset _Dbg_last_next_step_cmd=''
 typeset _Dbg_last_print=''     # expression on last print command
 typeset _Dbg_last_printe=''    # expression on last print expression command
 
