@@ -1,7 +1,9 @@
-Here we have a debugger (*the* debugger?) for Bash 3.0 and higher.
+Here we have a debugger (*the* debugger?) for Bash 5.2 and higher.
+
+Other branches in this repository support earlier versions of Bash. For example, use branch 4.1 for Bash version 4.1.
 
 The command syntax generally follows that of the
-[zsh debugger ](https://github.com/rocky/zshdb) trepanning debuggers
+[zsh debugger ](https://github.com/rocky/zshdb), trepanning debuggers
 and, more generally, GNU debugger *gdb*.
 
 There are 3 ways to get into the debugger. If bash (with debugger
