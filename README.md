@@ -1,4 +1,4 @@
-Here we have a debugger (*the* debugger?) for Bash 5.2 and higher.
+Here, we have a debugger (*the* debugger?) for Bash 5.2 and higher.
 
 Other branches in this repository support earlier versions of Bash. For example, use branch 4.1 for Bash version 4.1.
 
@@ -68,7 +68,5 @@ switch:
 ```
 
 * [manual page](http://bashdb.sourceforge.net/bashdb-man.html)
-* [tree-structured reference manual](http://www.rodericksmith.plus.com/outlines/manuals/bashdbOutline.html)
-* [tree-structured reference manual](http://www.rodericksmith.plus.com/outlines/manuals/bashdbOutline.html)
 
 See *INSTALL* for generic GNU configure installation instructions.
