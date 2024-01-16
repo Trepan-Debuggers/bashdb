@@ -1,5 +1,3 @@
-(settrace.sh:6):
-6:	  _Dbg_debugger; :
 +# Test set_trace call.
 +where
 ->0 in file `settrace.sh' at line 6

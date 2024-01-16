@@ -11,7 +11,8 @@ debugged_script="$top_builddir/test/example/settrace.sh"
 
 @GREP@ -v "run term-highlight. Setting forced off" $TEST_FILE | \
     @GREP@ -v "Syntax highlight in source listings is off.$"  | \
-    @SED@ -e "s:main(.*) called from file \`settrace.sh' at line 0:main() called from file \`settrace.sh' at line 0:" \
+    @SED@ -e "s:main(.*) called from file \`settrace.sh' at line 0:main() called from file \`settrace.sh' at line 0:" | \
+    tail -n +3 \
  >${FILTERED_TEST_FILE}
 
 check_output $FILTERED_TEST_FILE $RIGHT_FILE
