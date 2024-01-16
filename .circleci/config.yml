@@ -8,7 +8,7 @@ jobs:
       CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
     docker:
-    - image: circleci/buildpack-deps
+    - image: cimg/base:2024.01
     steps:
     # Machine Setup
     #   If you break your build into multiple jobs with workflows, you will probably want to do the parts of this that are relevant in each
@@ -21,6 +21,8 @@ jobs:
     # Checkout
     #   This would typically go in either a build or a build-and-test job when using workflows
     # This is based on your 1.0 configuration file or project settings
+    - run: sudo apt -y update
+    - run: sudo apt -y install autoconf automake texinfo
     - run: sh ./autogen.sh
     # Dependencies
     #   This would typically go in either a build or a build-and-test job when using workflows
