@@ -1,14 +1,14 @@
-Here, we have a debugger (*the* debugger?) for Bash 5.2 and higher.
+[![Build Status Circle](https://circleci.com/gh/rocky/bashdb.svg?&style=shield)](https://circleci.com/gh/rocky/bashdb)
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/zshdb.svg)](https://repology.org/project/zshdb/versions)
+
+Here, we have a debugger for Bash 5.2 and higher.
 
 Other branches in this repository support earlier versions of Bash. For example, use branch 4.1 for Bash version 4.1.
 
-The command syntax generally follows that of the
-[zsh debugger ](https://github.com/rocky/zshdb), trepanning debuggers
-and, more generally, GNU debugger *gdb*.
+The command syntax generally follows that of the [zsh debugger ](https://github.com/rocky/zshdb), trepanning debuggers and, more generally, GNU debugger *gdb*.
 
-There are 3 ways to get into the debugger. If bash (with debugger
-support enabled which is the default) is installed and the debugger
-are *both* installed properly. Then:
+There are 3 ways to get into the debugger. If bash (with debugger support enabled which is the default) is installed and the debugger are *both* installed properly. Then:
 
 ```
    bash --debugger -- bash-script-name script-arg1 script-arg2...
