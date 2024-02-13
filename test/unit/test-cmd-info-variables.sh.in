@@ -32,11 +32,12 @@ test_cmd_info_variables()
     # FIXME try -x -i, and no options. try invalid opts
 }
 
-if [ '/src/external-vcs/sourceforge/bashdb' = '' ] ; then
-  echo "Something is wrong: abs_top_srcdir is not set."
+abs_top_srcdir=@abs_top_srcdir@
+if [ ! -d $abs_top_scrdir ] ; then
+  >&2 echo "Something is wrong in configuation: abs_top_srcdir is not set properly."
  exit 1
 fi
-abs_top_srcdir=/src/external-vcs/sourceforge/bashdb
+
 # Make sure $abs_top_src has a trailing slash
 abs_top_srcdir=${abs_top_srcdir%%/}/
 . ${abs_top_srcdir}test/unit/helper.sh
