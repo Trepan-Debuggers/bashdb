@@ -1,0 +1,27 @@
+name: "bashdb CI"
+on:
+  push:
+
+jobs:
+  linux:
+    name: "Linux"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Packages
+        shell: bash
+        run: |+
+          sudo apt -y update
+          sudo apt -y install autoconf automake texinfo
+
+      - name: Configure
+        shell: bash
+        run: sh ./autogen.sh
+
+      - name: Test
+        env:
+          CIRCLECI: 1
+        shell: bash
+        run: make check
