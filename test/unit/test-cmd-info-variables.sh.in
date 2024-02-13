@@ -14,8 +14,8 @@ test_cmd_info_variables()
 	fi
     done
 
-    assertEquals "1" "$found"
-    assertEquals "0" "$too_permissive"
+    assertEquals "Filtering with -i must show integer variables" "1" "$found"
+    assertEquals "Filtering with -i must hide non-integer variables" "0" "$too_permissive"
 
     found=0
     too_permissive=0
@@ -27,8 +27,8 @@ test_cmd_info_variables()
 	fi
     done
 
-    assertEquals "1" "$found"
-    assertEquals "0" "$too_permissive"
+    assertEquals "Filtering with -x must show exported variables" "1" "$found"
+    assertEquals "Filtering with -x must hide unexported variables" "0" "$too_permissive"
     # FIXME try -x -i, and no options. try invalid opts
 }
 
