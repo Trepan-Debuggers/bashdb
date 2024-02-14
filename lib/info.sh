@@ -28,6 +28,7 @@ _Dbg_info_help() {
         typeset -a list
 	_Dbg_section 'List of info subcommands:'
 
+    typeset thing
 	for thing in $_Dbg_info_cmds ; do
 	    _Dbg_info_help $thing 1
 	done

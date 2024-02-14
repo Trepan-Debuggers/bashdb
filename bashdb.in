@@ -65,12 +65,12 @@ typeset -xa _Dbg_script_args; _Dbg_script_args=("$@")
 
 typeset -i _Dbg_i
 for ((_Dbg_i=0; _Dbg_i<${#_Dbg_script_args[@]}-1; _Dbg_i++)) ; do
-    typeset arg=${_Dbg_script_args[$_Dbg_i]}
-    if [[ $arg == '-L' || $arg == '--library' ]] ; then
+    typeset _Dbg_script_arg=${_Dbg_script_args[$_Dbg_i]}
+    if [[ $_Dbg_script_arg == '-L' || $_Dbg_script_arg == '--library' ]] ; then
 	((_Dbg_i++))
 	_Dbg_libdir="${_Dbg_script_args[$_Dbg_i]}"
 	break
-    elif [[ $arg == '--' ]] ; then
+    elif [[ $_Dbg_script_arg == '--' ]] ; then
 	# We hit the end of bashdb args
 	break
     fi

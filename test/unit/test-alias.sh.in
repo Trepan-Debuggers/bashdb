@@ -3,12 +3,12 @@
 test_alias()
 {
     _Dbg_alias_add u up
-    typeset expanded_alias=''; _Dbg_alias_expand u
-    assertEquals 'up' $expanded_alias
+    typeset _Dbg_expanded_alias=''; _Dbg_alias_expand u
+    assertEquals 'up' $_Dbg_expanded_alias
 
     _Dbg_alias_add q quit
-    expanded_alias=''; _Dbg_alias_expand q
-    assertEquals 'quit' $expanded_alias
+    _Dbg_expanded_alias=''; _Dbg_alias_expand q
+    assertEquals 'quit' $_Dbg_expanded_alias
 
     typeset aliases_found=''
     _Dbg_alias_find_aliased quit
@@ -19,14 +19,14 @@ test_alias()
     assertEquals 'q, exit' "$aliases_found"
 
     _Dbg_alias_remove q
-    expanded_alias=''; _Dbg_alias_expand q
-    assertEquals 'q' $expanded_alias
+    _Dbg_expanded_alias=''; _Dbg_alias_expand q
+    assertEquals 'q' $_Dbg_expanded_alias
 
     _Dbg_alias_find_aliased quit
     assertEquals 'exit' "$aliases_found"
 
-    expanded_alias=''; _Dbg_alias_expand u
-    assertEquals 'up' $expanded_alias
+    _Dbg_expanded_alias=''; _Dbg_alias_expand u
+    assertEquals 'up' $_Dbg_expanded_alias
 }
 
 if [ '@abs_top_srcdir@' = '' ] ; then

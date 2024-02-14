@@ -44,12 +44,12 @@ function _Dbg_help_add {
 
 # Add help text $3 for in subcommand $1 under key $2
 function _Dbg_help_add_sub {
-    add_command=${4:-1}
+    typeset add_command; add_command=${4:-1}
     (($# != 3)) && (($# != 4))  && return 1
     typeset -i add_command; add_command=${4:-1}
     eval "_Dbg_command_help_$1[$2]=\"$3\""
     if (( add_command )) ; then
-	subcmd=${2//[-]/_}
+	typeset subcmd; subcmd=${2//[-]/_}
         eval "_Dbg_debugger_${1}_commands[$2]=\"_Dbg_do_${1}_${subcmd}\""
     fi
     return 0

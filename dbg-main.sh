@@ -74,12 +74,12 @@ if [[ ${_Dbg_libdir:0:1} == '.' ]] ; then
     _Dbg_libdir="$(_Dbg_expand_filename "${_Dbg_init_cwd}/${_Dbg_libdir}")"
 fi
 
-for source_file in "${_Dbg_o_init_files[@]}" "$DBG_RESTART_FILE";  do
-    if [[ -n "$source_file" ]] ; then
-	if [[ -r "$source_file" ]] && [[ -f "$source_file" ]] ; then
-	    source "$source_file"
+for _Dbg_source_file in "${_Dbg_o_init_files[@]}" "$DBG_RESTART_FILE";  do
+    if [[ -n "$_Dbg_source_file" ]] ; then
+	if [[ -r "$_Dbg_source_file" ]] && [[ -f "$_Dbg_source_file" ]] ; then
+	    source "$_Dbg_source_file"
 	else
-	    _Dbg_errmsg "Unable to read shell script: ${source_file}"
+	    _Dbg_errmsg "Unable to read shell script: ${_Dbg_source_file}"
 	fi
     fi
 done
