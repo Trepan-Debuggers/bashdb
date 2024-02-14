@@ -1,0 +1,28 @@
+name: "bashdb CI"
+on:
+  push:
+
+jobs:
+  linux:
+    name: "Linux"
+    runs-on: ubuntu-latest
+    container: bash:4.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Packages
+        shell: bash
+        run: |+
+          apk update
+          apk add build-base automake autoconf libtool texinfo
+
+      - name: Configure
+        shell: bash
+        run: bash ./autogen.sh
+
+      - name: Test
+        shell: bash
+        env:
+          VERBOSE: 1
+        run: make -e -j3 check
