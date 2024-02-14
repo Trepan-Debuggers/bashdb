@@ -67,14 +67,14 @@ POSSIBILITY OF SUCH DAMAGES.
 +help
 Available commands:
 -------------------
-  action     continue  eval     history  quit     signal  tty
-  alias      debug     examine  info     return   skip    unalias
-  backtrace  delete    export   kill     reverse  source  undisplay
-  break      disable   file     list     run      step    untrace
-  clear      display   finish   load     search   step+   up
-  commands   down      frame    next     set      step+   watch
-  complete   edit      handle   print    shell    tbreak  watche
-  condition  enable    help     pwd      show     trace
+  action     continue  eval     history  quit     signal   undisplay
+  alias      debug     examine  info     return   skip     untrace
+  backtrace  delete    export   kill     reverse  source   up
+  break      disable   file     list     run      step     watch
+  clear      display   finish   load     search   tbreak   watche
+  commands   down      frame    next     set      trace
+  complete   edit      handle   print    shell    tty
+  condition  enable    help     pwd      show     unalias
 
 Readline command line editing (emacs/vi mode) is available.
 Type "help" followed by command name for full documentation.
