@@ -24,14 +24,19 @@
 # but the command is different.
 
 _Dbg_help_add next \
-"**next** [*count*]
+"**next** [ **+** | **-** ] [ *count* ]
 
-Single step an statement skipping functions. This is sometimes called
+Step one statement ignoring steps into function calls at this level. This is sometimes called
 'step over' or 'step through'.
 
-If *count* is given, stepping occurs that many times before
-stopping. Otherwise *count* is one. *count* an be an arithmetic
-expression.
+With an integer argument, perform ``next`` that many times. However if
+an exception occurs at this level, or we *return*, *yield* or the
+thread changes, we stop regardless of count.
+
+A suffix of ``+`` on the command or an alias to the command forces to
+move to another line, while a suffix of ``-`` does the opposite and
+disables the requiring a move to a new line. If no suffix is given,
+the debugger setting 'different-line' determines this behavior.
 
 Functions and source'd files are not traced. This is in contrast to
 **step**.
