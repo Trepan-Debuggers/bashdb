@@ -10,7 +10,21 @@ debugged_script="$top_srcdir/test/example/bug-loc.sh"
 
 if ( pygmentize --version || pygmentize -V ) 2>/dev/null 1>/dev/null ; then
     run_debugger_opts="-B -q --no-init --highlight=light"
-    run_test_check $TEST_NAME $TEST_NAME $debugged_script
+    (cd $srcdir && run_debugger "$debugged_script" 2>&1 >"$TEST_FILE" </dev/null)
+
+    # We're removing highlighted lines because Pygments is often changing the highlighting
+    /usr/bin/grep -v -E "^[0-9]+:"$'\t' "$TEST_FILE" >"${TEST_FILTERED_FILE}"
+    /usr/bin/grep -v -E "^[0-9]+:"$'\t' "$RIGHT_FILE" >"${RIGHT_FILTERED_FILE}"
+
+    check_output "$TEST_FILTERED_FILE" "$RIGHT_FILTERED_FILE"
+    rc=$?
+    if ((0 == rc)) ; then
+      rm -f $TEST_FILTERED_FILE
+      rm -f $RIGHT_FILTERED_FILE
+    fi
+
+    # Return code tells testing mechanism whether passed or not.
+    exit $rc
 else
     exit 77
 fi
