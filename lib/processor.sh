@@ -380,7 +380,7 @@ _Dbg_onecmd() {
 
              # single-step
              'step+' | 'step-' )
-                 _Dbg_do_step "$_Dbg_cmd" $_Dbg_args
+                 _Dbg_do_step $_Dbg_args
                  return 0
                  ;;
 
