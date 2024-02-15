@@ -1,24 +1,25 @@
 .. index:: display
 .. _display:
 
-Set a Display Expression (`display`)
-------------------------------------
+Set a Display Expression (``display``)
+--------------------------------------
 
-**display** [ *format* ] *expression*
+**display** [*stmt*]
 
-Print value of expression *expression* each time the program stops.
-*format* may be used before *expression* and may be one of `/c` for
-char, `/x` for hex, `/o` for octal, `/f` for float or `/s` for string.
+Evaluate *stmt* each time the debugger is stopped. If *stmt* is omitted, evaluate
+all of the display statements that are active. In contrast, **info display**
+shows the display statements without evaluating them.
 
-For now, display expressions are only evaluated when in the same
-code as the frame that was in effect when the display expression
-was set.  This is a departure from gdb and we may allow for more
-flexibility in the future to specify whether this should be the
-case or not.
+Examples:
++++++++++
 
-With no argument, evaluate and display all currently requested
-auto-display expressions.
+::
+
+   display echo $x  # show the current value of x each time debugger stops
+   display          # evaluate all display statements
+
 
 .. seealso::
 
-   :ref:`undisplay <undisplay>` to cancel display requests previously made.
+   :ref:`undisplay <undisplay>` to cancel display requests previously made, and
+	`info display <info_display>`.

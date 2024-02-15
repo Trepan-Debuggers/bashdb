@@ -61,9 +61,9 @@ don't.  Without a suffix you get the default; this is set by the :ref:`set diffe
 .. _trepanning: https://pypi.python.org/pypi/trepan2
 .. _debuggers: https://metacpan.org/pod/Devel::Trepan
 .. _this: http://bashdb.sourceforge.net/pydb/features.html
-.. _set_substitute:  https://zshdb.readthedocs.org/en/latest/commands/set/substitute.html
-.. _set_style:  https://zshdb.readthedocs.org/en/latest/commands/set/style.html
-.. _set_width:  https://zshdb.readthedocs.org/en/latest/commands/set/width.html
-.. _eval: https://zshdb.readthedocs.org/en/latest/commands/data/eval.html
-.. _step: https://zshdb.readthedocs.org/en/latest/commands/running/step.html
-.. _install: http://zshdb.readthedocs.org/en/latest/install.html
+.. _set_substitute:  https://bashdb.readthedocs.org/en/latest/commands/set/substitute.html
+.. _set_style:  https://bashdb.readthedocs.org/en/latest/commands/set/style.html
+.. _set_width:  https://bashdb.readthedocs.org/en/latest/commands/set/width.html
+.. _eval: https://bashdb.readthedocs.org/en/latest/commands/data/eval.html
+.. _step: https://bashdb.readthedocs.org/en/latest/commands/running/step.html
+.. _install: http://bashdb.readthedocs.org/en/latest/install.html

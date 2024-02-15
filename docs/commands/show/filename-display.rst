@@ -1,8 +1,8 @@
 .. index:: show; filename-display
 .. _show_filename-display:
 
-Show how file names are displayed (`show filename-display`)
------------------------------------------------------------
+Show how file names are displayed (``show filename-display``)
+-------------------------------------------------------------
 
 **show filename-display**
 

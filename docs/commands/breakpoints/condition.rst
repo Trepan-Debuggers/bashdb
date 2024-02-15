@@ -6,7 +6,7 @@ Add Condition to a Breakpoint (condition)
 
 **condition** *bp_number* *condition*
 
-*bp_number* is a breakpoint number. *condition* is a zsh expression
+*bp_number* is a breakpoint number. *condition* is a bash expression
 which must evaluate to *True* before the breakpoint is honored.  If
 *condition* is absent, any existing condition is removed; i.e., the
 breakpoint is made unconditional.

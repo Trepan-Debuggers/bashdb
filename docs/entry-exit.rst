@@ -1,4 +1,4 @@
-Entering the Zsh Debugger
+Entering the Bash Debugger
 ****************************
 
 .. toctree::
@@ -8,7 +8,7 @@ Entering the Zsh Debugger
 Invoking the Debugger Initially
 ====================================
 
-The simplest way to debug your program is to run `zshdb`. Give
+The simplest way to debug your program is to run ``bashdb``. Give
 the name of your program and its options and any debugger options:
 
 .. code:: console
@@ -33,18 +33,18 @@ the name of your program and its options and any debugger options:
           unset i
         fi
 
-        $ zshdb /etc/profile
+        $ bashdb /etc/profile
 
-For help on `zshdb` or options, use the ``--help`` option.
+For help on `bashdb` or options, use the ``--help`` option.
 
 .. code:: console
 
-        $ zshdb --help
+        $ bashdb --help
 
 	Usage:
-           zshdb [OPTIONS] <script_file>
+           bashdb [OPTIONS] <script_file>
 
-        Runs zsh <script_file> under a debugger.
+        Runs bash <script_file> under a debugger.
 
         options:
         ...
@@ -61,26 +61,26 @@ adds overhead and slows down your program.
 
 Another possibility then is to add statements into your program to call
 the debugger at the spot in the program you want. To do this, you source
-`zshdb/dbg-trace.sh` from where wherever it appears on your filesystem.
+``bashdb/dbg-trace.sh`` from where wherever it appears on your filesystem.
 This needs to be done only once.
 
-After that you call `_Dbg_debugger`.
+After that you call ``_Dbg_debugger``.
 
 Here is an Example:
 
 .. code:: console
 
-    source path-to-zshdb/zshdb/dbg-trace.sh
+    source path-to-bashdb/bashdb/dbg-trace.sh
     # work, work, work.
-    # ... some zsh code
+    # ... some bash code
 
     _Dbg_debugger
     # start debugging here
 
 
-Since `_Dbg_debugger` a function call, it can be nested inside some sort of
+Since `_Dbg_debugger`` a function call, it can be nested inside some sort of
 conditional statement allowing one to be very precise about the
-conditions you want to debug under. And until first call to `_Dbg_debugger`,
+conditions you want to debug under. And until first call to ``_Dbg_debugger``,
 there is no debugger overhead.
 
-Note that `_Dbg_debugger` causes the statement *after* the call to be stopped at.
+Note that ``_Dbg_debugger`` causes the statement *after* the call to be stopped at.

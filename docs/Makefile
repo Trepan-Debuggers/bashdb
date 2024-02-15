@@ -5,7 +5,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = zshdb
+SPHINXPROJ    = bashdb
 SOURCEDIR     = .
 BUILDDIR      = _build
 

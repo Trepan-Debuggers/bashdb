@@ -6,14 +6,14 @@ Info Source
 
 **info source**
 
-Information about the current zsh script file.
+Information about the current bash script file.
 
 Example:
 ++++++++
 
 ::
 
-    zshdb<1> info source
+    bashdb<1> info source
     Current script file is /etc/profile
     Located in /etc/profile
     Contains 27 lines.

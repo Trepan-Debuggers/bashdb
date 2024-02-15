@@ -1,12 +1,12 @@
 .. index:: debug
 .. _debug:
 
-Recursive Debugging (`debug`)
------------------------------
+Recursive Debugging (``debug``)
+-------------------------------
 
-**debug** [*zsh-script* [*args*...]]
+**debug** [*bash-script* [*args*...]]
 
-Recursively debug into *zsh-script*.
+Recursively debug into *bash-script*.
 
 If *script* is not given, take the script name from the command that
 is about to be executed. Note that when the nested debug finished, you

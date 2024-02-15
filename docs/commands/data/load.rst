@@ -1,12 +1,12 @@
 .. index:: load
 .. _load:
 
-Read in a Zsh Script (`load`)
------------------------------
+Read in a Bash Script (``load``)
+---------------------------------
 
-**load** *zsh-script*
+**load** *bash-script*
 
-Read in lines of a *zsh-script*.
+Read in lines of a *bash-script*.
 
 .. seealso::
 

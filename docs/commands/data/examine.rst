@@ -1,8 +1,8 @@
 .. index:: examine
 .. _examine:
 
-Print the value of an expression (`examine`)
---------------------------------------------
+Print the value of an expression (``examine``)
+----------------------------------------------
 
 **examine** *expr1*
 
@@ -12,8 +12,8 @@ Single variables and arithmetic expressions do not need leading ``$`` for
 their value is to be substituted. However if neither these, variables
 need ``$`` to have their value substituted.
 
-In contrast to normal zsh expressions, expressions should not have
-blanks which would cause zsh to see them as different tokens.
+In contrast to normal bash expressions, expressions should not have
+blanks which would cause bash to see them as different tokens.
 
 Examples:
 +++++++++

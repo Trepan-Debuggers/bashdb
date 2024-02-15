@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# zshdb documentation build configuration file, created by
+# bashdb documentation build configuration file, created by
 # sphinx-quickstart on Fri Sep 29 07:09:20 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -50,8 +50,8 @@ source_suffix = ['.rst', 'md']
 master_doc = 'index'
 
 # General information about the project.
-project = 'zshdb'
-copyright = '2017, 2019, 2023 Rocky Bernstein'
+project = 'bashdb'
+copyright = '2017, 2019, 2023, 2024 Rocky Bernstein'
 author = 'Rocky Bernstein'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -119,7 +119,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'zshdbdoc'
+htmlhelp_basename = 'bashdbdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -146,7 +146,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'zshdb.tex', 'zshdb Documentation',
+    (master_doc, 'bashdb.tex', 'bashdb Documentation',
      'Rocky Bernstein', 'manual'),
 ]
 
@@ -156,7 +156,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'zshdb', 'zshdb Documentation',
+    (master_doc, 'bashdb', 'bashdb Documentation',
      [author], 1)
 ]
 
@@ -167,7 +167,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'zshdb', 'zshdb Documentation',
-     author, 'zshdb', 'gdb-like debugger for zsh.',
+    (master_doc, 'bashdb', 'bashdb Documentation',
+     author, 'bashdb', 'gdb-like debugger for bash.',
      'Programming'),
 ]

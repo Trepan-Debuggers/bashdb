@@ -16,7 +16,7 @@ Example:
 
 ::
 
-     zshdb<1> info program
+     bashdb<1> info program
      Program stopped.
      It stopped after being stepped.
      Next statement to be run is:

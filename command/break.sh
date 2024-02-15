@@ -34,7 +34,7 @@ See also:
 "tbreak" and "continue"'
 
 _Dbg_help_add tbreak \
-'**tbreak* [*loc-spec*]
+'**tbreak** [ *location* ] [**if** *condition*]
 
 Set a one-time breakpoint at *loc-spec*.
 

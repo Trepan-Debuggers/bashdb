@@ -13,7 +13,7 @@ Example:
 
 ::
 
-     zshdb<1> info line
+     bashdb<1> info line
      Line 4 of "/etc/profile"
 
 .. seealso::

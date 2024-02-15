@@ -1,8 +1,8 @@
 .. index:: show; listsize
 .. _show_listsize:
 
-Lines shown in source listing) (`show listsize`)
-------------------------------------------------
+Lines shown in source listing) (``show listsize``)
+--------------------------------------------------
 
 **show listsize**
 

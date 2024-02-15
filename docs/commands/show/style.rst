@@ -1,8 +1,8 @@
 .. index:: show; style
 .. _show_style:
 
-Show Pygments Formatting style in Listings (`show style`)
----------------------------------------------------------
+Show Pygments Formatting style in Listings (``show style``)
+-----------------------------------------------------------
 
 **show style** *pygments-style*
 

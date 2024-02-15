@@ -1,8 +1,8 @@
 .. index:: show; confirm
 .. _show_confirm:
 
-Show whether to Confirm Potentially Dangerous Operations (`show confirm`)
--------------------------------------------------------------------------
+Show whether to Confirm Potentially Dangerous Operations (``show confirm``)
+---------------------------------------------------------------------------
 
 **show confirm**
 

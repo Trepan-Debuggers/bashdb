@@ -29,9 +29,7 @@ _Dbg_help_add next \
 Step one statement ignoring steps into function calls at this level. This is sometimes called
 'step over' or 'step through'.
 
-With an integer argument, perform ``next`` that many times. However if
-an exception occurs at this level, or we *return*, *yield* or the
-thread changes, we stop regardless of count.
+With an integer argument, perform ``next`` that many times.
 
 A suffix of ``+`` on the command or an alias to the command forces to
 move to another line, while a suffix of ``-`` does the opposite and

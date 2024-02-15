@@ -22,7 +22,7 @@ Example:
 
 ::
 
-   zshdb<4> info breakpoints
+   bashdb<4> info breakpoints
    Num Type       Disp Enb What
    1   breakpoint keep n   /etc/profile:8
    2   breakpoint keep y   /etc/profile:10

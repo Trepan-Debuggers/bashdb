@@ -4,28 +4,27 @@
 Info Variables
 ----------------
 
-**info variables** [*property*]
+**info variables [**-i**|**--integer**][**-r**|**--readonly**][**-x**|**--exports**][**-a**|**--indexed**][**-A*|**--associative**][**-t**|**--trace**][**-p**|**--properties**]
 
-list global and static variable names.
+list global and local variable names.
 
-Variable lists by property.
-*property* is an abbreviation of one of:
+Options:
 
-* arrays,
-* exports,
-* fixed,
-* floats,
-* functions,
-* hash,
-* integers, or
-* readonly
+    -i | --exports restricted to integer variables
+    -r | --readonly restricted to read-only variables
+    -x | --exports restricted to exported variables
+    -a | --indexed restricted to indexed array variables
+    -A | --associative restricted to associative array variables
+    -t | --trace restricted to traced variables
+    -p | --properties display properties of variables as printed by declare -p
+
 
 Examples:
 +++++++++
 
 ::
 
-    info variables             # show all variables
-    info variables readonly    # show only read-only variables
-    info variables integer     # show only integer variables
-    info variables functions   # show only functions
+    info variables        # show all variables
+    info variables -p     # show all variables with their properties
+    info variables -r     # show only read-only variables
+    info variables -i     # show only integer variables

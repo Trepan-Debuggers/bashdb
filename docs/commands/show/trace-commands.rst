@@ -1,8 +1,8 @@
 .. index:: show; trace-commands
 .. _show_trace-commands:
 
-Show whether line tracing in is effect (`show trace-command`)
--------------------------------------------------------------
+Show whether line tracing in is effect (``show trace-commands``)
+----------------------------------------------------------------
 
 **show trace-commands**
 

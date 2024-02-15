@@ -1,8 +1,8 @@
 .. index:: show; linetrace
 .. _show_linetrace:
 
-Show whether each sourceline is traced before running it (`show line`)
-----------------------------------------------------------------------
+Show whether each sourceline is traced before running it (``show linetrace``)
+-----------------------------------------------------------------------------
 
 **show linetrace**
 
