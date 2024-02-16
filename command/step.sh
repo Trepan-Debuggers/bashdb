@@ -1,7 +1,7 @@
 # -*- shell-script -*-
 # step.sh - Debugger step ("step into") commmand.
 #
-#   Copyright (C) 2006, 2008, 2009, 2010, 2015
+#   Copyright (C) 2006, 2008, 2009, 2010, 2015,
 #   2024 Rocky Bernstein rocky@gnu.org
 #
 #   This program is free software; you can redistribute it and/or
@@ -27,10 +27,9 @@
 typeset -i _Dbg_set_different=0
 
 _Dbg_help_add step \
-"**step** [*count*]
+"**step** [ **+** | **-** [ *count* ]]
 
-Single step an statement. This is sometimes called 'step into'.
-
+Single step a statement. This is sometimes called 'step into'.
 
 If *count* is given, stepping occurs that many times before
 stopping. Otherwise *count* is one. *count* an be an arithmetic
@@ -44,12 +43,19 @@ into.
 
 If suffix \"-\" is added, the different line aspect of \"step+\" does not occur.
 
-With no suffix is given, the behavior is dicted by the setting of **set force**.
+With no suffix is given, the behavior is dictated by the setting of **set different**.
+
+Examples:
+---------
+
+    step        # step 1
+    step 1      # same as above
+    step 5/5+0  # same as above
 
 See also:
 ---------
 
-**next**, **skip**, and **set force**." 1
+**next**, **skip**, **continue**, and **set different**." 1
 
 
 # Step command

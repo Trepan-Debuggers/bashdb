@@ -1,6 +1,6 @@
 [![Build Status Circle](https://circleci.com/gh/rocky/bashdb.svg?&style=shield)](https://circleci.com/gh/rocky/bashdb)
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/zshdb.svg)](https://repology.org/project/zshdb/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/bashdb.svg)](https://repology.org/project/bashdb/versions)
 
 Here, we have a debugger for Bash 5.2 and higher.
 
