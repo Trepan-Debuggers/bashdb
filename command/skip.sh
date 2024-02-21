@@ -46,7 +46,7 @@ See http://lists.gnu.org/archive/html/bug-bash/2017-04/msg00004.html
 See also:
 ---------
 
-**continue**, **next**, and **step**.
+**next**, **step**, and **continue**.
 "
 
 _Dbg_do_skip() {
