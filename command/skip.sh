@@ -22,7 +22,7 @@
 _Dbg_help_add skip \
 "**skip** [*count*]
 
-Skip (don't run) the next *count* command(s).
+Skip over (don't run) the next *count* command(s).
 
 If *count* is given, stepping occurs that many times before
 stopping. Otherwise *count* is one. *count* can be an arithmetic
@@ -36,7 +36,7 @@ in:
       echo not skipped
    fi
 
-skipping the *if* statement will in effect skip running the *grep*
+Skipping the *if* statement will, in effect, skip running the *grep*
 command. Since the return code is 0 when skipped, the *if* body is
 entered. Similarly the same thing can  happen in a *while* statement
 test.
@@ -46,7 +46,7 @@ See http://lists.gnu.org/archive/html/bug-bash/2017-04/msg00004.html
 See also:
 ---------
 
-**next**, **step**, and **continue**.
+**continue**, **next**, and **step**.
 "
 
 _Dbg_do_skip() {

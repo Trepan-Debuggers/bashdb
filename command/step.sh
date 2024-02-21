@@ -38,12 +38,12 @@ expression.
 If suffix \"+\" is added, we ensure that the file and line position is
 different from the last one just stopped at.
 
-However in contrast to \"next\", functions and source'd files are stepped
-into.
-
 If suffix \"-\" is added, the different line aspect of \"step+\" does not occur.
 
 With no suffix is given, the behavior is dictated by the setting of **set different**.
+
+In contrast to \"next\", functions and source'd files are stepped
+into.
 
 Examples:
 ---------
