@@ -1,9 +1,8 @@
 .. index:: quit
 .. _quit:
 
-Gentle Termination (`quit`)
----------------------------
-
+Gentle Termination (``quit``)
+-----------------------------
 **quit** [*exit-code* [*shell-levels*]]
 
 The program being debugged is aborted.  If *exit-code* is given, then
@@ -13,4 +12,6 @@ of those shells should have been run under the debugger.
 
 .. seealso::
 
-   :ref:`kill <kill>` or `kill` for more forceful termination commands. :ref:`run <run>` restarts the debugged program.
+
+   :ref:`kill <kill>` for more forceful termination commands. :ref:`run <run>` restarts the debugged program.
+  
