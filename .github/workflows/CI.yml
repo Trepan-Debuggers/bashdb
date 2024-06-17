@@ -3,22 +3,37 @@ on:
   push:
 
 jobs:
-  linux:
-    name: "Linux"
-    runs-on: ubuntu-latest
+  tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+    name: "Run Tests on ${{ matrix.os }}"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Packages
+      - name: Install dependencies for Linux
+        if: runner.os == 'Linux'
         shell: bash
         run: |+
           sudo apt -y update
           sudo apt -y install autoconf automake texinfo
 
+      - name: Install dependencies for macOS
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |+
+          brew update
+          brew install bash
+          brew install autoconf automake texinfo
+          # Not installing pygments, because apparently 'osascript' executed during bashdb's init is blocking
+          # if there's not user logged in.
+
       - name: Configure
         shell: bash
-        run: sh ./autogen.sh
+        run: bash ./autogen.sh
 
       - name: Test
         shell: bash
