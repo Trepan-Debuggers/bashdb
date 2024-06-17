@@ -10,20 +10,20 @@ test_alias()
     _Dbg_expanded_alias=''; _Dbg_alias_expand q
     assertEquals 'quit' $_Dbg_expanded_alias
 
-    typeset aliases_found=''
+    typeset _Dbg_aliases_found=''
     _Dbg_alias_find_aliased quit
-    assertEquals 'q' "$aliases_found"
+    assertEquals 'q' "$_Dbg_aliases_found"
 
     _Dbg_alias_add exit quit
     _Dbg_alias_find_aliased quit
-    assertEquals 'q, exit' "$aliases_found"
+    assertEquals 'exit, q' "$_Dbg_aliases_found"
 
     _Dbg_alias_remove q
     _Dbg_expanded_alias=''; _Dbg_alias_expand q
     assertEquals 'q' $_Dbg_expanded_alias
 
     _Dbg_alias_find_aliased quit
-    assertEquals 'exit' "$aliases_found"
+    assertEquals 'exit' "$_Dbg_aliases_found"
 
     _Dbg_expanded_alias=''; _Dbg_alias_expand u
     assertEquals 'up' $_Dbg_expanded_alias
@@ -39,5 +39,6 @@ abs_top_srcdir=${abs_top_srcdir%%/}/
 . ${abs_top_srcdir}test/unit/helper.sh
 . $abs_top_srcdir/lib/help.sh
 . $abs_top_srcdir/lib/alias.sh
+. $abs_top_srcdir/lib/sort.sh
 set -- # reset $# so shunit2 doesn't get confused.
 [[ @CMDLINE_INVOKED@ ]] && . ${shunit_file}
