@@ -56,12 +56,13 @@ get_default_colorfgbg() {
 is_dark_rgb() {
   typeset fg_r fg_g fg_b
   typeset bg_r bg_g bg_b
-  fg_r=$1
-  fg_g=$2
-  fg_b=$3
-  bg_r=$4
-  bg_g=$5
-  bg_b=$6
+  typeset a_fg a_bg
+  fg_r=${1:-0}
+  fg_g=${2:-0}
+  fg_b=${3:-0}
+  bg_r=${4:-FF}
+  bg_g=${5:-FF}
+  bg_b=${6:-FF}
   a_fg=$((16#"$fg_r" + 16#"$fg_g" + 16#"$fg_b"))
   a_bg=$((16#"$bg_r" + 16#"$bg_g" + 16#"$bg_b"))
   if [[ $a_fg -gt $a_bg ]]; then
