@@ -102,11 +102,11 @@ function _Dbg_process_commands {
   _Dbg_continue_rc=-1  # Don't continue exectuion unless told to do so.
   _Dbg_write_journal "_Dbg_step_ignore=$_Dbg_step_ignore"
 
-  typeset key
+  typeset _Dbg_key
 
   # Evaluate all hooks
-  for key in ${!_Dbg_cmdloop_hooks[@]} ; do
-      ${_Dbg_cmdloop_hooks[$key]}
+  for _Dbg_key in ${!_Dbg_cmdloop_hooks[@]} ; do
+      ${_Dbg_cmdloop_hooks[$_Dbg_key]}
   done
 
   # Loop over all pending open input file descriptors
@@ -146,15 +146,15 @@ function _Dbg_process_commands {
     _Dbg_preloop
 
     typeset _Dbg_cmd
-    typeset args
-    typeset rc
+    typeset _Dbg_args
+    typeset _Dbg_rc
 
     while : ; do
         set -o history
         _Dbg_input_desc=${_Dbg_fd[_Dbg_fd_last]}
         if [[ $_Dbg_tty == '&1' ]] ; then
             echo -n "$_Dbg_prompt"
-            if ! read _Dbg_cmd args <&$_Dbg_input_desc 2>&1; then
+            if ! read _Dbg_cmd _Dbg_args <&$_Dbg_input_desc 2>&1; then
                 break
             fi
         else
@@ -163,7 +163,7 @@ function _Dbg_process_commands {
             else
                 _Dbg_read_fn='read'
             fi
-            if ! $_Dbg_read_fn $_Dbg_edit -p "$_Dbg_prompt" _Dbg_cmd args \
+            if ! $_Dbg_read_fn $_Dbg_edit -p "$_Dbg_prompt" _Dbg_cmd _Dbg_args \
                 <&$_Dbg_input_desc 2>>$_Dbg_prompt_output ; then
                 set +o history
                 break
@@ -172,11 +172,11 @@ function _Dbg_process_commands {
 
         # FIXME: until I figure out to fix builtin readc, this happens
         # on command completion:
-        if [[ $_Dbg_cmd =~ ' ' && -z $args ]] ; then
-            typeset -a ary; IFS=' ' ary=( $_Dbg_cmd )
-            _Dbg_cmd=${ary[0]}
-            unset ary[0]
-            args="${ary[@]}"
+        if [[ $_Dbg_cmd =~ ' ' && -z $_Dbg_args ]] ; then
+            typeset -a _Dbg_ary; IFS=' ' _Dbg_ary=( $_Dbg_cmd )
+            _Dbg_cmd=${_Dbg_ary[0]}
+            unset _Dbg_ary[0]
+            _Dbg_args="${_Dbg_ary[@]}"
         fi
         set +o history
         if (( _Dbg_brkpt_commands_defining )) ; then
@@ -200,14 +200,14 @@ function _Dbg_process_commands {
                   continue
                   ;;
               *)
-                  _Dbg_brkpt_commands[${#_Dbg_brkpt_commands[@]}]="$_Dbg_cmd $args"
+                  _Dbg_brkpt_commands[${#_Dbg_brkpt_commands[@]}]="$_Dbg_cmd $_Dbg_args"
                   (( _Dbg_brkpt_commands_end[$_Dbg_brkpt_commands_current]++ ))
                   continue
                   ;;
          esac
-         rc=$?
+         _Dbg_rc=$?
      else
-        _Dbg_onecmd "$_Dbg_cmd" "$args"
+        _Dbg_onecmd "$_Dbg_cmd" "$_Dbg_args"
         _Dbg_postcmd
     fi
     ((_Dbg_continue_rc >= 0)) && return $_Dbg_continue_rc
@@ -238,13 +238,13 @@ _Dbg_annotation() {
 }
 
 # Run a single command
-# Parameters: _Dbg_cmd and args
+# Parameters: _Dbg_cmd and _Dbg_args
 #
 _Dbg_onecmd() {
-    typeset full_cmd=$@
+    typeset _Dbg_full_cmd=$@
     typeset _Dbg_orig_cmd="$1"
-    typeset expanded_alias; _Dbg_alias_expand "$_Dbg_orig_cmd"
-    typeset _Dbg_cmd="$expanded_alias"
+    typeset _Dbg_expanded_alias; _Dbg_alias_expand "$_Dbg_orig_cmd"
+    typeset _Dbg_cmd="$_Dbg_expanded_alias"
     shift
     typeset _Dbg_args="$@"
 
@@ -252,26 +252,26 @@ _Dbg_onecmd() {
      if [[ -z $_Dbg_cmd ]]; then
         _Dbg_cmd=$_Dbg_last_next_step_cmd
         _Dbg_args=$_Dbg_last_next_step_args
-        full_cmd="$_Dbg_cmd $_Dbg_args"
+        _Dbg_full_cmd="$_Dbg_cmd $_Dbg_args"
       fi
 
      # If "set trace-commands" is "on", echo the the command
      if [[  $_Dbg_set_trace_commands == 'on' ]]  ; then
-         _Dbg_msg "+$full_cmd"
+         _Dbg_msg "+$_Dbg_full_cmd"
      fi
 
-     local dq_cmd=$(_Dbg_esc_dq "$_Dbg_cmd")
-     local dq_args=$(_Dbg_esc_dq "$_Dbg_args")
+     local _Dbg_dq_cmd=$(_Dbg_esc_dq "$_Dbg_cmd")
+     local _Dbg_dq_args=$(_Dbg_esc_dq "$_Dbg_args")
 
      # _Dbg_write_journal_eval doesn't work here. Don't really understand
      # how to get it to work. So we do this in two steps.
      _Dbg_write_journal \
-        "_Dbg_history[${#_Dbg_history[@]}]=\"$dq_cmd $dq_args\""
+        "_Dbg_history[${#_Dbg_history[@]}]=\"$_Dbg_dq_cmd $_Dbg_dq_args\""
 
      _Dbg_history[${#_Dbg_history[@]}]="$_Dbg_cmd $_Dbg_args"
 
      _Dbg_hi=${#_Dbg_history[@]}
-     history -s -- "$full_cmd"
+     history -s -- "$_Dbg_full_cmd"
 
      typeset -i _Dbg_redo=1
      while (( _Dbg_redo )) ; do
@@ -280,25 +280,25 @@ _Dbg_onecmd() {
 
          [[ -z $_Dbg_cmd ]] && _Dbg_cmd=$_Dbg_last_cmd
          if [[ -n $_Dbg_cmd ]] ; then
-             typeset -i found=0
-             typeset found_cmd
+             typeset -i _Dbg_found=0
+             typeset _Dbg_found_cmd
              if [[ -n ${_Dbg_debugger_commands[$_Dbg_cmd]} ]] ; then
-                 found=1
-                 found_cmd=$_Dbg_cmd
+                 _Dbg_found=1
+                 _Dbg_found_cmd=$_Dbg_cmd
              else
                  # Look for a unique abbreviation
-                 typeset -i count=0
-                 typeset list; list="${!_Dbg_debugger_commands[@]}"
-                 for try in $list ; do
+                 typeset -i _Dbg_count=0
+                 typeset _Dbg_list; _Dbg_list="${!_Dbg_debugger_commands[@]}"
+                 for try in $_Dbg_list ; do
                      if [[ $try =~ ^$_Dbg_cmd ]] ; then
-                         found_cmd=$try
-                         ((count++))
+                         _Dbg_found_cmd=$try
+                         ((_Dbg_count++))
                      fi
                  done
-                 ((found=(count==1)))
+                 ((_Dbg_found=(_Dbg_count==1)))
              fi
-             if ((found)); then
-                 ${_Dbg_debugger_commands[$found_cmd]} $_Dbg_args
+             if ((_Dbg_found)); then
+                 ${_Dbg_debugger_commands[$_Dbg_found_cmd]} $_Dbg_args
                  IFS=$_Dbg_space_IFS;
                  eval "_Dbg_prompt=$_Dbg_prompt_str"
                  ((_Dbg_continue_rc >= 0)) && return $_Dbg_continue_rc

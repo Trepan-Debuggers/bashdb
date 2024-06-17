@@ -39,6 +39,8 @@ _Dbg_do_info() {
       typeset subcmd=$1
       shift
 
+      typeset -i found=0
+
       if [[ -n ${_Dbg_debugger_info_commands[$subcmd]} ]] ; then
           ${_Dbg_debugger_info_commands[$subcmd]} "$@"
           return $?

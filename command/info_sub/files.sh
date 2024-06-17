@@ -29,6 +29,7 @@ _Dbg_do_info_files() {
     typeset -a list=()
     typeset -i i=0
     typeset    key
+    typeset    file
     for key in "${!_Dbg_file2canonic[@]}"; do
 	list[$i]="$key"
 	((i++))
