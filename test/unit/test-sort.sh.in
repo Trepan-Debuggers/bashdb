@@ -45,6 +45,18 @@ test_sort()
     assertNotEquals "0" "$?"
 }
 
+test_sort_named() {
+    local LC_ALL=C # for predictable sort order
+    typeset -a my_expected=(1 2 3 A B X b y z)
+
+    typeset -a my_data=(z b y 2 3 1 X A B)
+    sort_list_named my_data 0 ${#my_data[@]}-1
+    assertEquals "sort_list_named must complete successfully" 0 $?
+
+    for ((i=0; i < ${#my_expected[@]}; i++)); do
+        assertEquals "Expected sorted data at index $i." "${my_expected[i]}" "${my_data[i]}"
+    done
+}
 
 if [ '@abs_top_srcdir@' = '' ] ; then
   echo "Something is wrong abs_top_srcdir is not set."
