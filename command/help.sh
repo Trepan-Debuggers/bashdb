@@ -116,11 +116,12 @@ function _Dbg_do_help {
 		esac
 	    fi
 	fi
-	aliases_found=''
+
+	declare _Dbg_aliases_found=''
 	_Dbg_alias_find_aliased "$dbg_cmd"
-	if [[ -n $aliases_found ]] ; then
+	if [[ -n $_Dbg_aliases_found ]] ; then
 	    _Dbg_msg ''
-	    _Dbg_msg "Aliases for $dbg_cmd: $aliases_found"
+	    _Dbg_msg "Aliases for $dbg_cmd: $_Dbg_aliases_found"
 	fi
 	return 2
     fi

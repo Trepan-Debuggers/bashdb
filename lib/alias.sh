@@ -58,15 +58,16 @@ _Dbg_alias_find_index() {
 # Return in help_aliases an array of strings that are aliases
 # of $1
 _Dbg_alias_find_aliased() {
-    (($# != 1)) &&  return 255
-    typeset find_name=$1
-    aliases_found=''
-    typeset -i i
-    for alias in "${!_Dbg_aliases[@]}" ; do
-	if [[ ${_Dbg_aliases[$alias]} == "$find_name" ]] ; then
-	    [[ -n $aliases_found ]] && aliases_found+=', '
-	    aliases_found+="$alias"
-	fi
+    (($# != 1)) && return 255
+    typeset _Dbg_find_name=$1
+    _Dbg_aliases_found=''
+    typeset list=("${!_Dbg_aliases[@]}")
+    sort_list 0 ${#list[@]}-1
+    for _Dbg_alias in "${list[@]}"; do
+        if [[ ${_Dbg_aliases[$_Dbg_alias]} == "$_Dbg_find_name" ]]; then
+            [[ -n $_Dbg_aliases_found ]] && _Dbg_aliases_found+=', '
+            _Dbg_aliases_found+="$_Dbg_alias"
+        fi
     done
     return 0
 }
