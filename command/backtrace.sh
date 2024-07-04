@@ -74,7 +74,9 @@ function _Dbg_do_backtrace {
     _Dbg_not_running && return 3
 
     typeset -i show_source=0
-    OPTLIND=''
+    typeset -i OPTLIND=1
+    typeset OPTLARG OPTLERR OPTLPENDING opt
+
     while getopts_long sh opt  \
         source no_argument     \
         help no_argument       \

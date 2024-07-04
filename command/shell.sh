@@ -62,7 +62,9 @@ in the trap EXIT of the shell.
 "
 
 _Dbg_parse_shell_cmd_options() {
-    OPTLIND=''
+    typeset -i OPTLIND=1
+    typeset OPTLARG OPTLERR OPTLPENDING opt
+
     while getopts_long lFV opt  \
 	no-fns  0               \
         posix   no_argument     \
