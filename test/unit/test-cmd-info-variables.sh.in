@@ -32,17 +32,18 @@ test_cmd_info_variables()
     # FIXME try -x -i, and no options. try invalid opts
 }
 
-if [ '/src/external-vcs/sourceforge/bashdb' = '' ] ; then
-  echo "Something is wrong: abs_top_srcdir is not set."
+abs_top_srcdir=@abs_top_srcdir@
+if [ ! -d $abs_top_scrdir ] ; then
+  >&2 echo "Something is wrong in configuration: abs_top_srcdir is not set properly."
  exit 1
 fi
-abs_top_srcdir=/src/external-vcs/sourceforge/bashdb
+
 # Make sure $abs_top_src has a trailing slash
 abs_top_srcdir=${abs_top_srcdir%%/}/
-. ${abs_top_srcdir}test/unit/helper.sh
-. $abs_top_srcdir/lib/help.sh
-. $abs_top_srcdir/lib/msg.sh
-. $abs_top_srcdir/command/info_sub/variables.sh
+. "${abs_top_srcdir}test/unit/helper.sh"
+. "${abs_top_srcdir}/lib/help.sh"
+. "${abs_top_srcdir}/lib/msg.sh"
+. "${abs_top_srcdir}/command/info_sub/variables.sh"
 
 set -- # reset $# so shunit2 doesn't get confused.
 

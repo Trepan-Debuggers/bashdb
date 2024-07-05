@@ -3,7 +3,7 @@ dnl Allow choosing the package name to avoid clashes with
 dnl bash if beeing installed side-by-side
 AC_ARG_VAR(
        ALT_PACKAGE_NAME,
-       AC_HELP_STRING([],[alternate packagename to use (default is "$1")])
+       AS_HELP_STRING([],[alternate packagename to use (default is "$1")])
 )
 if test -z "${ALT_PACKAGE_NAME}"; then
        ALT_PACKAGE_NAME="$PACKAGE_NAME"
