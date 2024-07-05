@@ -132,36 +132,36 @@ _Dbg_debug_trap_handler() {
     for (( _Dbg_i=0; _Dbg_i < _Dbg_watch_max ; _Dbg_i++ )) ; do
 	if [ -n "${_Dbg_watch_exp[$_Dbg_i]}" ] \
 	    && [[ ${_Dbg_watch_enable[_Dbg_i]} != 0 ]] ; then
-	    typeset new_val=$(_Dbg_get_watch_exp_eval $_Dbg_i)
-	    typeset old_val=${_Dbg_watch_val[$_Dbg_i]}
-	    if [[ $old_val != $new_val ]] ; then
+	    typeset _Dbg_new_val=$(_Dbg_get_watch_exp_eval $_Dbg_i)
+	    typeset _Dbg_old_val=${_Dbg_watch_val[$_Dbg_i]}
+	    if [[ $_Dbg_old_val != $_Dbg_new_val ]] ; then
 		((_Dbg_watch_count[_Dbg_i]++))
 		_Dbg_msg "Watchpoint $_Dbg_i: ${_Dbg_watch_exp[$_Dbg_i]} changed:"
-		_Dbg_msg "  old value: '$old_val'"
-		_Dbg_msg "  new value: '$new_val'"
-		_Dbg_watch_val[$_Dbg_i]=$new_val
+		_Dbg_msg "  old value: '$_Dbg_old_val'"
+		_Dbg_msg "  new value: '$_Dbg_new_val'"
+		_Dbg_watch_val[$_Dbg_i]=$_Dbg_new_val
 		_Dbg_hook_enter_debugger 'on a watch trigger'
 		return $_Dbg_continue_rc
 	    fi
 	fi
     done
 
-    typeset full_filename
-    full_filename=$(_Dbg_is_file "$_Dbg_frame_last_filename")
-    if [[ -r $full_filename ]] ; then
-	_Dbg_file2canonic[$_Dbg_frame_last_filename]="$full_filename"
+    typeset _Dbg_full_filename
+    _Dbg_full_filename=$(_Dbg_is_file "$_Dbg_frame_last_filename")
+    if [[ -r "$_Dbg_full_filename" ]] ; then
+	_Dbg_file2canonic["$_Dbg_frame_last_filename"]="$_Dbg_full_filename"
     fi
 
     # Run applicable action statement
     if ((_Dbg_action_count > 0)) ; then
-	_Dbg_hook_action_hit "$full_filename"
+	_Dbg_hook_action_hit "$_Dbg_full_filename"
     fi
 
     # Determine if we stop or not.
 
     # Check breakpoints.
     if ((_Dbg_brkpt_count > 0)) ; then
-	if _Dbg_hook_breakpoint_hit "$full_filename"; then
+	if _Dbg_hook_breakpoint_hit "$_Dbg_full_filename"; then
 	    if ((_Dbg_step_force)) ; then
 		typeset _Dbg_frame_previous_file="$_Dbg_frame_last_filename"
 		typeset -i _Dbg_frame_previous_lineno="$_Dbg_frame_last_lineno"
@@ -228,21 +228,21 @@ _Dbg_debug_trap_handler() {
 }
 
 _Dbg_hook_action_hit() {
-    typeset full_filename="$1"
-    typeset lineno=$_Dbg_frame_last_lineno
+    typeset _Dbg_full_filename="$1"
+    typeset _Dbg_lineno=$_Dbg_frame_last_lineno
 
     # FIXME: combine with _Dbg_unset_action
-    typeset -a linenos
-    [[ -z "$full_filename" ]] && return 1
-    eval "linenos=(${_Dbg_action_file2linenos["$full_filename"]})"
-    typeset -a action_nos
-    eval "action_nos=(${_Dbg_action_file2action["$full_filename"]})"
+    typeset -a _Dbg_linenos
+    [[ -z "$_Dbg_full_filename" ]] && return 1
+    eval "_Dbg_linenos=(${_Dbg_action_file2linenos["$_Dbg_full_filename"]})"
+    typeset -a _Dbg_action_nos
+    eval "_Dbg_action_nos=(${_Dbg_action_file2action["$_Dbg_full_filename"]})"
 
     typeset -i _Dbg_i
     # Check action within full_filename
-    for ((_Dbg_i=0; _Dbg_i < ${#linenos[@]}; _Dbg_i++)); do
-	if (( linenos[_Dbg_i] == lineno )) ; then
-	    (( _Dbg_action_num = action_nos[_Dbg_i] ))
+    for ((_Dbg_i=0; _Dbg_i < ${#_Dbg_linenos[@]}; _Dbg_i++)); do
+	if (( _Dbg_linenos[_Dbg_i] == _Dbg_lineno )) ; then
+	    (( _Dbg_action_num = _Dbg_action_nos[_Dbg_i] ))
 	    stmt="${_Dbg_action_stmt[$_Dbg_action_num]}"
   	    . "${_Dbg_libdir}/dbg-set-d-vars.inc"
   	    eval "$stmt"
@@ -258,22 +258,22 @@ _Dbg_hook_action_hit() {
 # Return 0 if we are at a breakpoint position or 1 if not.
 # Sets _Dbg_brkpt_num to the breakpoint number found.
 _Dbg_hook_breakpoint_hit() {
-    typeset full_filename="$1"
-    typeset lineno=$_Dbg_frame_last_lineno
+    typeset _Dbg_full_filename="$1"
+    typeset _Dbg_lineno=$_Dbg_frame_last_lineno
 
     # FIXME: combine with _Dbg_unset_brkpt
-    typeset -a linenos
-    [[ -z "$full_filename" ]] && return 1
-    [[ -z "${_Dbg_brkpt_file2linenos["$full_filename"]}" ]] && return 1
-    eval "linenos=(${_Dbg_brkpt_file2linenos["$full_filename"]})"
-    typeset -a brkpt_nos
-    eval "brkpt_nos=(${_Dbg_brkpt_file2brkpt["$full_filename"]})"
-    typeset -i i
+    typeset -a _Dbg_linenos
+    [[ -z "$_Dbg_full_filename" ]] && return 1
+    [[ -z "${_Dbg_brkpt_file2linenos["$_Dbg_full_filename"]}" ]] && return 1
+    eval "_Dbg_linenos=(${_Dbg_brkpt_file2linenos["$_Dbg_full_filename"]})"
+    typeset -a _Dbg_brkpt_nos
+    eval "_Dbg_brkpt_nos=(${_Dbg_brkpt_file2brkpt["$_Dbg_full_filename"]})"
+    typeset -i _Dbg_i
     # Check breakpoints within full_filename
-    for ((i=0; i < ${#linenos[@]}; i++)); do
-	if (( linenos[i] == lineno )) ; then
+    for ((_Dbg_i=0; _Dbg_i < ${#_Dbg_linenos[@]}; _Dbg_i++)); do
+	if (( _Dbg_linenos[_Dbg_i] == _Dbg_lineno )) ; then
 	    # Got a match, but is the breakpoint enabled and condition met?
-	    (( _Dbg_brkpt_num = brkpt_nos[i] ))
+	    (( _Dbg_brkpt_num = _Dbg_brkpt_nos[_Dbg_i] ))
         if ((_Dbg_brkpt_enable[_Dbg_brkpt_num] )); then
 
             if ( eval "((${_Dbg_brkpt_cond[_Dbg_brkpt_num]}))" || eval "${_Dbg_brkpt_cond[_Dbg_brkpt_num]}" ) 2>/dev/null; then
