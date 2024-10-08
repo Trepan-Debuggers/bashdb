@@ -34,7 +34,7 @@ See also:
 ' 1
 
 _Dbg_do_set_annotate() {
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if (( $# != 1 )) ; then
 	_Dbg_msg "A single argument is required (got $# arguments)."
     elif [[ $1 == $_Dbg_int_pat ]] ; then

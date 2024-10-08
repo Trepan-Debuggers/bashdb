@@ -46,7 +46,7 @@ _Dbg_do_reverse() {
   typeset -i i
   for (( i=_Dbg_listline-1; i > 0 ; i-- )) ; do
     _Dbg_get_source_line $i "$_Dbg_frame_last_filename"
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if [[ $_Dbg_source_line == *$_Dbg_last_search_pat* ]] ; then
       eval "$_Dbg_resteglob"
       _Dbg_do_list $i 1
@@ -91,7 +91,7 @@ _Dbg_do_search() {
   typeset -i i
   for (( i=_Dbg_listline+1; i < max_line ; i++ )) ; do
     _Dbg_get_source_line $i "$_Dbg_frame_last_filename"
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if [[ $_Dbg_source_line == *$_Dbg_last_search_pat* ]] ; then
       eval "$_Dbg_resteglob"
       _Dbg_do_list $i 1

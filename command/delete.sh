@@ -48,7 +48,7 @@ _Dbg_do_delete() {
       fi
   fi
 
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   for del in $to_go ; do
     case $del in
       $_Dbg_watch_pat )

@@ -214,7 +214,7 @@ function _Dbg_linespec_setup {
 # We return the filename last since that can have embedded blanks.
 function _Dbg_parse_linespec {
   typeset linespec=$1
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   case "$linespec" in
 
     # line number only - use _Dbg_frame_last_filename for filename

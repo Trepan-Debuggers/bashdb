@@ -150,7 +150,7 @@ _Dbg_do_clear_brkpt() {
 # If $1 is given just list those associated for that line.
 _Dbg_do_list_brkpt() {
 
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if (( $# != 0  )) ; then
 	typeset brkpt_num="$1"
 	if [[ $brkpt_num != $_Dbg_int_pat ]]; then

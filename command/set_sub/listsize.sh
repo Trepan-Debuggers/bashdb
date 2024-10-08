@@ -41,7 +41,7 @@ See also:
 typeset -xi _Dbg_set_listsize=10
 
 _Dbg_do_set_listsize() {
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if [[ $1 == $_Dbg_int_pat ]] ; then
 	_Dbg_write_journal_eval "_Dbg_set_listsize=$1"
     else

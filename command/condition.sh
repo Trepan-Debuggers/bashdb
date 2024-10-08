@@ -52,7 +52,7 @@ function _Dbg_do_condition {
   typeset -r n=$1
   shift
 
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   if [[ $n != $_Dbg_int_pat ]]; then
     eval "$_Dbg_resteglob"
     _Dbg_errmsg "condition: Bad breakpoint number: $n"

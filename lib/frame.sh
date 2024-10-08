@@ -122,7 +122,7 @@ _Dbg_frame_line() {
 _Dbg_frame_int_setup() {
 
   _Dbg_not_running && return 1
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   if [[ $1 != '' && $1 != $_Dbg_signed_int_pat ]] ; then
       _Dbg_errmsg "Bad integer parameter: $1"
       eval "$_Dbg_resteglob"

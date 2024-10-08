@@ -175,7 +175,7 @@ _Dbg_help_set() {
             fi
             ;;
         si | siz | size )
-            eval "$_seteglob"
+            eval "$_Dbg_seteglob"
             if [[ -z $2 ]] ; then
                 _Dbg_errmsg "Argument required (integer to set it to.)."
             elif [[ $2 != $_Dbg_int_pat ]] ; then

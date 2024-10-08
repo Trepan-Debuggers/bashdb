@@ -48,7 +48,7 @@ _Dbg_do_debug() {
 
     [[ -z $BASH ]] && BASH='bash'
 
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     # Add appropriate bash debugging options
     if (( ! _Dbg_script )) ; then
 	# Running "bash --debugger", so prepend "bash --debugger"

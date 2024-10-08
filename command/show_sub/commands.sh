@@ -36,7 +36,7 @@ _Dbg_do_show_commands() {
     if ((default_hi_start < 0)) ; then default_hi_start=0 ; fi
     typeset hi_start=${2:-$default_hi_start}
     
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     case $hi_start in
 	"+" )
 	    ((hi_start=_Dbg_hi_last_stop-1))

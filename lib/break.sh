@@ -118,7 +118,7 @@ _Dbg_enable_disable() {
     shift
     to_go="$*"
     typeset i
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     for i in $to_go ; do
       case $i in
 	$_Dbg_int_pat )
@@ -134,7 +134,7 @@ _Dbg_enable_disable() {
     shift
     to_go="$*"
     typeset i
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     for i in $to_go ; do
       case $i in
 	$_Dbg_int_pat )
@@ -160,7 +160,7 @@ _Dbg_enable_disable() {
   fi
 
   typeset i
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   for i in $to_go ; do
     case $i in
       $_Dbg_watch_pat )
@@ -491,7 +491,7 @@ _Dbg_clear_watch() {
     return 0
   fi
 
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   if [[ $1 == "$_Dbg_int_pat" ]]; then
     _Dbg_write_journal_eval "unset _Dbg_watch_exp[$1]"
     _msg "Watchpoint $i has been cleared"

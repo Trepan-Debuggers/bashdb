@@ -47,7 +47,7 @@ typeset _Dbg_last_printe=''    # expression on last print expression command
 
 # strings to save and restore the setting of `extglob' in debugger functions
 # that need it
-typeset _seteglob='local __eopt=-u ; shopt -q extglob && __eopt=-s ; shopt -s extglob'
+typeset _Dbg_seteglob='local __eopt=-u ; shopt -q extglob && __eopt=-s ; shopt -s extglob'
 typeset _Dbg_resteglob='shopt $__eopt extglob'
 
 typeset _Dbg_int_pat='[0-9]*([0-9])'
