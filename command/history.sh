@@ -53,7 +53,7 @@ _Dbg_do_history() {
 _Dbg_do_history_list() {
 
   eval "$_seteglob"
-  if [[ $1 != $int_pat ]] && [[ $1 != -$int_pat ]] && [[ -n $1 ]] ; then
+  if [[ $1 != $_Dbg_int_pat ]] && [[ $1 != -$_Dbg_int_pat ]] && [[ -n $1 ]] ; then
     _Dbg_msg "Invalid history number: $1"
     eval "$_resteglob"
     return 1

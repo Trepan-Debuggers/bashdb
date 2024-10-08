@@ -48,7 +48,7 @@ _Dbg_do_set_linetrace() {
 	    ;;
 	d | de | del | dela | delay )
 	    eval "$_seteglob"
-	    if [[ $2 != $int_pat ]] ; then
+	    if [[ $2 != $_Dbg_int_pat ]] ; then
 		_Dbg_msg "Bad int parameter: $2"
 		eval "$_resteglob"
 		return 1

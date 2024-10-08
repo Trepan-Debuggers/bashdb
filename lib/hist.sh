@@ -41,8 +41,8 @@ _Dbg_history_parse() {
   [[ -z $history_num ]] && let history_num=$_Dbg_hi-1
 
   if [[ $_Dbg_cmd == h* ]] ; then
-    if [[ $history_num != $int_pat ]] ; then
-      if [[ $history_num == -$int_pat ]] ; then
+    if [[ $history_num != $_Dbg_int_pat ]] ; then
+      if [[ $history_num == -$_Dbg_int_pat ]] ; then
 	history_num=$_Dbg_hi+$history_num
       else
 	_Dbg_errmsg "Invalid history number skipped: $history_num"
@@ -52,7 +52,7 @@ _Dbg_history_parse() {
   else
     # Handle ! form. May need to parse number out number and modifier
     # case $_Dbg_cmd in
-    #   \!\-${int_pat}:p )
+    #   \!\-${_Dbg_int_pat}:p )
     # 	typeset -a word1
     # 	word1=($(_Dbg_split '!' $_Dbg_cmd))
     # 	local -a word2
@@ -61,7 +61,7 @@ _Dbg_history_parse() {
     # 	_Dbg_do_history_list $num $num
     # 	history_num=-1
     # 	;;
-    #   [!]${int_pat}:p )
+    #   [!]${_Dbg_int_pat}:p )
     # 	local -a word1
     # 	word1=($(_Dbg_split '!' $_Dbg_cmd))
     # 	local -a word2
@@ -69,19 +69,19 @@ _Dbg_history_parse() {
     # 	_Dbg_do_history_list ${word2[0]} ${word2[0]}
     # 	history_num=-1
     # 	;;
-    #   \!\-$int_pat )
+    #   \!\-$_Dbg_int_pat )
     # 	local -a word
     # 	word=($(_Dbg_split '!' $_Dbg_cmd))
     # 	history_num=$_Dbg_hi+${word[0]}
     # 	;;
-    #   \!$int_pat )
+    #   \!$_Dbg_int_pat )
     # 	local -a word
     # 	word=($(_Dbg_split '!' $_Dbg_cmd))
     # 	history_num=${word[0]}
     # 	;;
     #   '!' )
-    #     if [[ $history_num != $int_pat ]] ; then
-    # 	  if [[ $history_num == -$int_pat ]] ; then
+    #     if [[ $history_num != $_Dbg_int_pat ]] ; then
+    # 	  if [[ $history_num == -$_Dbg_int_pat ]] ; then
     # 	    history_num=$_Dbg_hi+$history_num
     # 	  else
     # 	    _Dbg_msg "Invalid history number skipped: $history_num"

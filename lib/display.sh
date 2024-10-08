@@ -51,7 +51,7 @@ _Dbg_disp_enable_disable() {
     eval "$_seteglob"
     for i in $to_go ; do
 	case $i in
-	    $int_pat )
+	    $_Dbg_int_pat )
                 _Dbg_enable_disable_display $on $en_dis $i
 		;;
 	* )

@@ -46,7 +46,7 @@ _Dbg_do_handle() {
     return 1
     fi
 
-    if [[ $sig == $int_pat ]]; then
+    if [[ $sig == $_Dbg_int_pat ]]; then
 	signame=$(_Dbg_signum2name $sig)
 	if (( $? != 0 )) ; then
 	    _Dbg_errmsg "Bad signal number: $sig"

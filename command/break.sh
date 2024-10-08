@@ -153,7 +153,7 @@ _Dbg_do_list_brkpt() {
     eval "$_seteglob"
     if (( $# != 0  )) ; then
 	typeset brkpt_num="$1"
-	if [[ $brkpt_num != $int_pat ]]; then
+	if [[ $brkpt_num != $_Dbg_int_pat ]]; then
 	    _Dbg_errmsg "Bad breakpoint number $brkpt_num."
 	elif [[ -z "${_Dbg_brkpt_file[$brkpt_num]}" ]] ; then
 	    _Dbg_errmsg "Breakpoint entry $brkpt_num is not set."

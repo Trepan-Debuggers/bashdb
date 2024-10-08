@@ -54,7 +54,7 @@ _Dbg_do_delete() {
       $_Dbg_watch_pat )
           _Dbg_delete_watch_entry ${del:0:${#del}-1}
           ;;
-      $int_pat )
+      $_Dbg_int_pat )
           if _Dbg_delete_brkpt_entry $del ; then
 	      _Dbg_msg "Deleted breakpoint ${del}"
 	      ((tot_found++))

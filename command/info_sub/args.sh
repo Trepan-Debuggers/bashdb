@@ -47,7 +47,7 @@ _Dbg_do_info_args() {
     typeset -r frame_start=${1:-0}
 
     eval "$_seteglob"
-    if [[ $frame_start != $int_pat ]] ; then
+    if [[ $frame_start != $_Dbg_int_pat ]] ; then
 	_Dbg_errmsg "Bad integer parameter: $frame_start"
 	eval "$_resteglob"
 	return 1

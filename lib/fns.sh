@@ -218,12 +218,12 @@ function _Dbg_parse_linespec {
   case "$linespec" in
 
     # line number only - use _Dbg_frame_last_filename for filename
-    $int_pat )
+    $_Dbg_int_pat )
       echo "$linespec 0 \"$_Dbg_frame_last_filename\""
       ;;
 
     # file:line
-    [^:][^:]*[:]$int_pat )
+    [^:][^:]*[:]$_Dbg_int_pat )
       # Split the POSIX way
       typeset line_word=${linespec##*:}
       typeset file_word=${linespec%${line_word}}

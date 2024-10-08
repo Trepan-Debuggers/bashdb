@@ -74,7 +74,7 @@ typeset -ai _Dbg_watch_enable=() # 1/0 if enabled or not
 typeset -i  _Dbg_watch_max=0     # Needed because we can't figure out what
                                     # the max index is and arrays can be sparse
 
-typeset     _Dbg_watch_pat="${int_pat}[wW]"
+typeset     _Dbg_watch_pat="${_Dbg_int_pat}[wW]"
 
 #========================= FUNCTIONS   ============================#
 
@@ -121,7 +121,7 @@ _Dbg_enable_disable() {
     eval "$_seteglob"
     for i in $to_go ; do
       case $i in
-	$int_pat )
+	$_Dbg_int_pat )
 	  _Dbg_enable_disable_display $on "$en_dis" $i
 	;;
 	* )
@@ -137,7 +137,7 @@ _Dbg_enable_disable() {
     eval "$_seteglob"
     for i in $to_go ; do
       case $i in
-	$int_pat )
+	$_Dbg_int_pat )
 	  _Dbg_enable_disable_action $on "$en_dis" $i
 	;;
 	* )
@@ -166,7 +166,7 @@ _Dbg_enable_disable() {
       $_Dbg_watch_pat )
         _Dbg_enable_disable_watch $on $en_dis ${del:0:${#del}-1}
         ;;
-      $int_pat )
+      $_Dbg_int_pat )
         _Dbg_enable_disable_brkpt $on "$en_dis" $i
 	;;
       * )
@@ -492,7 +492,7 @@ _Dbg_clear_watch() {
   fi
 
   eval "$_seteglob"
-  if [[ $1 == "$int_pat" ]]; then
+  if [[ $1 == "$_Dbg_int_pat" ]]; then
     _Dbg_write_journal_eval "unset _Dbg_watch_exp[$1]"
     _msg "Watchpoint $i has been cleared"
   else

@@ -38,7 +38,7 @@ _Dbg_is_int() {
     (( 1 == $# )) || return 1
     typeset rc=1
     eval "$_seteglob"
-    [[ $1 == $int_pat ]] && rc=0
+    [[ $1 == $_Dbg_int_pat ]] && rc=0
     eval "$_resteglob"
     return $rc
 }

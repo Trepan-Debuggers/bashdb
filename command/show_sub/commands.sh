@@ -41,7 +41,7 @@ _Dbg_do_show_commands() {
 	"+" )
 	    ((hi_start=_Dbg_hi_last_stop-1))
 	    ;;
-	$int_pat | -$int_pat)
+	$_Dbg_int_pat | -$_Dbg_int_pat)
             :
             ;;
 	* )

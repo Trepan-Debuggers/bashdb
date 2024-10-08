@@ -59,7 +59,7 @@ _Dbg_do_set_history() {
             eval "$_seteglob"
             if [[ -z $2 ]] ; then
                 _Dbg_errmsg "Argument required (integer to set it to.)."
-            elif [[ $2 != $int_pat ]] ; then
+            elif [[ $2 != $_Dbg_int_pat ]] ; then
                 _Dbg_errmsg "Integer argument expected; got: $2"
                 eval "$_resteglob"
                 return 1

@@ -35,7 +35,7 @@ _Dbg_do_commands() {
   typeset num=$1
   typeset -i found=0
   case $num in
-      $int_pat )
+      $_Dbg_int_pat )
 	  if [[ -z "${_Dbg_brkpt_file[$num]}" ]] ; then
 	      _Dbg_errmsg "No breakpoint number $num."
 	      return 1

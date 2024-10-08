@@ -35,7 +35,7 @@ Set maximum width of lines to *width*.
 typeset -i _Dbg_set_linewidth; _Dbg_set_linewidth=${COLUMNS:-80}
 
 _Dbg_do_set_width() {
-    if [[ $1 == $int_pat ]] ; then
+    if [[ $1 == $_Dbg_int_pat ]] ; then
 	_Dbg_write_journal_eval "_Dbg_set_linewidth=$1"
     else
 	_Dbg_errmsg "Integer argument expected; got: $1"

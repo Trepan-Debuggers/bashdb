@@ -37,7 +37,7 @@ _Dbg_do_set_annotate() {
     eval "$_seteglob"
     if (( $# != 1 )) ; then
 	_Dbg_msg "A single argument is required (got $# arguments)."
-    elif [[ $1 == $int_pat ]] ; then
+    elif [[ $1 == $_Dbg_int_pat ]] ; then
 	if (( $1 > 3 )) ; then
 	    _Dbg_msg "Annotation level must be between 0 and 3. Got: ${1}."
 	else

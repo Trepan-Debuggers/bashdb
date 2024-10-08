@@ -41,7 +41,7 @@ _Dbg_do_signal() {
   fi
 
   eval "$_seteglob"
-  if [[ $sig == $int_pat ]]; then
+  if [[ $sig == $_Dbg_int_pat ]]; then
     eval "$_resteglob"
     signame=$(_Dbg_signum2name $sig)
     if (( $? != 0 )) ; then

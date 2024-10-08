@@ -50,7 +50,7 @@ typeset _Dbg_last_printe=''    # expression on last print expression command
 typeset _seteglob='local __eopt=-u ; shopt -q extglob && __eopt=-s ; shopt -s extglob'
 typeset _resteglob='shopt $__eopt extglob'
 
-typeset int_pat='[0-9]*([0-9])'
+typeset _Dbg_int_pat='[0-9]*([0-9])'
 typeset _Dbg_signed_int_pat='?([-+])+([0-9])'
 
 # Set tty to use for output.
