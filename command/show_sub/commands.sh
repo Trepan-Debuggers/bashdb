@@ -36,18 +36,18 @@ _Dbg_do_show_commands() {
     if ((default_hi_start < 0)) ; then default_hi_start=0 ; fi
     typeset hi_start=${2:-$default_hi_start}
     
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     case $hi_start in
 	"+" )
 	    ((hi_start=_Dbg_hi_last_stop-1))
 	    ;;
-	$int_pat | -$int_pat)
+	$_Dbg_int_pat | -$_Dbg_int_pat)
             :
             ;;
 	* )
 	_Dbg_msg "Invalid parameter $hi_start. Need an integer or '+'"
     esac
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     
     typeset -i hi_stop=hi_start-10
     _Dbg_do_history_list $hi_start $hi_stop

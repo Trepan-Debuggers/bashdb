@@ -40,9 +40,9 @@ _Dbg_do_signal() {
     return 1
   fi
 
-  eval "$_seteglob"
-  if [[ $sig == $int_pat ]]; then
-    eval "$_resteglob"
+  eval "$_Dbg_seteglob"
+  if [[ $sig == $_Dbg_int_pat ]]; then
+    eval "$_Dbg_resteglob"
     signame=$(_Dbg_signum2name $sig)
     if (( $? != 0 )) ; then
       _Dbg_msg "Bad signal number: $sig"
@@ -50,7 +50,7 @@ _Dbg_do_signal() {
     fi
     signum=sig
   else
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     typeset signum;
     signum=$(_Dbg_name2signum $sig)
     if (( $? != 0 )) ; then

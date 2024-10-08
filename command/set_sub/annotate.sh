@@ -34,20 +34,20 @@ See also:
 ' 1
 
 _Dbg_do_set_annotate() {
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if (( $# != 1 )) ; then
 	_Dbg_msg "A single argument is required (got $# arguments)."
-    elif [[ $1 == $int_pat ]] ; then
+    elif [[ $1 == $_Dbg_int_pat ]] ; then
 	if (( $1 > 3 )) ; then
 	    _Dbg_msg "Annotation level must be between 0 and 3. Got: ${1}."
 	else
 	    _Dbg_write_journal_eval "_Dbg_set_annotate=$1"
 	fi
     else
-	eval "$_resteglob"
+	eval "$_Dbg_resteglob"
 	_Dbg_msg "Integer argument expected; got: $1"
 	return 1
     fi
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
 }

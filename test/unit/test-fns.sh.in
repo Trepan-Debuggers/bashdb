@@ -100,9 +100,9 @@ test_fns_onoff()
 test_fns_parse_linespec()
 {
     # Necessary set up for function call.
-    typeset _seteglob='local __eopt=-u ; shopt -q extglob && __eopt=-s ; shopt -s extglob'
+    typeset _Dbg_seteglob='local __eopt=-u ; shopt -q extglob && __eopt=-s ; shopt -s extglob'
     shopt -s extdebug
-    typeset int_pat="[0-9]*([0-9])"
+    typeset _Dbg_int_pat="[0-9]*([0-9])"
     typeset -i _Dbg_set_debug=1
 
     function foo { echo 'foo here'; }

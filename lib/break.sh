@@ -74,7 +74,7 @@ typeset -ai _Dbg_watch_enable=() # 1/0 if enabled or not
 typeset -i  _Dbg_watch_max=0     # Needed because we can't figure out what
                                     # the max index is and arrays can be sparse
 
-typeset     _Dbg_watch_pat="${int_pat}[wW]"
+typeset     _Dbg_watch_pat="${_Dbg_int_pat}[wW]"
 
 #========================= FUNCTIONS   ============================#
 
@@ -118,33 +118,33 @@ _Dbg_enable_disable() {
     shift
     to_go="$*"
     typeset i
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     for i in $to_go ; do
       case $i in
-	$int_pat )
+	$_Dbg_int_pat )
 	  _Dbg_enable_disable_display $on "$en_dis" $i
 	;;
 	* )
 	  _Dbg_errmsg "Invalid entry number skipped: $i"
       esac
     done
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
   elif [[ $1 == 'action' ]] ; then
     shift
     to_go="$*"
     typeset i
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     for i in $to_go ; do
       case $i in
-	$int_pat )
+	$_Dbg_int_pat )
 	  _Dbg_enable_disable_action $on "$en_dis" $i
 	;;
 	* )
 	  _Dbg_errmsg "Invalid entry number skipped: $i"
       esac
     done
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
   elif [[ $1 == 'breakpoints' ]] ; then
     shift
@@ -160,20 +160,20 @@ _Dbg_enable_disable() {
   fi
 
   typeset i
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   for i in $to_go ; do
     case $i in
       $_Dbg_watch_pat )
         _Dbg_enable_disable_watch $on $en_dis ${del:0:${#del}-1}
         ;;
-      $int_pat )
+      $_Dbg_int_pat )
         _Dbg_enable_disable_brkpt $on "$en_dis" $i
 	;;
       * )
       _Dbg_errmsg "Invalid entry number skipped: $i"
     esac
   done
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
   return 0
 }
 
@@ -491,8 +491,8 @@ _Dbg_clear_watch() {
     return 0
   fi
 
-  eval "$_seteglob"
-  if [[ $1 == "$int_pat" ]]; then
+  eval "$_Dbg_seteglob"
+  if [[ $1 == "$_Dbg_int_pat" ]]; then
     _Dbg_write_journal_eval "unset _Dbg_watch_exp[$1]"
     _msg "Watchpoint $i has been cleared"
   else
@@ -500,5 +500,5 @@ _Dbg_clear_watch() {
     _basdhb_msg "Please specify a numeric watchpoint number"
   fi
 
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
 }

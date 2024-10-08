@@ -175,15 +175,15 @@ _Dbg_help_set() {
             fi
             ;;
         si | siz | size )
-            eval "$_seteglob"
+            eval "$_Dbg_seteglob"
             if [[ -z $2 ]] ; then
                 _Dbg_errmsg "Argument required (integer to set it to.)."
-            elif [[ $2 != $int_pat ]] ; then
+            elif [[ $2 != $_Dbg_int_pat ]] ; then
                 _Dbg_errmsg "Integer argument expected; got: $2"
-                eval "$_resteglob"
+                eval "$_Dbg_resteglob"
                 return 1
             fi
-            eval "$_resteglob"
+            eval "$_Dbg_resteglob"
             _Dbg_write_journal_eval "_Dbg_history_length=$2"
             return 0
             ;;

@@ -41,14 +41,14 @@ See also:
 typeset -xi _Dbg_set_listsize=10
 
 _Dbg_do_set_listsize() {
-    eval "$_seteglob"
-    if [[ $1 == $int_pat ]] ; then
+    eval "$_Dbg_seteglob"
+    if [[ $1 == $_Dbg_int_pat ]] ; then
 	_Dbg_write_journal_eval "_Dbg_set_listsize=$1"
     else
-	eval "$_resteglob"
+	eval "$_Dbg_resteglob"
 	_Dbg_errmsg "Integer argument expected; got: $1"
 	return 1
     fi
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
 }

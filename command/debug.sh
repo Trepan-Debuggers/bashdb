@@ -48,7 +48,7 @@ _Dbg_do_debug() {
 
     [[ -z $BASH ]] && BASH='bash'
 
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     # Add appropriate bash debugging options
     if (( ! _Dbg_script )) ; then
 	# Running "bash --debugger", so prepend "bash --debugger"
@@ -57,7 +57,7 @@ _Dbg_do_debug() {
 	# Running "bashdb", so prepend "bash bashdb .."
 	set_Dbg_debug_cmd="typeset _Dbg_debug_cmd=\"$BASH $_Dbg_orig_0 -q -L $_Dbg_libdir $script_cmd\"";
     fi
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     eval $set_Dbg_debug_cmd
 
     if (( _Dbg_set_basename )) ; then

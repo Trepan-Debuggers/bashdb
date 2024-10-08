@@ -37,9 +37,9 @@ _Dbg_is_function() {
 _Dbg_is_int() {
     (( 1 == $# )) || return 1
     typeset rc=1
-    eval "$_seteglob"
-    [[ $1 == $int_pat ]] && rc=0
-    eval "$_resteglob"
+    eval "$_Dbg_seteglob"
+    [[ $1 == $_Dbg_int_pat ]] && rc=0
+    eval "$_Dbg_resteglob"
     return $rc
 }
 
@@ -47,9 +47,9 @@ _Dbg_is_int() {
 _Dbg_is_signed_int() {
     (( 1 == $# )) || return 1
     typeset rc=1
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     [[ $1 == $_Dbg_signed_int_pat ]] && rc=0
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return $rc
 }
 

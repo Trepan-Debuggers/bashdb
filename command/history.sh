@@ -52,13 +52,13 @@ _Dbg_do_history() {
 # $2 is where to stop or 0 if not given.
 _Dbg_do_history_list() {
 
-  eval "$_seteglob"
-  if [[ $1 != $int_pat ]] && [[ $1 != -$int_pat ]] && [[ -n $1 ]] ; then
+  eval "$_Dbg_seteglob"
+  if [[ $1 != $_Dbg_int_pat ]] && [[ $1 != -$_Dbg_int_pat ]] && [[ -n $1 ]] ; then
     _Dbg_msg "Invalid history number: $1"
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 1
   fi
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
 
   _Dbg_hi=${#_Dbg_history[@]}
   local -i n=${1:-$_Dbg_hi-1}

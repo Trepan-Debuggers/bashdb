@@ -31,11 +31,11 @@ Type a line containing "end" to indicate the end of them.  Give
 output is printed when it is hit, except what the commands print.'
 
 _Dbg_do_commands() {
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   typeset num=$1
   typeset -i found=0
   case $num in
-      $int_pat )
+      $_Dbg_int_pat )
 	  if [[ -z "${_Dbg_brkpt_file[$num]}" ]] ; then
 	      _Dbg_errmsg "No breakpoint number $num."
 	      return 1
@@ -45,7 +45,7 @@ _Dbg_do_commands() {
       * )
 	_Dbg_errmsg "Invalid entry number skipped: $num"
   esac
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
   if (( found )) ; then 
       _Dbg_brkpt_commands_defining=1
       _Dbg_brkpt_commands_current=$num

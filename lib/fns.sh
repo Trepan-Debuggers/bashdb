@@ -214,16 +214,16 @@ function _Dbg_linespec_setup {
 # We return the filename last since that can have embedded blanks.
 function _Dbg_parse_linespec {
   typeset linespec=$1
-  eval "$_seteglob"
+  eval "$_Dbg_seteglob"
   case "$linespec" in
 
     # line number only - use _Dbg_frame_last_filename for filename
-    $int_pat )
+    $_Dbg_int_pat )
       echo "$linespec 0 \"$_Dbg_frame_last_filename\""
       ;;
 
     # file:line
-    [^:][^:]*[:]$int_pat )
+    [^:][^:]*[:]$_Dbg_int_pat )
       # Split the POSIX way
       typeset line_word=${linespec##*:}
       typeset file_word=${linespec%${line_word}}

@@ -150,10 +150,10 @@ _Dbg_do_clear_brkpt() {
 # If $1 is given just list those associated for that line.
 _Dbg_do_list_brkpt() {
 
-    eval "$_seteglob"
+    eval "$_Dbg_seteglob"
     if (( $# != 0  )) ; then
 	typeset brkpt_num="$1"
-	if [[ $brkpt_num != $int_pat ]]; then
+	if [[ $brkpt_num != $_Dbg_int_pat ]]; then
 	    _Dbg_errmsg "Bad breakpoint number $brkpt_num."
 	elif [[ -z "${_Dbg_brkpt_file[$brkpt_num]}" ]] ; then
 	    _Dbg_errmsg "Breakpoint entry $brkpt_num is not set."
@@ -171,7 +171,7 @@ _Dbg_do_list_brkpt() {
 	    fi
 	    _Dbg_print_brkpt_count ${_Dbg_brkpt_count[$i]}
 	fi
-	eval "$_resteglob"
+	eval "$_Dbg_resteglob"
 	return 0
     elif (( ${#_Dbg_brkpt_line[@]} != 0 )); then
 	typeset -i i

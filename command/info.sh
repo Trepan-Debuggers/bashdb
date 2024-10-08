@@ -36,32 +36,32 @@ _Dbg_complete_info() {
 _Dbg_do_info() {
 
   if (($# > 0)) ; then
-      typeset subcmd=$1
+      typeset _Dbg_subcmd=$1
       shift
 
-      typeset -i found=0
+      typeset -i _Dbg_found=0
 
-      if [[ -n ${_Dbg_debugger_info_commands[$subcmd]} ]] ; then
-          ${_Dbg_debugger_info_commands[$subcmd]} "$@"
+      if [[ -n ${_Dbg_debugger_info_commands[$_Dbg_subcmd]} ]] ; then
+          ${_Dbg_debugger_info_commands[$_Dbg_subcmd]} "$@"
           return $?
       else
           # Look for a unique abbreviation
-          typeset -i count=0
-          typeset list; list="${!_Dbg_debugger_info_commands[@]}"
-          for try in $list ; do
-              if [[ $try =~ ^$subcmd ]] ; then
-                  subcmd=$try
-                  ((count++))
+          typeset -i _Dbg_count=0
+          typeset _Dbg_list; _Dbg_list="${!_Dbg_debugger_info_commands[@]}"
+          for _Dbg_try in $_Dbg_list ; do
+              if [[ $_Dbg_try =~ ^$_Dbg_subcmd ]] ; then
+                  _Dbg_subcmd="$_Dbg_try"
+                  ((_Dbg_count++))
               fi
           done
-          ((found=(count==1)))
+          ((_Dbg_found=(_Dbg_count==1)))
       fi
-      if ((found)); then
-          ${_Dbg_debugger_info_commands[$subcmd]} "$@"
+      if ((_Dbg_found)); then
+          ${_Dbg_debugger_info_commands[$_Dbg_subcmd]} "$@"
           return $?
       fi
 
-      _Dbg_errmsg "Unknown info subcommand: $subcmd"
+      _Dbg_errmsg "Unknown info subcommand: $_Dbg_subcmd"
       msg=_Dbg_errmsg
   else
       msg=_Dbg_msg

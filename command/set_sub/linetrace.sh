@@ -47,13 +47,13 @@ _Dbg_do_set_linetrace() {
 	    _Dbg_write_journal_eval "_Dbg_set_linetrace=0"
 	    ;;
 	d | de | del | dela | delay )
-	    eval "$_seteglob"
-	    if [[ $2 != $int_pat ]] ; then
+	    eval "$_Dbg_seteglob"
+	    if [[ $2 != $_Dbg_int_pat ]] ; then
 		_Dbg_msg "Bad int parameter: $2"
-		eval "$_resteglob"
+		eval "$_Dbg_resteglob"
 		return 1
 	    fi
-	    eval "$_resteglob"
+	    eval "$_Dbg_resteglob"
 	    _Dbg_write_journal_eval "_Dbg_linetrace_delay=$2"
 	    ;;
 	e | ex | exp | expa | expan | expand )
