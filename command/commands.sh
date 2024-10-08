@@ -45,7 +45,7 @@ _Dbg_do_commands() {
       * )
 	_Dbg_errmsg "Invalid entry number skipped: $num"
   esac
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
   if (( found )) ; then 
       _Dbg_brkpt_commands_defining=1
       _Dbg_brkpt_commands_current=$num

@@ -61,10 +61,10 @@ _Dbg_do_set_history() {
                 _Dbg_errmsg "Argument required (integer to set it to.)."
             elif [[ $2 != $_Dbg_int_pat ]] ; then
                 _Dbg_errmsg "Integer argument expected; got: $2"
-                eval "$_resteglob"
+                eval "$_Dbg_resteglob"
                 return 1
             fi
-            eval "$_resteglob"
+            eval "$_Dbg_resteglob"
             _Dbg_write_journal_eval "_Dbg_history_length=$2"
             ;;
         *)

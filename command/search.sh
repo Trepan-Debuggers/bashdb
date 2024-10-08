@@ -48,13 +48,13 @@ _Dbg_do_reverse() {
     _Dbg_get_source_line $i "$_Dbg_frame_last_filename"
     eval "$_seteglob"
     if [[ $_Dbg_source_line == *$_Dbg_last_search_pat* ]] ; then
-      eval "$_resteglob"
+      eval "$_Dbg_resteglob"
       _Dbg_do_list $i 1
       _Dbg_listline=$i
       _Dbg_last_cmd='search'
       return 0
     fi
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
   done
   _Dbg_msg "search pattern: $_Dbg_last_search_pat not found."
   return 1
@@ -93,13 +93,13 @@ _Dbg_do_search() {
     _Dbg_get_source_line $i "$_Dbg_frame_last_filename"
     eval "$_seteglob"
     if [[ $_Dbg_source_line == *$_Dbg_last_search_pat* ]] ; then
-      eval "$_resteglob"
+      eval "$_Dbg_resteglob"
       _Dbg_do_list $i 1
       _Dbg_listline=$i
       # _Dbg_last_cmd='/'
       return 0
     fi
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
   done
   _Dbg_errmsg "search pattern: $_Dbg_last_search_pat not found."
   return 1

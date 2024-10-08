@@ -128,7 +128,7 @@ _Dbg_enable_disable() {
 	  _Dbg_errmsg "Invalid entry number skipped: $i"
       esac
     done
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
   elif [[ $1 == 'action' ]] ; then
     shift
@@ -144,7 +144,7 @@ _Dbg_enable_disable() {
 	  _Dbg_errmsg "Invalid entry number skipped: $i"
       esac
     done
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
   elif [[ $1 == 'breakpoints' ]] ; then
     shift
@@ -173,7 +173,7 @@ _Dbg_enable_disable() {
       _Dbg_errmsg "Invalid entry number skipped: $i"
     esac
   done
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
   return 0
 }
 
@@ -500,5 +500,5 @@ _Dbg_clear_watch() {
     _basdhb_msg "Please specify a numeric watchpoint number"
   fi
 
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
 }

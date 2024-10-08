@@ -64,7 +64,7 @@ _Dbg_do_delete() {
         _Dbg_errmsg "Invalid entry number skipped: $del"
     esac
   done
-  eval "$_resteglob"
+  eval "$_Dbg_resteglob"
   return $tot_found
 }
 

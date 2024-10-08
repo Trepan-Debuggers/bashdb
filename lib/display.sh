@@ -59,7 +59,7 @@ _Dbg_disp_enable_disable() {
 		;;
 	esac
     done
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
 }
 

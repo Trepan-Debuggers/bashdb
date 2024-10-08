@@ -47,7 +47,7 @@ _Dbg_do_show_commands() {
 	* )
 	_Dbg_msg "Invalid parameter $hi_start. Need an integer or '+'"
     esac
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     
     typeset -i hi_stop=hi_start-10
     _Dbg_do_history_list $hi_start $hi_stop

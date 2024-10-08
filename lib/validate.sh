@@ -39,7 +39,7 @@ _Dbg_is_int() {
     typeset rc=1
     eval "$_seteglob"
     [[ $1 == $_Dbg_int_pat ]] && rc=0
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return $rc
 }
 
@@ -49,7 +49,7 @@ _Dbg_is_signed_int() {
     typeset rc=1
     eval "$_seteglob"
     [[ $1 == $_Dbg_signed_int_pat ]] && rc=0
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return $rc
 }
 

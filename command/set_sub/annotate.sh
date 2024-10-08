@@ -44,10 +44,10 @@ _Dbg_do_set_annotate() {
 	    _Dbg_write_journal_eval "_Dbg_set_annotate=$1"
 	fi
     else
-	eval "$_resteglob"
+	eval "$_Dbg_resteglob"
 	_Dbg_msg "Integer argument expected; got: $1"
 	return 1
     fi
-    eval "$_resteglob"
+    eval "$_Dbg_resteglob"
     return 0
 }

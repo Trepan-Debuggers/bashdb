@@ -171,7 +171,7 @@ _Dbg_do_list_brkpt() {
 	    fi
 	    _Dbg_print_brkpt_count ${_Dbg_brkpt_count[$i]}
 	fi
-	eval "$_resteglob"
+	eval "$_Dbg_resteglob"
 	return 0
     elif (( ${#_Dbg_brkpt_line[@]} != 0 )); then
 	typeset -i i
