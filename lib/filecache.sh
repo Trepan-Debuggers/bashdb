@@ -204,7 +204,8 @@ function _Dbg_readin {
     if [[ -z "$filename" ]] || [[ "$filename" == "$_Dbg_bogus_file" ]] ; then
 	  eval "${_Dbg_source_array_var}[0]=\"$Dbg_EXECUTION_STRING\""
     else
-	fullname=$(_Dbg_resolve_expand_filename "$filename")
+	typeset fullname
+	fullname="$(_Dbg_resolve_expand_filename "$filename")"
 	if [[ -r "$fullname" ]] ; then
 	    typeset -r progress_prefix="Reading $filename"
 	    _Dbg_file2canonic["$filename"]="$fullname"
