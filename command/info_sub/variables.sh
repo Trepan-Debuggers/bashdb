@@ -143,6 +143,7 @@ function _Dbg_info_variables_parse_options {
 
     typeset -i _Dbg_rc=0
     typeset OPTLIND=''
+    typeset opt
     while getopts_long irxaAtp opt \
         integer no_argument \
         readonly no_argument \
