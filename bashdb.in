@@ -98,9 +98,9 @@ fi
 
 if [[ -n $_Dbg_script_file ]] ; then
     # Set $0. This is a new bash 5.0 feature.
-    BASH_ARGV0=$_Dbg_script_file
+    BASH_ARGV0="$_Dbg_script_file"
 fi
-typeset _Dbg_dollar_0=$0
+typeset _Dbg_dollar_0="$0"
 
 trap '_Dbg_debug_trap_handler 0 "$BASH_COMMAND" "$@"' DEBUG
 set -o functrace
