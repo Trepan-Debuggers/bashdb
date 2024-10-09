@@ -29,13 +29,13 @@ typeset _Dbg_release='@PACKAGE_VERSION@'
 typeset _Dbg_bashdb_main='@DBGR_MAIN@'
 
 # The short shell name. Helps keep code common in bash, zsh, and ksh debuggers.
-typeset _Dbg_shell_name=${_Dbg_shell##*/}  # Equivalent to basename(_Dbg_shell)
+typeset _Dbg_shell_name="${_Dbg_shell##*/}"  # Equivalent to basename(_Dbg_shell)
 
 # Original $0. Note we can't set this in an include.
-typeset _Dbg_orig_0=$0
+typeset _Dbg_orig_0="$0"
 
 # Equivalent to basename $0; the short program name
-typeset _Dbg_pname=${0##*/}
+typeset _Dbg_pname="${0##*/}"
 
 ## Stuff set by autoconf/configure ###
 # @PKGDATADIR@ often uses $prefix, _Dbg_libdir must be a global variable
@@ -44,11 +44,11 @@ _Dbg_assign_libdir() { typeset prefix="@prefix@"; _Dbg_libdir="@PKGDATADIR@"; };
 
 # We agonize a bit over _Dbg_libdir: the root directory for where
 # debugger code is stored.
-[[ -d $_Dbg_libdir ]] || _Dbg_libdir=${_Dbg_bashdb_main%/*}  # dirname(_Dbg_bashdb_main)
-[[ -d $_Dbg_libdir ]] || _Dbg_libdir='.'
+[[ -d "$_Dbg_libdir" ]] || _Dbg_libdir="${_Dbg_bashdb_main%/*}"  # dirname(_Dbg_bashdb_main)
+[[ -d "$_Dbg_libdir" ]] || _Dbg_libdir='.'
 
 typeset _Dbg_main="$_Dbg_libdir/dbg-main.sh"
-if [[ ! -r $_Dbg_main ]] ; then
+if [[ ! -r "$_Dbg_main" ]] ; then
   echo "${_Dbg_pname}: Can't read debugger library file '${_Dbg_main}'."
   echo "${_Dbg_pname}: Perhaps @PACKAGE@ is installed wrong (if its installed)." >&2
   echo "${_Dbg_pname}: Try running @PACKAGE@ using -L (with a different directory)." >&2
@@ -57,6 +57,6 @@ if [[ ! -r $_Dbg_main ]] ; then
 fi
 
 # Pull in the rest of the debugger code.
-. $_Dbg_main
+. "$_Dbg_main"
 
 trap '_Dbg_debug_trap_handler 0 "$BASH_COMMAND" "$@"' DEBUG
