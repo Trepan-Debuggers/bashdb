@@ -19,5 +19,7 @@ $3 = b
 $4 = c
 +info functions ^ha
 hanoi
-+quit 
++info args 3
++info args 100
++quit
 bashdb: That's all, folks...

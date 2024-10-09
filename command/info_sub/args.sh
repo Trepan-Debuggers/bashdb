@@ -44,7 +44,7 @@ See also:
 
 _Dbg_do_info_args() {
 
-    typeset -r frame_start=${1:-0}
+    typeset -r frame_start="${1:-0}"
 
     eval "$_seteglob"
     if [[ $frame_start != $int_pat ]] ; then
@@ -53,22 +53,15 @@ _Dbg_do_info_args() {
 	return 1
     fi
 
-    # source /usr/local/share/bashdb/bashdb-trace
-    # _Dbg_debugger
-
-    typeset -i i=$frame_start
-
-    (( i >= _Dbg_stack_size )) && return 1
+    typeset -i i="$frame_start"
+    (( i >= _Dbg_stack_size - 1 )) && return 1
 
     # Figure out which index in BASH_ARGV is position "i" (the place where
     # we start our stack trace from). variable "r" will be that place.
 
     typeset -i adjusted_pos
-    adjusted_pos=$(_Dbg_frame_adjusted_pos $frame_start)
+    adjusted_pos=$(_Dbg_frame_adjusted_pos $i)
     typeset -i arg_count=${BASH_ARGC[$adjusted_pos]}
-    # echo "arg count is " $arg_count
-    # echo "adjusted_pos is" $adjusted_pos
-    # typeset -p BASH_ARGC
 
     # Print out parameter list.
     if (( 0 != ${#BASH_ARGC[@]} )) ; then
