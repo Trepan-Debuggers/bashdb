@@ -69,11 +69,10 @@ function _Dbg_do_info_variables() {
     (($? != 0)) && return
 
     # Caveats:
-    #   Bash >= 5.2: 'declare -p' properly escapes special characters within $'', e.g. $'\n\t'
     #   Bash < 5.2: 'declare -p' does not escape special characters within $'', but only 'declare' does
     #   "declare -p" outputs variables without values, but "declare" does not
     #
-    # To work with all of Bash 5.x, we're collecting all variables and values from 'declare'.
+    # We're collecting all variables and values from 'declare'.
     # Because a plain "declare" also prints functions we're only iterating until the first function definition was found.
     #
     # Then we run declare with the filter parameters (-p, -i, etc.) to retrieve the variables to output.
