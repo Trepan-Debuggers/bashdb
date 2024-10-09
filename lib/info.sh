@@ -19,7 +19,7 @@
 #   the Free Software Foundation, 59 Temple Place, Suite 330, Boston,
 #   MA 02111 USA.
 
-typeset -r _Dbg_info_cmds='args breakpoints display files functions line program signals source stack variables warranty'
+typeset -r _Dbg_info_cmds='args args_bsp breakpoints display files functions line program signals source stack variables warranty'
 
 _Dbg_info_help() {
 
@@ -49,6 +49,11 @@ _Dbg_info_help() {
 
 
   case $subcmd in
+    args_bsp )
+      _Dbg_msg \
+"info args_bsp -- Argument variables (e.g. \$1, \$2, ...) of the current stack frame, falling back to script args."
+      return 0
+      ;;
     ar | arg | args )
       _Dbg_msg \
 "info args -- Argument variables (e.g. \$1, \$2, ...) of the current stack frame."
