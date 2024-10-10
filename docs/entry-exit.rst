@@ -66,7 +66,7 @@ debugger at the spot in the program you want. To do this, you source
 ``bashdb/dbg-trace.sh`` from where wherever it appears on your
 filesystem.  This needs to be done only once.
 
-After that you call ``_Dbg_debugger``.
+After that, you call ``_Dbg_debugger``.
 
 Consider the example of the previous section, but you to debug
 ``/etc/profile.d/bash_completion.sh`` and skip over the other default
@@ -93,17 +93,9 @@ profile scripts at high speed. Here is how you might do this:
          unset i
         fi
 
-
-Since ``_Dbg_debugger`` is a function call, it can be nested inside some sort of
-conditional statement allowing one to be very precise about the
-conditions you want to debug under. And until first call to ``_Dbg_debugger``,
+Since `_Dbg_debugger``is a function call, it can be nested inside some 
+conditional statement allowing one to be precise about the
+conditions you want to debug under. And until the first call to ``_Dbg_debugger``,
 there is no debugger overhead.
 
-Note that ``_Dbg_debugger`` causes the statement *after* the call to be stopped at.
-
-The file name ``/usr/share/bashdb/bashdb-trace`` may need to be
-adjusted based on the location ``bashdb`` was installed. Here, on
-my Ubuntu GNU/Linux system it was installed in ``/usr/share/bashdb``.
-
-Again, there is no overhead or knowledge of the debugger before the
-first source command to ``bashdb-trace``.
+Note that ``_Dbg_debugger`` causes the statement *after* the call to be stopped.
