@@ -9,7 +9,7 @@ From a Package
 
 Repology_ maintains a list of various bundled ``bashdb`` packages. Below are some specific distributions that contain ``bashdb``.
 
-At the time this documentation was built, here is status that they provide:
+At the time this documentation was built, here is the status that they provide:
 
 |packagestatus|
 
@@ -37,7 +37,7 @@ Github
 ++++++
 
 
-Many package managers have back-level versions of this debugger. The most recent versions is from the github_.
+Many package managers have back-level versions of this debugger. The most recent version is from the github_.
 
 To install from git:
 
@@ -76,7 +76,7 @@ Above, the directory *path-to_bashdb* should be replaced with the
 directory that `dbg-trace.sh` is located in. This can also be from the
 source code directory *bashdb* or from the directory `dbg-trace.sh` gets
 installed directory. The "source" command needs to be done only once
-somewhere in the code prior to using `_Dbg_debugger`.
+somewhere in the code before using `_Dbg_debugger`.
 
 If you are happy and `make test` above worked, install via:
 
