@@ -10,7 +10,7 @@ debuggers and vice versa.
 Source-code Syntax Colorization
 -------------------------------
 
-Terminal source code is colorized via pygments_ . And with that you
+Terminal source code is colorized via pygments_ . And with that, you
 can set the pygments color style, e.g. "colorful", "paraiso-dark". See
 set_style_ . Furthermore, we make use of terminal bold and emphasized
 text in debugger output and help text. Of course, you can also turn
@@ -22,8 +22,8 @@ Command Completion
 
 Terminal command completion is available. Command completion is not
 just a simple static list, but varies depending on the context. For
-example, for frame-changing commands which take optional numbers, on
-the list of *valid numbers* is considered.
+example, for frame-changing commands that take optional numbers, 
+change depending on the list of *valid numbers* is considered.
 
 Terminal Handling
 -----------------
@@ -35,22 +35,22 @@ Smart Eval
 ----------
 
 If you want to evaluate the current source line before it is run in
-the code, use ``eval``. To evaluate text of a common fragment of line,
+the code, use ``eval``. To evaluate the text of a common fragment of line,
 such as the expression part of an *if* statement, you can do that with
 ``eval?``. See eval_ for more information.
 
 More Stepping Control
 ---------------------
 
-Sometimes you want small steps, and sometimes large stepping.
+Sometimes you want small steps, and sometimes large steps.
 
-This fundamental issue is handled in a couple ways:
+This fundamental issue is handled in a couple of ways:
 
 Step Granularity
 ................
 
 There are now ``step`` *event* and ``next`` *event* commands with
-aliases to ``s+``, ``s>`` and so on. The plus-suffixed commands force
+aliases to ``s+``, ``s>``, and so on. The plus-suffixed commands force
 a different line on a subsequent stop, the dash-suffixed commands
 don't.  Without a suffix you get the default; this is set by the :ref:`set different <set_different>` command.
 
