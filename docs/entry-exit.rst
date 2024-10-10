@@ -66,7 +66,7 @@ This needs to be done only once.
 
 After that, you call ``_Dbg_debugger``.
 
-Here is an Example:
+Here is an example:
 
 .. code:: console
 
