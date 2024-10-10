@@ -4,7 +4,7 @@
 .. contents::
 
 bashdb command
-#############
+##############
 
 Synopsis
 --------

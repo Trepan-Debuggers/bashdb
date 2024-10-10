@@ -1,12 +1,12 @@
 Entering the Bash Debugger
-****************************
+**************************
 
 .. toctree::
 .. contents::
 
 
 Invoking the Debugger Initially
-====================================
+===============================
 
 The simplest way to debug your program is to run ``bashdb``. Give
 the name of your program and its options and any debugger options:
@@ -52,31 +52,46 @@ For help on `bashdb` or options, use the ``--help`` option.
 
 
 Calling the debugger from your program
-===========================================
+======================================
 
-Sometimes it is not feasible to invoke the program from the debugger.
+Sometimes it is not possible to invoke the program you want debugged
+from the ``bashdb`` or from ``bash --debugger``.
+
 Although the debugger tries to set things up to make it look like your
-program is called, sometimes the differences matter. Also, the debugger
-adds overhead and slows down your program.
+program is called, sometimes the differences matter. Also, once the debugger
+is loaded this can slows in parts that you do not want to debug.
 
-Another possibility is adding statements into your program to call
-the debugger at the spot in the program you want. To do this, you source
-``bashdb/dbg-trace.sh`` from where wherever it appears on your filesystem.
-This needs to be done only once.
+So instead, you can add statements into your program to call the
+debugger at the spot in the program you want. To do this, you source
+``bashdb/dbg-trace.sh`` from where wherever it appears on your
+filesystem.  This needs to be done only once.
 
 After that, you call ``_Dbg_debugger``.
 
-Here is an example:
+Consider the example of the previous section, but you to debug
+``/etc/profile.d/bash_completion.sh`` and skip over the other default
+profile scripts at high speed. Here is how you might do this:
 
 .. code:: console
 
-    source path-to-bashdb/bashdb/dbg-trace.sh
-    # work, work, work.
-    # ... some bash code
+        if [ "${PS1-}" ]; then
+          # 15 lines omitted
+        fi
 
-    _Dbg_debugger
-    # start debugging here
-
+        if [ -d /etc/profile.d ]; then
+          for i in /etc/profile.d/*.sh; do
+            if [ -r $i ]; then
+              if [[ $i == "/etc/profile.d/bash_completion.sh"; then
+                # Load in debugger
+                . /usr/share/bashdb/bashdb-trace -q
+                # Call debugger
+                _Dbg_debugger
+              fi
+              . $i
+           fi
+          done
+         unset i
+        fi
 
 Since `_Dbg_debugger``is a function call, it can be nested inside some 
 conditional statement allowing one to be precise about the
