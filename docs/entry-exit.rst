@@ -56,15 +56,15 @@ Calling the debugger from your program
 
 Sometimes it is not feasible to invoke the program from the debugger.
 Although the debugger tries to set things up to make it look like your
-program is called, sometimes the differences matter. Also the debugger
+program is called, sometimes the differences matter. Also, the debugger
 adds overhead and slows down your program.
 
-Another possibility then is to add statements into your program to call
+Another possibility is adding statements into your program to call
 the debugger at the spot in the program you want. To do this, you source
 ``bashdb/dbg-trace.sh`` from where wherever it appears on your filesystem.
 This needs to be done only once.
 
-After that you call ``_Dbg_debugger``.
+After that, you call ``_Dbg_debugger``.
 
 Here is an Example:
 
@@ -78,9 +78,9 @@ Here is an Example:
     # start debugging here
 
 
-Since `_Dbg_debugger`` a function call, it can be nested inside some sort of
-conditional statement allowing one to be very precise about the
-conditions you want to debug under. And until first call to ``_Dbg_debugger``,
+Since `_Dbg_debugger``is a function call, it can be nested inside some 
+conditional statement allowing one to be precise about the
+conditions you want to debug under. And until the first call to ``_Dbg_debugger``,
 there is no debugger overhead.
 
-Note that ``_Dbg_debugger`` causes the statement *after* the call to be stopped at.
+Note that ``_Dbg_debugger`` causes the statement *after* the call to be stopped.
