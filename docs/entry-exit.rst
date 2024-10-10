@@ -93,9 +93,6 @@ profile scripts at high speed. Here is how you might do this:
          unset i
         fi
 
-Since `_Dbg_debugger``is a function call, it can be nested inside some 
-conditional statement allowing one to be precise about the
-conditions you want to debug under. And until the first call to ``_Dbg_debugger``,
-there is no debugger overhead.
+Until the first call to ``_Dbg_debugger``, there is no debugger overhead.
 
 Note that ``_Dbg_debugger`` causes the statement *after* the call to be stopped.
