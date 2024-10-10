@@ -81,7 +81,7 @@ execution string that is to be debugged. Use this option to do that.
 
 :-q | --quiet:
 
-Do not print introductory version and copyright information. This is
+Do not print the introductory version and copyright information. This is
 again useful in regression testing where we don't want to include a
 changeable copyright date in the regression-test matching.
 
@@ -96,9 +96,9 @@ scripts.
 
 :-L | --library *debugger-library*:
 
-The debugger needs to source or include a number of functions and
+The debugger needs to source or include several functions and
 these reside in a library. If this option is not given the default
-location of library is relative to the installed bashdb script:
+location of the library is relative to the installed bashdb script:
 `../lib/bashdb`.
 
 
@@ -106,7 +106,7 @@ location of library is relative to the installed bashdb script:
 :-T | --tempdir *temporary-file-directory*:
 
 The debugger needs to make use of some temporary filesystem storage to
-save persistent information across a subshell return or in order to
+save persistent information across a subshell return or to
 evaluate an expression. The default directory is `/tmp` but you can
 use this option to set the directory where debugger temporary files
 will be created.
@@ -116,13 +116,13 @@ will be created.
 
 Debugger output usually goes to a terminal rather than stdout or stdin
 which the debugged program may use. Determination of the tty or
-pseudo-tty is normally done automatically. However if you want to
+pseudo-tty is normally done automatically. However, if you want to
 control where the debugger output goes, use this option.
 
 
 :-V | --version:
 
-Show version number and no-warranty and exit with return code 1.
+Show the version number and non-warranty and exit with return code 1.
 
 Bugs
 ----
