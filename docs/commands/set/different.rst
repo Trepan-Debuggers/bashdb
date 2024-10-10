@@ -2,7 +2,7 @@
 .. _set_different:
 
 Consecutive Stops on Different File/Line Positions) (``set different``)
----------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 **set different** [ **on** | **off** ]
 
