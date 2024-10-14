@@ -35,7 +35,7 @@ the name of your program and its options and any debugger options:
 
         $ bashdb /etc/profile
 
-For help on `bashdb` or options, use the ``--help`` option.
+For help on ``bashdb`` or options, use the ``--help`` option.
 
 .. code:: console
 
