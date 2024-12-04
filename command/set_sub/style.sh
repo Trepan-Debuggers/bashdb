@@ -26,12 +26,6 @@ if [[ $0 == ${BASH_SOURCE[0]} ]] ; then
     for file in help alias ; do source "$top_dir/lib/${file}.sh"; done
 fi
 
-typeset -x _Dbg_pygments_styles=''
-
-if (( _Dbg_working_term_highlight )) ; then
-   _Dbg_pygments_styles=$("${_Dbg_libdir}/lib/term-highlight.py" -L)
-fi
-
 _Dbg_complete_style() {
     COMPREPLY=( $_Dbg_pygments_styles off )
 }
