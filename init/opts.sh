@@ -1,7 +1,8 @@
 # -*- shell-script -*-
 # debugger command options processing. The bane of programming.
 #
-#   Copyright (C) 2008-2012, 2014-2019, 2021 Rocky Bernstein <rocky@gnu.org>
+#   Copyright (C) 2008-2012, 2014-2019, 2021, 2023-2024
+#   Rocky Bernstein <rocky@gnu.org>
 #
 #   This program is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -94,9 +95,11 @@ if ( pygmentize --version || pygmentize -V ) 2>/dev/null 1>/dev/null ; then
 fi
 
 typeset -ix _Dbg_working_term_highlight
+typeset -x _Dbg_pygments_styles=''
 
 if "${_Dbg_libdir}/lib/term-highlight.py" -V 2>/dev/null  1>/dev/null ; then
     _Dbg_working_term_highlight=1
+    _Dbg_pygments_styles=$("${_Dbg_libdir}/lib/term-highlight.py" -L)
 else
     _Dbg_working_term_highlight=0
 fi
@@ -132,7 +135,7 @@ _Dbg_parse_options() {
     typeset -i _Dbg_highlight_enabled=1
     typeset OPTLARG OPTLERR OPTLPENDING opt
 
-    while getopts_long A:Bc:x:hL:nqTt:Yy:VX opt \
+    while getopts_long A:Bc:x:hL:nqS:T:t:Yy:VX opt \
         annotate     required_argument       \
         basename     no_argument             \
         command      required_argument       \
@@ -146,6 +149,7 @@ _Dbg_parse_options() {
         no-init      no_argument             \
         nx           no_argument             \
         quiet        no_argument             \
+        style        required_argument       \
         tempdir      required_argument       \
         tty          required_argument       \
         terminal     required_argument       \
@@ -177,8 +181,8 @@ _Dbg_parse_options() {
 		esac
 
 		if (( ! _Dbg_have_working_pygmentize )) ; then
-                    printf "Can't run pygmentize. --highlight forced off" >&2
-            _Dbg_highlight_enabled=0
+                    printf "Can't run pygmentize. --highlight forced off." >&2
+		    _Dbg_highlight_enabled=0
 		    _Dbg_set_highlight=''
                 fi
                 ;;
@@ -197,6 +201,15 @@ _Dbg_parse_options() {
                 _Dbg_o_nx=1             ;;
             q | quiet )
                 _Dbg_o_quiet=1          ;;
+            S | style )
+		if (( ! _Dbg_have_working_pygmentize )) ; then
+                    printf "Can't run pygmentize. --style option ignored." >&2
+		elif [[ "${_Dbg_pygments_styles#*$OPTLARG}" != "$_Dbg_pygments_styles" ]] ; then
+		    _Dbg_set_style="$OPTLARG"
+		else
+		    printf "Can't find style ${OPTLARG}; --style option ignored." >&1
+		fi
+                ;;
             tempdir)
                 _Dbg_tmpdir=$OPTLARG    ;;
             terminal | tty )
@@ -230,7 +243,7 @@ _Dbg_parse_options() {
         [[ -n $_Dbg_release ]] ; then
         echo "$_Dbg_shell_name debugger, $_Dbg_debugger_name, release $_Dbg_release"
         printf '
-Copyright 2002-2004, 2006-2012, 2014, 2016-2019, 2021 Rocky Bernstein
+Copyright 2002-2004, 2006-2012, 2014, 2016-2019, 2021, 2023-2024 Rocky Bernstein
 This is free software, covered by the GNU General Public License, and you are
 welcome to change it and/or distribute copies of it under certain conditions.
 
