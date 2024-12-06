@@ -148,6 +148,7 @@ _Dbg_debug_trap_handler() {
 
     typeset _Dbg_full_filename
     _Dbg_full_filename=$(_Dbg_is_file "$_Dbg_frame_last_filename")
+
     if [[ -r "$_Dbg_full_filename" ]] ; then
 	_Dbg_file2canonic["$_Dbg_frame_last_filename"]="$_Dbg_full_filename"
 	_Dbg_file2canonic["${BASH_SOURCE[1]}"]="$_Dbg_full_filename"

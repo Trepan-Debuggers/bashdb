@@ -87,8 +87,11 @@ function _Dbg_set_debugger_entry {
   _Dbg_stack_pos=_0
   _Dbg_listline=_Dbg_frame_last_lineno
   _Dbg_set_debugger_internal
-  _Dbg_frame_last_filename=${BASH_SOURCE[$discard_top_fn_count]:-$_Dbg_bogus_file}
-  _Dbg_frame_last_filename=$(_Dbg_resolve_expand_filename "$_Dbg_frame_last_filename")
+  typeset -l frame_last_filename=${BASH_SOURCE[$discard_top_fn_count]:-$_Dbg_bogus_file}
+  _Dbg_frame_last_filename=$(_Dbg_resolve_expand_filename "$frame_last_filename")
+  if [[ -z "$_Dbg_frame_last_filename" ]]; then
+      _Dbg_frame_last_filename="$frame_last_filename"
+  fi
 
   # Read in the journal to pick up variable settings that might have
   # been left from a subshell.
