@@ -2,7 +2,7 @@
 # gdb-like "backtrace" debugger command
 #
 #   Copyright (C) 2002-2006, 2008, 2010-2011, 2018-2019
-#   Rocky Bernstein <rocky@gnu.org>
+#   2024 Rocky Bernstein <rocky@gnu.org>
 #
 #   This program is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -124,12 +124,17 @@ function _Dbg_do_backtrace {
 
     typeset    filename
     typeset -i adjusted_pos
-    # Position 0 is special in that get the line number not from the
-    # stack but ultimately from LINENO which was saved in the hook call.
     if (( frame_start == 0 )) ; then
 	((count--)) ;
 	adjusted_pos=$(_Dbg_frame_adjusted_pos 0)
-	filename=$(_Dbg_file_canonic "${BASH_SOURCE[$adjusted_pos]}")
+	filename="${BASH_SOURCE[$adjusted_pos]}"
+	resolved_filename="${_Dbg_file2canonic[$filename]}"
+	if [[ ! -z "${resolved_filename}" ]] ; then
+	    filename="$resolved_filename"
+	else
+	    filename=$(_Dbg_file_canonic "$filename")
+	fi
+
 	_Dbg_frame_print $(_Dbg_frame_prefix 0) '0' '' "$filename" "$_Dbg_frame_last_lineno" ''
     fi
 
@@ -153,8 +158,6 @@ function _Dbg_do_backtrace {
 	adjusted_pos=$(_Dbg_frame_adjusted_pos $i)
 	_Dbg_msg_nocr $(_Dbg_frame_prefix $i)$i ${FUNCNAME[$adjusted_pos-1]}
 
-	typeset parms=''
-
 	# Print out parameter list.
 	if (( 0 != ${#BASH_ARGC[@]} )) ; then
 	    _Dbg_frame_fn_param_str
@@ -170,7 +173,13 @@ function _Dbg_do_backtrace {
 	else
 	    lineno=${BASH_LINENO[$adjusted_pos-1]}
 	fi
-	filename=$(_Dbg_file_canonic "${BASH_SOURCE[$adjusted_pos]}")
+
+	filename="${BASH_SOURCE[$adjusted_pos]}"
+	resolved_filename="${_Dbg_file2canonic[$filename]}"
+	if [[ ! -z "${resolved_filename}" ]] ; then
+	    filename="$resolved_filename"
+	fi
+
 	_Dbg_msg "($_Dbg_parm_str) called from file \`$filename'" "at line $lineno"
 	if (( show_source )) ; then
 	    _Dbg_get_source_line $lineno "${BASH_SOURCE[$adjusted_pos]}"
