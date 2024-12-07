@@ -247,11 +247,12 @@ _Dbg_set_brkpt() {
     _Dbg_write_journal_eval "_Dbg_brkpt_file2linenos[\"$source_file\"]+=\" $lineno \""
     _Dbg_write_journal_eval "_Dbg_brkpt_file2brkpt[\"$source_file\"]+=\" $_Dbg_brkpt_max \""
 
-    source_file=$(_Dbg_adjust_filename "$source_file")
+    resolved_source_file=$(_Dbg_adjust_filename "$source_file")
+    _Dbg_file2canonic["$source_file"]="$resolved_source_file"
     if (( is_temp == 0 )) ; then
-	_Dbg_msg "Breakpoint $_Dbg_brkpt_max set in file ${source_file}, line $lineno."
+	_Dbg_msg "Breakpoint $_Dbg_brkpt_max set in file ${resolved_source_file}, line $lineno."
     else
-	_Dbg_msg "One-time breakpoint $_Dbg_brkpt_max set in file ${source_file}, line $lineno."
+	_Dbg_msg "One-time breakpoint $_Dbg_brkpt_max set in file ${resolved_source_file}, line $lineno."
     fi
     _Dbg_write_journal "_Dbg_brkpt_max=$_Dbg_brkpt_max"
     return 0

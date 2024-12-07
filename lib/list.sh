@@ -36,10 +36,14 @@ typeset _Dbg_source_line
 function _Dbg_print_location_and_command {
   typeset line_number=${1:-$_Dbg_frame_last_lineno}
   typeset filename=${2:-$_Dbg_frame_last_filename}
-  _Dbg_get_source_line $line_number "$filename"
-  filename=$(_Dbg_adjust_filename "$filename")
-  _Dbg_msg "(${filename}:${line_number}):
+  if [[ -z "$filename" ]] ; then
+      _Dbg_msg "(??:${line_number}):"
+  else
+      _Dbg_get_source_line $line_number "$filename"
+      filename=$(_Dbg_adjust_filename "$filename")
+      _Dbg_msg "(${filename}:${line_number}):
 ${line_number}:\t${_Dbg_source_line}"
+  fi
 
   # If we are at the same place in the file but the command has changed,
   # then we have multiple commands on the line. So print which one we are

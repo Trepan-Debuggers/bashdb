@@ -2,7 +2,7 @@
 # filecache.sh - cache file information
 #
 #   Copyright (C) 2008-2011, 2013-2015, 2018-2019 Rocky Bernstein
-#   <rocky@gnu.org>
+#   2024 <rocky@gnu.org>
 #
 #   This program is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -63,7 +63,7 @@ _Dbg_check_line() {
 # Error message for file not read in
 function _Dbg_file_not_read_in {
     typeset -r filename=$(_Dbg_adjust_filename "$1")
-    _Dbg_errmsg "File \"$filename\" not found in read-in files."
+    _Dbg_errmsg "File \"$filename\" ($1) not found in read-in files."
     _Dbg_errmsg "See 'info files' for a list of known files and"
     _Dbg_errmsg "'load' to read in a file."
 }
@@ -106,7 +106,9 @@ _Dbg_get_source_line() {
 	filename="$1"
     fi
     _Dbg_readin_if_new "$filename"
-    if [[ -n $_Dbg_set_highlight ]] && [[ -n $_Dbg_highlight_array_var ]]; then
+    if [[ -z "$_Dbg_source_array_var" ]]; then
+	_Dbg_source_line="??"
+    elif [[ -n $_Dbg_set_highlight ]] && [[ -n $_Dbg_highlight_array_var ]]; then
 	eval "typeset -i count=\${#$_Dbg_highlight_array_var[@]}"
 	if (( count  )) ; then
 	    eval "_Dbg_source_line=\${$_Dbg_highlight_array_var[lineno]}"
@@ -244,7 +246,11 @@ function _Dbg_readin {
     (( line_count >= NOT_SMALLFILE )) && _Dbg_msg "done."
 
     # Add $filename to list of all filenames
-    _Dbg_filenames["$fullname"]=$_Dbg_source_array_var;
+    if [[ ! -z $fullname ]] ; then
+	_Dbg_filenames["$fullname"]=$_Dbg_source_array_var;
+    else
+	echo "XXX ${filename}"
+    fi
     return 0
 }
 

@@ -1,8 +1,8 @@
 # -*- shell-script -*-
 # Things related to file handling.
 #
-#   Copyright (C) 2002-2004, 2006, 2008-2010, 2014, 2018, 2020 Rocky
-#   Bernstein rocky@gnu.org
+#   Copyright (C) 2002-2004, 2006, 2008-2010, 2014, 2018, 2020
+#   2024 Bernstein rocky@gnu.org
 #
 #   bashdb is free software; you can redistribute it and/or modify it under
 #   the terms of the GNU General Public License as published by the Free
@@ -98,6 +98,9 @@ function _Dbg_resolve_expand_filename {
       # Try using cwd rather that Dbg_init_cwd
       full_find_file=$(_Dbg_expand_filename "$find_file")
     fi
+    if [[ ! -z "$full_find_file" ]]; then
+	_Dbg_file2canonic["$find_file"]="$full_find_file"
+    fi
     echo "$full_find_file"
     return 0
   else
@@ -105,14 +108,16 @@ function _Dbg_resolve_expand_filename {
     typeset -i n=${#_Dbg_dir[@]}
     typeset -i i
     for (( i=0 ; i < n; i++ )) ; do
-      typeset basename="${_Dbg_dir[i]}"
+      typeset dirname="${_Dbg_dir[i]}"
       if [[  "$basename" == '\$cdir' ]] ; then
-	basename=$_Dbg_cdir
+	dirname="$_Dbg_cdir"
       elif [[ "$basename" == '\$cwd' ]] ; then
-	basename=$(pwd)
+	dirname="$(pwd)"
       fi
-      if [[ -f "$basename/$find_file" ]] ; then
-	echo "$basename/$find_file"
+      if [[ -f "$dirname/$find_file" ]] ; then
+        full_find_file="$dirname/$find_file"
+	_Dbg_file2canonic["$find_file"]="$full_find_file"
+	echo "$full_find_file"
 	return 0
       fi
     done
