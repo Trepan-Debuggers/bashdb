@@ -132,7 +132,7 @@ function _Dbg_do_backtrace {
 	if [[ ! -z "${resolved_filename}" ]] ; then
 	    filename="$resolved_filename"
 	else
-	    filename=$(_Dbg_file_canonic "$filename")
+	    filename="$(_Dbg_file_canonic "$filename")"
 	fi
 
 	_Dbg_frame_print $(_Dbg_frame_prefix 0) '0' '' "$filename" "$_Dbg_frame_last_lineno" ''
