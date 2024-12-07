@@ -128,7 +128,7 @@ function _Dbg_do_backtrace {
 	((count--)) ;
 	adjusted_pos=$(_Dbg_frame_adjusted_pos 0)
 	filename="${BASH_SOURCE[$adjusted_pos]}"
-	resolved_filename="${_Dbg_file2canonic[$filename]}"
+	typeset -l resolved_filename="${_Dbg_file2canonic[$filename]}"
 	if [[ ! -z "${resolved_filename}" ]] ; then
 	    filename="$resolved_filename"
 	else

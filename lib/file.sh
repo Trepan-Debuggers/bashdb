@@ -110,9 +110,9 @@ function _Dbg_resolve_expand_filename {
     for (( i=0 ; i < n; i++ )) ; do
       typeset dirname="${_Dbg_dir[i]}"
       if [[  "$basename" == '\$cdir' ]] ; then
-	dirname=$_Dbg_cdir
+	dirname="$_Dbg_cdir"
       elif [[ "$basename" == '\$cwd' ]] ; then
-	dirname=$(pwd)
+	dirname="$(pwd)"
       fi
       if [[ -f "$dirname/$find_file" ]] ; then
         full_find_file="$dirname/$find_file"
