@@ -129,7 +129,8 @@ function _Dbg_do_backtrace {
     if (( frame_start == 0 )) ; then
 	((count--)) ;
 	adjusted_pos=$(_Dbg_frame_adjusted_pos 0)
-	filename=$(_Dbg_file_canonic "${BASH_SOURCE[$adjusted_pos]}")
+	filename=$(_Dbg_resolve_expand_filename "${BASH_SOURCE[$adjusted_pos]}")
+	filename=$(_Dbg_adjust_filename "$filename")
 	_Dbg_frame_print $(_Dbg_frame_prefix 0) '0' '' "$filename" "$_Dbg_frame_last_lineno" ''
     fi
 
@@ -168,7 +169,8 @@ function _Dbg_do_backtrace {
 	else
 	    lineno=${BASH_LINENO[$adjusted_pos-1]}
 	fi
-	filename=$(_Dbg_file_canonic "${BASH_SOURCE[$adjusted_pos]}")
+	filename=$(_Dbg_resolve_expand_filename "${BASH_SOURCE[$adjusted_pos]}")
+	filename=$(_Dbg_adjust_filename "$filename")
 	_Dbg_msg "($_Dbg_parm_str) called from file \`$filename'" "at line $lineno"
 	if (( show_source )) ; then
 	    _Dbg_get_source_line $lineno "${BASH_SOURCE[$adjusted_pos]}"
