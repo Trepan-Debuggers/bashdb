@@ -2,7 +2,7 @@
 # gdb-like "backtrace" debugger command
 #
 #   Copyright (C) 2002-2006, 2008, 2010-2011, 2018-2019
-#   Rocky Bernstein <rocky@gnu.org>
+#   2024 Rocky Bernstein <rocky@gnu.org>
 #
 #   This program is free software; you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -152,8 +152,6 @@ function _Dbg_do_backtrace {
 	typeset -i arg_count=${BASH_ARGC[$_Dbg_next_argc]}
 	adjusted_pos=$(_Dbg_frame_adjusted_pos $i)
 	_Dbg_msg_nocr $(_Dbg_frame_prefix $i)$i ${FUNCNAME[$adjusted_pos-1]}
-
-	typeset parms=''
 
 	# Print out parameter list.
 	if (( 0 != ${#BASH_ARGC[@]} )) ; then
