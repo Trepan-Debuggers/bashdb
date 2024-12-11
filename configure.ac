@@ -2,7 +2,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 # Copyright (C) 2002-2012,
-# 2014-2019, 2023 Rocky Bernstein <rocky@gnu.org>
+# 2014-2019, 2023-2024 Rocky Bernstein <rocky@gnu.org>
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -254,6 +254,8 @@ AC_CONFIG_FILES([test/unit/test-cmd-info-variables.sh],
                 [chmod +x test/unit/test-cmd-info-variables.sh])
 AC_CONFIG_FILES([test/unit/test-cmd-eval.sh],
                 [chmod +x test/unit/test-cmd-eval.sh])
+AC_CONFIG_FILES([test/unit/test-cmd-load.sh],
+                [chmod +x test/unit/test-cmd-load.sh])
 AC_CONFIG_FILES([test/unit/test-columns.sh],
                 [chmod +x test/unit/test-columns.sh])
 AC_CONFIG_FILES([test/unit/test-eval.sh],
