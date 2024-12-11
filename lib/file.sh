@@ -109,7 +109,7 @@ function _Dbg_resolve_expand_filename {
       if [[  "$dirname" == '\$cdir' ]] ; then
 	dirname="$_Dbg_cdir"
       elif [[ "$dirname" == '\$cwd' ]] ; then
-	dirname=$(pwd)
+	dirname="$(pwd)"
       fi
       if [[ -f "$dirname/$find_file" ]] ; then
 	echo "$dirname/$find_file"
