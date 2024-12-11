@@ -107,7 +107,7 @@ function _Dbg_resolve_expand_filename {
     for (( i=0 ; i < n; i++ )) ; do
       typeset dirname="${_Dbg_dir[i]}"
       if [[  "$dirname" == '\$cdir' ]] ; then
-	dirname=$_Dbg_cdir
+	dirname="$_Dbg_cdir"
       elif [[ "$dirname" == '\$cwd' ]] ; then
 	dirname=$(pwd)
       fi
