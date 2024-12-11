@@ -129,7 +129,7 @@ function _Dbg_do_backtrace {
     if (( frame_start == 0 )) ; then
 	((count--)) ;
 	adjusted_pos=$(_Dbg_frame_adjusted_pos 0)
-	filename=$(_Dbg_resolve_expand_filename "${BASH_SOURCE[$adjusted_pos]}")
+	filename="$(_Dbg_resolve_expand_filename "${BASH_SOURCE[$adjusted_pos]}")"
 	filename=$(_Dbg_adjust_filename "$filename")
 	_Dbg_frame_print $(_Dbg_frame_prefix 0) '0' '' "$filename" "$_Dbg_frame_last_lineno" ''
     fi
