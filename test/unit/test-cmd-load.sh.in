@@ -1,0 +1,37 @@
+#!@SH_PROG@
+# -*- shell-script -*-
+
+typeset -a messages=()
+
+test_cmd_load()
+{
+    # Check that load_file caches mapping from short name
+    # to fully-resolved file name
+    local find_file="./test-cmd-load.sh.in"
+    cd $(dirname ${BASH_SOURCE[0]})
+    _Dbg_init_cwd=$(pwd)
+    _Dbg_do_load "$find_file"
+    assertEquals ${#messages[@]} 0
+    typeset cached_file="${_Dbg_file2canonic[$find_file]}"
+    assertEquals "$cached_file" $(_Dbg_resolve_expand_filename "$find_file")
+}
+
+abs_top_srcdir=@abs_top_srcdir@
+# Make sure $abs_top_srcdir has a trailing slash
+abs_top_srcdir=${abs_top_srcdir%%/}/
+. ${abs_top_srcdir}test/unit/helper.sh
+. ${abs_top_srcdir}init/pre.sh
+for file in alias help fns ; do
+    . ${abs_top_srcdir}lib/${file}.sh
+done
+. ${abs_top_srcdir}lib/filecache.sh
+. ${abs_top_srcdir}lib/file.sh
+. ${abs_top_srcdir}lib/unescape.sh
+. ${abs_top_srcdir}command/load.sh
+set -- # reset $# so shunit2 doesn't get confused.
+[[ @CMDLINE_INVOKED@ ]] && . ${shunit_file}
+
+# Replace lib/msg _Dbg_msg with sothing to track.
+function _Dbg_msg {
+    messages+=("$@)
+}

@@ -1,6 +1,6 @@
-/*~
-/*.trs
 /*.log
+/*.trs
+/*~
 /Makefile
 /Makefile.in
 /require_me.sh
@@ -11,6 +11,7 @@
 /test-cmd-complete.sh
 /test-cmd-eval.sh
 /test-cmd-info-variables.sh
+/test-cmd-load.sh
 /test-columns.sh
 /test-eval.sh
 /test-file.sh
