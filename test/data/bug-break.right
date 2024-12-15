@@ -17,7 +17,7 @@ i=1 result=Breakpoint 1 hit (1 times).
 +bt
 ->0 in file `fib.sh' at line 5
 ##1 fibonacci("1") called from file `fib.sh' at line 18
-##2 source("fib.sh") called from file `bashdb' at line 99
+##2 source("fib.sh") called from file `bashdb' at line 110
 ##3 main() called from file `bashdb' at line 0
 +delete 1
 Deleted breakpoint 1

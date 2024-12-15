@@ -1,7 +1,7 @@
 (dbg-test1.sh:22):
 22:	x=22
 +# Test break, watch, watche, step, next, continue and stack handling
-+# 
++#
 +### Try a simple line number breakpoint...
 +break 23
 Breakpoint 1 set in file dbg-test1.sh, line 23.
@@ -9,7 +9,7 @@ Breakpoint 1 set in file dbg-test1.sh, line 23.
 Num Type       Disp Enb What
 ----------------------------
 1   breakpoint keep y   dbg-test1.sh:23
-+continue 
++continue
 Breakpoint 1 hit (1 times).
 (dbg-test1.sh:23):
 23:	y=23
@@ -18,7 +18,7 @@ Program stopped.
 It stopped at breakpoint 1.
 Next statement to be run is:
 	y=23
-+# 
++#
 +### Try watch...
 +watch x
  0: ($x)==22 arith: 0
@@ -26,7 +26,7 @@ Next statement to be run is:
 Num Type       Enb  Expression
 ------------------------------
 0   watchpoint y    $x
-+c 
++c
 Watchpoint 0: $x changed:
   old value: '22'
   new value: '23'
@@ -55,7 +55,7 @@ Watchpoint 1: x > 26 changed:
   new value: '1'
 (dbg-test1.sh:28):
 28:	y=b
-+L 
++L
 Num Type       Disp Enb What
 ----------------------------
 1   breakpoint keep y   dbg-test1.sh:23
@@ -70,7 +70,7 @@ Num Type       Enb  Expression
 No actions have been set.
 +### Try deleting a watchpoint...
 +delete 1W
-+L 
++L
 Num Type       Disp Enb What
 ----------------------------
 1   breakpoint keep y   dbg-test1.sh:23
@@ -100,7 +100,7 @@ Program stopped.
 It stopped at breakpoint 3.
 Next statement to be run is:
 	fn1
-+L 
++L
 Num Type       Disp Enb What
 ----------------------------
 1   breakpoint keep y   dbg-test1.sh:23
@@ -118,11 +118,11 @@ No actions have been set.
 ->0 in file `dbg-test1.sh' at line 5
 ##1 fn1() called from file `dbg-test1.sh' at line 32
 +### Try up...
-+up 
++up
 ->1 in file `dbg-test1.sh' at line 32
 (dbg-test1.sh:32):
 32:	fn1;
-+list> 
++list>
  32:    fn1;
  33:    fn3 33
  34:    source ../example/dbg-test1.sub
@@ -132,13 +132,13 @@ No actions have been set.
 ->0 in file `dbg-test1.sh' at line 5
 (dbg-test1.sh:5):
 5:	fn1() {
-+list> 
++list>
   5: => fn1() {
   6:        echo "fn1 here"
   7:        x=5
   8:        fn3
-  9:    }    
- 10:    
+  9:    }
+ 10:
  11:    fn2() {
  12:        name="fn2"
  13:        echo "$name here"
@@ -149,7 +149,7 @@ No actions have been set.
 (dbg-test1.sh:5):
 5:	fn1() {
 +### Try step (twice)...
-+step 
++step
 (dbg-test1.sh:6):
 6:	    echo "fn1 here"
 +info program
@@ -157,12 +157,12 @@ Program stopped.
 It stopped after being stepped.
 Next statement to be run is:
 	echo "fn1 here"
-+step 
++step
 fn1 here
 (dbg-test1.sh:7):
 7:	    x=5
 +### Try next and check that it jumps over fn3
-+next 
++next
 (dbg-test1.sh:8):
 8:	    fn3
 +### Try continue file:line (but will hit another breakpoint)...
@@ -189,9 +189,9 @@ SOURCED FN LINENO 5
 +x j
 j
 +### Try continue break no args (here)...
-+break 
++break
 Breakpoint 6 set in file dbg-test1.sub, line 11.
-+cont 
++cont
 FUNCNAME[0]: sourced_fn called from dbg-test1.sub at line 22
 Breakpoint 6 hit (1 times).
 (dbg-test1.sub:11):
@@ -207,8 +207,8 @@ declare -i j="1"
 declare -- y="b"
 +### x of a function ...
 +x fn2
-fn2 () 
-{ 
+fn2 ()
+{
     name="fn2";
     echo "$name here";
     x=6
@@ -223,7 +223,7 @@ fn2+fn3
 +x fn2+3
 3
 +### another continue. Count on breakpoint should go up.
-+cont 
++cont
 FUNCNAME[1]: source called from dbg-test1.sh at line 34
 Breakpoint 6 hit (2 times).
 (dbg-test1.sub:11):
@@ -233,7 +233,7 @@ j: 2, name: fn2
 +### Try disable of break
 +disable 5
 Breakpoint entry 5 disabled.
-+L 
++L
 Num Type       Disp Enb What
 ----------------------------
 1   breakpoint keep y   dbg-test1.sh:23
@@ -247,8 +247,8 @@ Num Type       Enb  Expression
 0   watchpoint n    $x
 	breakpoint already hit 1 time
 No actions have been set.
-+cont 
-FUNCNAME[2]: source called from bashdb at line 99
++cont
+FUNCNAME[2]: source called from bashdb at line 110
 Breakpoint 6 hit (3 times).
 (dbg-test1.sub:11):
 11:	        local -i j=i+1
@@ -263,9 +263,9 @@ It stopped at a breakpoint that has since been deleted.
 Next statement to be run is:
 	local filename=${BASH_SOURCE[$j]##*/}
 +### Should hit end of script but stay in debugger...
-+cont 
++cont
 FUNCNAME[3]: main called from bashdb at line 0
 Debugged program terminated normally. Use q to quit or R to restart.
 +### quitting...
-+quit 
++quit
 bashdb: That's all, folks...

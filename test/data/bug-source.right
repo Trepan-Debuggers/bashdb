@@ -9,13 +9,13 @@ fn1 here
 (dbg-test1.sh:34):
 34:	source ../example/dbg-test1.sub
 +# It is important to "next" rather than "step"
-+next 
++next
 SOURCED LINENO 19
 SOURCED BASH_SOURCE[0] dbg-test1.sub
 SOURCED FN LINENO 5
 FUNCNAME[0]: sourced_fn called from dbg-test1.sub at line 22
 FUNCNAME[1]: source called from dbg-test1.sh at line 34
-FUNCNAME[2]: source called from bashdb at line 99
+FUNCNAME[2]: source called from bashdb at line 110
 FUNCNAME[3]: main called from bashdb at line 0
 (dbg-test1.sh:35):
 35:	exit 0;
@@ -28,5 +28,5 @@ Source files which we have recorded info about:
   dbg-test1.sub: dbg-test1.sub, 28 lines
   dbg-test1.sh: dbg-test1.sh, 35 lines
   dbg-test1.sub: dbg-test1.sub, 28 lines
-+quit 
++quit
 bashdb: That's all, folks...
