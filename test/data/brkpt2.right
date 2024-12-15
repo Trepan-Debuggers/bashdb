@@ -248,7 +248,7 @@ Num Type       Enb  Expression
 	breakpoint already hit 1 time
 No actions have been set.
 +cont
-FUNCNAME[2]: source called from bashdb at line 107
+FUNCNAME[2]: source called from bashdb at line 116
 Breakpoint 6 hit (3 times).
 (dbg-test1.sub:11):
 11:	        local -i j=i+1
