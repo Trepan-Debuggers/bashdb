@@ -119,6 +119,13 @@ _Dbg_debug_trap_handler() {
 
     _Dbg_save_args "$@"
 
+    typeset _Dbg_full_filename
+    _Dbg_full_filename=$(_Dbg_is_file "${BASH_SOURCE[1]}")
+    if [[ -r "$_Dbg_full_filename" ]] ; then
+	_Dbg_file2canonic["${BASH_SOURCE[1]}"]="$_Dbg_full_filename"
+    fi
+
+
     # if in step mode, decrement counter
     if ((_Dbg_step_ignore > 0)) ; then
 	((_Dbg_step_ignore--))
@@ -145,13 +152,6 @@ _Dbg_debug_trap_handler() {
 	    fi
 	fi
     done
-
-    typeset _Dbg_full_filename
-    _Dbg_full_filename=$(_Dbg_is_file "$_Dbg_frame_last_filename")
-    if [[ -r "$_Dbg_full_filename" ]] ; then
-	_Dbg_file2canonic["$_Dbg_frame_last_filename"]="$_Dbg_full_filename"
-	_Dbg_file2canonic["${BASH_SOURCE[1]}"]="$_Dbg_full_filename"
-    fi
 
     # Run applicable action statement
     if ((_Dbg_action_count > 0)) ; then
