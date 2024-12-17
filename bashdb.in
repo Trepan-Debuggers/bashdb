@@ -104,7 +104,7 @@ typeset _Dbg_dollar_0="$0"
 
 # Resolve and save mapping for main script, and resolve
 # the starting directory.
-_Dbg_full_filename=$(_Dbg_is_file "$_Dbg_script_file")
+_Dbg_full_filename="$(_Dbg_is_file "$_Dbg_script_file")"
 _Dbg_file2canonic["${_Dbg_script_file}"]="$_Dbg_full_filename"
 # Note: expand_filename is expanding a *directory* here, not a filename.
 # This might cause a problem in the future if _Dbg_expand_filename becomes
