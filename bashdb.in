@@ -109,7 +109,7 @@ _Dbg_file2canonic["${_Dbg_script_file}"]="$_Dbg_full_filename"
 # Note: expand_filename is expanding a *directory* here, not a filename.
 # This might cause a problem in the future if _Dbg_expand_filename becomes
 # more specific about this aspect.
-_Dbg_init_cwd=$(_Dbg_expand_filename "${_Dbg_script_file%/*}")
+_Dbg_init_cwd="$(_Dbg_expand_filename "${_Dbg_script_file%/*}")"
 
 trap '_Dbg_debug_trap_handler 0 "$BASH_COMMAND" "$@"' DEBUG
 set -o functrace
