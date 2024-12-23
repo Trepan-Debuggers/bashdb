@@ -95,7 +95,7 @@ function _Dbg_resolve_expand_filename {
     # Relative file name
     full_find_file=$(_Dbg_expand_filename "${_Dbg_init_cwd}/$find_file")
     if [[ -z "$full_find_file" ]] || [[ ! -r $full_find_file ]]; then
-      # Try using cwd rather that Dbg_init_cwd
+      # Try using cwd rather than Dbg_init_cwd
       full_find_file=$(_Dbg_expand_filename "$find_file")
     fi
     echo "$full_find_file"
