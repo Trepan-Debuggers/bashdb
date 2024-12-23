@@ -102,9 +102,12 @@ _Dbg_do_break_common() {
 	    (( $? == 0 )) && \
 		_Dbg_set_brkpt "$full_filename" "$line_number" $is_temp "$condition"
 	fi
+    elif  [[ -z "$full_filename" ]]; then
+	_Dbg_errmsg "I can't resolve filename from $linespec"
+	return 2
     else
 	_Dbg_file_not_read_in "$full_filename"
-	return 2
+	return 3
     fi
     return 0
 }

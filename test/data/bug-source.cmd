@@ -4,8 +4,7 @@ set trace-commands on
 continue 34
 # It is important to "next" rather than "step"
 next
-# The following breakpoint should cause 
-# a file to get read in.
+load ../example/dbg-test1.sub
 break sourced_fn
 info files
 quit

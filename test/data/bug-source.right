@@ -19,8 +19,8 @@ FUNCNAME[2]: source called from bashdb at line 116
 FUNCNAME[3]: main called from bashdb at line 0
 (dbg-test1.sh:35):
 35:	exit 0;
-+# The following breakpoint should cause
-+# a file to get read in.
++load ../example/dbg-test1.sub
+File ../example/dbg-test1.sub loaded.
 +break sourced_fn
 Breakpoint 2 set in file dbg-test1.sub, line 3.
 +info files
