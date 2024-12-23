@@ -198,7 +198,7 @@ function _Dbg_linespec_setup {
   line_number=${word[0]}
   full_filename=$(_Dbg_is_file "$filename")
   if [[ -z "$full_filename" ]] ; then
-      full_filename=$(_Dbg_resolve_expand_filename "$filename")
+      full_filename="$(_Dbg_resolve_expand_filename "$filename")"
   fi
 
   if (( is_function )) ; then
