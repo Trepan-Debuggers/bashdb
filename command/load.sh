@@ -52,7 +52,11 @@ _Dbg_do_load() {
     done
 
     _Dbg_readin "$_Dbg_full_filename"
-    _Dbg_msg "File $_Dbg_full_filename loaded."
+    if (( _Dbg_set_basename )) ; then
+	_Dbg_msg "File $_Dbg_filename loaded."
+    else
+	_Dbg_msg "File $_Dbg_full_filename loaded."
+    fi
     _Dbg_file2canonic["${_Dbg_filename}"]="$_Dbg_full_filename"
 
   else
