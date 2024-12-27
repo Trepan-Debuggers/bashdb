@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [[ $# != 2 ]]; then
     echo  >&2 "Usage $0 BASH_PROGRAM PREFIX"
     exit 3
