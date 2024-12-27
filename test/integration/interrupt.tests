@@ -15,7 +15,7 @@ while [[ ! -f $started_markerfile ]] ; do
     sleep 1
 done
 
-kill -TERM %1
+builtin kill -TERM %1
 while [[ ! -s $CHECK_FILE ]] ; do
   sleep 1
 done

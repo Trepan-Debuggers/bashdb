@@ -15,9 +15,9 @@ if [ '@top_builddir@' = '' ] ; then
   echo "Something is wrong top_builddir is not set."
  exit 1
 fi
-top_builddir=@top_builddir@
-top_builddir=${top_builddir%%/}/
-source ${top_builddir}bashdb-trace --no-init -q -B -L @top_builddir@
+top_builddir="@top_builddir@"
+top_builddir="${top_builddir%%/}/"
+source "${top_builddir}bashdb-trace" --no-init -q -B -L "@top_builddir@"
 
 ## FIXME
 ## _Dbg_handler INT
