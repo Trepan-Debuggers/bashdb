@@ -152,24 +152,25 @@ function _Dbg_is_file {
 	  echo "$try_find_file"
 	  return 0
       fi
-  else
-    # Resolve file using _Dbg_dir
-    typeset -i n=${#_Dbg_dir[@]}
-    typeset -i i
-    for (( i=0 ; i < n; i++ )) ; do
-      typeset basename="${_Dbg_dir[i]}"
-      if [[  $basename == '\$cdir' ]] ; then
-	basename=$_Dbg_cdir
-      elif [[ $basename == '\$cwd' ]] ; then
-	basename=$(pwd)
-      fi
-      try_find_file="$basename/$find_file"
-      if [[ -f "$try_find_file" ]] ; then
-	  echo "$try_find_file"
-	  return 0
-      fi
-    done
   fi
+
+  # Resolve file using _Dbg_dir
+  typeset -i n=${#_Dbg_dir[@]}
+  typeset -i i
+  for (( i=0 ; i < n; i++ )) ; do
+    typeset basename="${_Dbg_dir[i]}"
+    if [[  $basename == '\$cdir' ]] ; then
+basename=$_Dbg_cdir
+    elif [[ $basename == '\$cwd' ]] ; then
+basename=$(pwd)
+    fi
+    try_find_file=$(_Dbg_expand_filename "$basename/$find_file")
+    if [[ -n ${_Dbg_filenames[$try_find_file]} ]] ; then
+  echo "$try_find_file"
+  return 0
+    fi
+  done
+
   echo ''
   return 1
 }
