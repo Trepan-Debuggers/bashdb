@@ -6,7 +6,7 @@ jobs:
   linux:
     name: "Linux"
     runs-on: ubuntu-latest
-    container: bash:4.4
+    container: bash:4.4-alpine3.20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
