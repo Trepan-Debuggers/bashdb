@@ -139,14 +139,14 @@ function _Dbg_is_file {
 
   if [[ ${find_file:0:1} == '/' ]] ; then
       # Absolute file name
-      try_find_file=$(_Dbg_expand_filename "$find_file")
+      try_find_file="$(_Dbg_expand_filename "$find_file")"
       if [[ -n ${_Dbg_filenames[$try_find_file]} ]] ; then
 	  echo "$try_find_file"
 	  return 0
       fi
   elif [[ ${find_file:0:1} == '.' ]] ; then
       # Relative file name
-      try_find_file=$(_Dbg_expand_filename "${_Dbg_init_cwd}/$find_file")
+      try_find_file="$(_Dbg_expand_filename "${_Dbg_init_cwd}/$find_file")"
       # FIXME: turn into common subroutine
       if [[ -n ${_Dbg_filenames[$try_find_file]} ]] ; then
 	  echo "$try_find_file"
@@ -164,7 +164,7 @@ basename=$_Dbg_cdir
     elif [[ $basename == '\$cwd' ]] ; then
 basename=$(pwd)
     fi
-    try_find_file=$(_Dbg_expand_filename "$basename/$find_file")
+    try_find_file="$(_Dbg_expand_filename "$basename/$find_file")"
     if [[ -n ${_Dbg_filenames[$try_find_file]} ]] ; then
   echo "$try_find_file"
   return 0

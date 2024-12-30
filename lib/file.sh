@@ -24,8 +24,8 @@ typeset -a _Dbg_dir
 _Dbg_dir=('\$cdir' '\$cwd' )
 
 # _Dbg_cdir is the directory in which the script is located.
-[[ -z ${_Dbg_cdir} ]] && typeset _Dbg_cdir=${_Dbg_source_file%/*}
-[[ -z ${_Dbg_cdir} ]] && typeset _Dbg_cdir=$(pwd)
+[[ -z ${_Dbg_cdir} ]] && typeset _Dbg_cdir="${_Dbg_source_file%/*}"
+[[ -z ${_Dbg_cdir} ]] && typeset _Dbg_cdir="$(pwd)"
 
 # Either fill out or strip filename as determined by "basename_only"
 # and annotate settings
