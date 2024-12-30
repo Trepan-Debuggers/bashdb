@@ -66,12 +66,12 @@ Restarting with: /src/external-vcs/sourceforge/bashdb/bashdb -B --no-highlight -
 Watchpoint 2: $x changed:
   old value: '22'
   new value: ''
-(bashdb:98):
-98:	set -o functrace
+(bashdb:109):
+109:	set -o functrace
 +# 2nd part of Restart test
 +l>
- 98: => set -o functrace
- 99:    . "$_Dbg_script_file"
+109: => set -o functrace
+110:    . "$_Dbg_script_file"
 +info watch
 Num Type       Enb  Expression
 ------------------------------

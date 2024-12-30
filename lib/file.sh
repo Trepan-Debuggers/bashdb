@@ -96,7 +96,7 @@ function _Dbg_resolve_expand_filename {
     # Relative file name
     full_find_file=$(_Dbg_expand_filename "${_Dbg_init_cwd}/$find_file")
     if [[ -z "$full_find_file" ]] || [[ ! -r $full_find_file ]]; then
-      # Try using cwd rather that Dbg_init_cwd
+      # Try using cwd rather than Dbg_init_cwd
       full_find_file=$(_Dbg_expand_filename "$find_file")
     fi
     echo "$full_find_file"
@@ -106,14 +106,14 @@ function _Dbg_resolve_expand_filename {
     typeset -i n=${#_Dbg_dir[@]}
     typeset -i i
     for (( i=0 ; i < n; i++ )) ; do
-      typeset basename="${_Dbg_dir[i]}"
-      if [[  "$basename" == '\$cdir' ]] ; then
-	basename=$_Dbg_cdir
-      elif [[ "$basename" == '\$cwd' ]] ; then
-	basename=$(pwd)
+      typeset dirname="${_Dbg_dir[i]}"
+      if [[  "$dirname" == '\$cdir' ]] ; then
+	dirname="$_Dbg_cdir"
+      elif [[ "$dirname" == '\$cwd' ]] ; then
+	dirname="$(pwd)"
       fi
-      if [[ -f "$basename/$find_file" ]] ; then
-	echo "$basename/$find_file"
+      if [[ -f "$dirname/$find_file" ]] ; then
+	echo "$dirname/$find_file"
 	return 0
       fi
     done

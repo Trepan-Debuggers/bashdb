@@ -8,6 +8,7 @@ TESTS = test-action.sh \
         test-cmd-complete.sh \
         test-cmd-eval.sh \
         test-cmd-info-variables.sh \
+        test-cmd-load.sh \
         test-columns.sh \
         test-filecache.sh \
         test-file.sh \
