@@ -1,5 +1,6 @@
 #!@SH_PROG@
 # -*- shell-script -*-
+this_script=test-filecache.sh
 
 # Test _Dbg_file_canonic
 test_file_file_canonic()
@@ -88,10 +89,9 @@ test_file_resolve_expand_filename()
     filename=$(_Dbg_resolve_expand_filename .)
     assertEquals '0' $?
     assertEquals '/' "${filename:0:1}"
-    filename=$(_Dbg_resolve_expand_filename ./fdafdsa)
+    filename=$(_Dbg_resolve_expand_filename ./$this_script)
     assertEquals '0' $?
     typeset -i size=${#filename}
-    # assertEquals 'fdafdsas' "${filename:$size-8}"
     assertNotEquals '.' "${filename:$size-1}"
 }
 
