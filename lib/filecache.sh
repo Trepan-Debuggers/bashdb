@@ -129,7 +129,7 @@ function _Dbg_is_file {
 
   typeset try_find_file
   try_find_file="$(_Dbg_resolve_expand_filename "$1")"
-  if [[ -n "${_Dbg_filenames["$try_find_file"]}" ]] ; then
+  if [[ -n "$try_find_file" && -n "${_Dbg_filenames["$try_find_file"]}" ]] ; then
 	  echo "$try_find_file"
 	  return 0
   fi
