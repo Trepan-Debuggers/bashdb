@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #   Copyright (C) 2016, 2019, 2023 Rocky Bernstein <rocky@gnu.org>
 #

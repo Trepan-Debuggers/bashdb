@@ -723,6 +723,7 @@ command string (@code{-c}).
 * Debugging a bash string from the command line::
 * Having bash invoke the debugger and your shell script::
 * Having the debugger invoke your shell script::
+* Calling the debugger from inside a running bash script::
 @end menu
 
 @node Debugging a bash string from the command line
