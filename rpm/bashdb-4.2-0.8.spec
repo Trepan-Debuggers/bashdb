@@ -74,7 +74,7 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Tat Nov 9 2013 Rocky Bernstein <rlbernst@yu.edu> 4.2_0.9-1
+* Sat Nov 9 2013 Rocky Bernstein <rlbernst@yu.edu> 4.2_0.9-1
 - Make it work on RHEL5 for bash4
 
 * Tue Sep 27 2011 Rocky Bernstein <rlbernst@yu.edu> 4.2_0.9-1
