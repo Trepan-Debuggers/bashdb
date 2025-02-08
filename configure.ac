@@ -29,7 +29,7 @@ AC_INIT([bashdb],[OK_BASH_VERS-relstatus],[https://sourceforge.net/p/bashdb/bugs
 dnl make sure we are using a recent autoconf version.
 dnl In particular we assume prefix will be set to "NONE" if --prefix
 dnl isn't given. Earlier autoconf' used "no" instead of "NONE".
-AC_PREREQ([2.71])
+AC_PREREQ([2.69])
 
 ##################################################################
 # See if --prefix was set. If not, set it to a reasonable default
