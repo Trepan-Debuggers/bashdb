@@ -17,8 +17,8 @@ You'll also need packages:
 Sources are in git.
 
 ```
-   $ git clone git://git.code.sf.net/p/bashdb/code bashdb-code
-   $ cd bashdb-code
+   $ git clone https://github.com/Trepan-Debuggers/bashdb
+   $ cd bashdb
 ```
 
 ## Build configure
