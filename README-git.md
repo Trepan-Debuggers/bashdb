@@ -1,4 +1,4 @@
-# To install from the sourceforge git repository
+# To install from the Github git repository
 
 ## Prerequisites
 
