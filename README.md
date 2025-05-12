@@ -1,4 +1,5 @@
-Here we have a debugger (*the* debugger?) for Bash 3.0 and higher.
+Here, we have a debugger (*the* debugger?) for Bash 5.1. Other git
+branches cover other versions of bash.
 
 The command syntax generally follows that of the
 [zsh debugger ](https://github.com/rocky/zshdb) trepanning debuggers
@@ -69,4 +70,6 @@ switch:
 * [tree-structured reference manual](http://www.rodericksmith.plus.com/outlines/manuals/bashdbOutline.html)
 * [tree-structured reference manual](http://www.rodericksmith.plus.com/outlines/manuals/bashdbOutline.html)
 
-See *INSTALL* for generic GNU configure installation instructions.
+See *INSTALL* for installation instructions from a released tarball.
+
+See *README-git.md* for installing from git on github.
