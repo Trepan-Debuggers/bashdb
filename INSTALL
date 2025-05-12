@@ -1,5 +1,9 @@
 SHORT INSTRUCTIONS:
 
+To install from github, see README-git.md.
+
+To install a released version:
+
 0. download the latest bash debugger from:
    http://prdownloads.sourceforge.net/bashdb/?sort_by=date&sort=desc
 
@@ -33,8 +37,6 @@ SHORT INSTRUCTIONS:
    the debugger support files. Since the root account sometimes has
    that umask, you may want to set the umask to something more
    permissive like 022, before running the "make install".
-
-That's it!
 
 - - - -
 

@@ -1,4 +1,4 @@
-[![Build Status Circle](https://circleci.com/gh/rocky/bashdb.svg?&style=shield)](https://circleci.com/gh/rocky/bashdb)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Trepan-Debuggers/bashdb/tree/bash-5.2.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Trepan-Debuggers/bashdb/tree/bash-5.2)
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/bashdb.svg)](https://repology.org/project/bashdb/versions)
 
@@ -69,4 +69,5 @@ switch:
 
 * [manual page](http://bashdb.sourceforge.net/bashdb-man.html)
 
+See *INSTALL* for generic GNU configure installation instructions.
 See *INSTALL* for generic GNU configure installation instructions.
