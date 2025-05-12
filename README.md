@@ -69,5 +69,6 @@ switch:
 
 * [manual page](http://bashdb.sourceforge.net/bashdb-man.html)
 
-See *INSTALL* for generic GNU configure installation instructions.
-See *INSTALL* for generic GNU configure installation instructions.
+See *INSTALL* for installation instructions from a released tarball.
+
+See *README-git.md* for installing from git on github.
