@@ -86,17 +86,17 @@ inside the debugger.
 
 Z<>
 
-=item -n | nx
+=item -n | --nx
 
-Normally the debugger will read debugger commands in C<~/.bashdbinit>
+Normally the debugger will read debugger commands in C<~/.bashdbrc>
 if that file exists before accepting user interaction.
-C<.bashdbinit> is analogus to Perl's C<.perldb> or GNU gdb's
+C<.bashdbrc> is analogus to Perl's C<.perldb> or GNU gdb's
 C<.gdbinit>: a user might want to create such a debugger profile to
 add various user-specific customizations.
 
 Using the C<-n> option this initialization file will not be read. This
 is useful in regression testing or in tracking down a problem with
-one's C<.bashdbinit> profile.
+one's C<.bashdbrc> profile.
 
 Z<>
 
@@ -247,7 +247,5 @@ The current version is maintained (or not) by Rocky Bernstein.
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-I<$Id: bashdb-man.pod 2016/08/13 16:30:00 rockyb Exp $>
 
 =cut
