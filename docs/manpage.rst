@@ -63,14 +63,14 @@ inside the debugger. See :ref:`set basename <set_basename>` for more information
 
 :-n | --nx | --no-init:
 
-Normally the debugger will read debugger commands in `~/.bashdbinit` if
-that file exists before accepting user interaction.  `.bashdbinit` is
+Normally the debugger will read debugger commands in `~/.bashdbrc` if
+that file exists before accepting user interaction.  `.bashdbrc` is
 analogous to GNU gdb's `.gdbinit`: a user might want to create such a
 debugger profile to add various user-specific customizations.
 
 Using the `-n` option this initialization file will not be read. This
 is useful in regression testing or in tracking down a problem with
-one's `.bashdbinit` profile.
+one's `.bashdbrc` profile.
 
 
 :-c | --command *command-string*:
@@ -89,7 +89,7 @@ changeable copyright date in the regression-test matching.
 :-x | --eval-command *debugger-cmdfile*:
 
 Run the debugger commands *debugger-cmdfile* before accepting user
-input.  These commands are read however after any `.bashdbinit`
+input.  These commands are read however after any `.bashdbrc`
 commands. Again this is useful running regression-testing debug
 scripts.
 
