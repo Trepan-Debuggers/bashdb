@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+t=${0##*/}; TEST_NAME=${t:5}   # basename $0 with 'test-' stripped off
+
+[ -z "$builddir" ] && builddir="$PWD"
+. "${builddir}/check-common.sh"
+
+function _preset_brkpt_cleanup {
+  [[ -f "${builddir}/.bashdbrc" ]] && rm -f "${builddir}/.bashdbrc"
+  if [[ -f "${HOME}/.bashdbrc-test-rename" ]]; then
+    mv "${HOME}/.bashdbrc-test-rename" "${HOME}/.bashdbrc"
+  fi
+}
+# setup trap to ensure cleanup of .bashdbrc
+trap _preset_brkpt_cleanup EXIT INT TERM
+
+# rename the ~/.bashdbrc to avoid interference
+if [[ -f "${HOME}/.bashdbrc" ]]; then
+  mv "${HOME}/.bashdbrc" "${HOME}/.bashdbrc-test-rename"
+fi
+
+# create a per-project .bashdbrc under working directory
+cat<<EOF > "${builddir}/.bashdbrc"
+break gcd
+break 11
+break 15 if a==1
+EOF
+
+script=gcd
+# The fourth argument loads per-project .bashdbrc
+run_test_check $script "" "" "yes"
+rc=$?
+(( $rc != 0 )) && exit $rc
+
+# Return code tells testing mechanism whether passed or not.
+exit 0

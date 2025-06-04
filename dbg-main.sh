@@ -59,6 +59,11 @@ if (( 0 == _Dbg_o_nx)) && [[ -r "$_Dbg_startup_cmdfile" ]] ; then
     _Dbg_do_source "$_Dbg_startup_cmdfile"
 fi
 
+typeset _Dbg_per_project_cmdfile=$(pwd)/.${_Dbg_debugger_name}rc
+if (( 0 == _Dbg_o_nx)) && [[ -r "$_Dbg_per_project_cmdfile" ]] ; then
+    _Dbg_do_source "$_Dbg_per_project_cmdfile"
+fi
+
 # _Dbg_DEBUGGER_LEVEL is the number of times we are nested inside a debugger
 # by virtue of running "debug" for example.
 if [[ -z "${_Dbg_DEBUGGER_LEVEL}" ]] ; then

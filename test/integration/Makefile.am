@@ -76,7 +76,8 @@ TESTS = \
 	test-tbreak	\
 	test-trace	\
 	test-watch1	\
-	test-watch2
+	test-watch2 \
+	test-preset-brkpt
 
 TESTS_ENVIRONMENT = \
   srcdir="$(abs_srcdir)" \

@@ -65,6 +65,7 @@ function _Dbg_do_condition {
     return 3
   fi
 
+  condition=$@
   if [[ -z $condition ]] ; then
     condition=1
     _Dbg_msg "Breakpoint $n now unconditional."

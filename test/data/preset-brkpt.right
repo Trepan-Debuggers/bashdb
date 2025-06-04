@@ -1,0 +1,13 @@
+(gcd.sh:24):
+24:	gcd $1 $2
+Breakpoint 1 set in file gcd.sh, line 8.
+Breakpoint 2 set in file gcd.sh, line 11.
+Breakpoint 3 set in file gcd.sh, line 15.
+Num Type       Disp Enb What
+----------------------------
+1   breakpoint keep y   gcd.sh:8
+2   breakpoint keep y   gcd.sh:11
+3   breakpoint keep y   gcd.sh:15
+	stop only if a==1
+
+bashdb: That's all, folks...

@@ -4,6 +4,61 @@ Entering the Bash Debugger
 .. toctree::
 .. contents::
 
+Startup Behavior
+================
+
+You can customize bashdb's initialization process such as setting up
+breakpoints to facilitate complex issue trouble shooting. This can be achieved
+by creating per-user or per-project rc files named ``.bashdbrc`` under your
+home directory or any directory in your project. The per-user rc file is loaded
+first, followed by the per-project rc file. Therefore, you can override
+settings in your per-project ``.bashdbrc`` file.
+
+The follow code snippet demonstrates a per-project ``.bashdbrc`` with a few
+breakpoints configured:
+
+.. code:: console
+
+        $ cd my-project
+        $ cat .bashdbrc
+
+        # explicit load is required to make
+        # code in this file available to bashdb
+        load ./libs/functions.sh
+        break ./main.sh:13 $cmd == "start"
+        break ./libs/functions.sh:332
+
+Currently explicit loading of programs invoked by main script is required.
+Therefore, in this example, the ``load`` command makes the code defined in the
+``libs/functions.sh`` available to the debugging session. Once the per-project
+``.bashdbrc`` is configured, you can launch the debugger under the directory
+where the ``.bashdbrc`` located as follows:
+
+.. code:: console
+
+        $ bashdb main.sh start
+
+        bash debugger, bashdb, release 5.2-1.1.2
+
+        Copyright 2002-2004, 2006-2012, 2014, 2016-2019, 2021, 2023-2024 Rocky Bernstein
+        This is free software, covered by the GNU General Public License, and you are
+        welcome to change it and/or distribute copies of it under certain conditions.
+
+        (/home/user/my-project/main.sh:3):
+        3:      source ./libs/functions.sh
+        File /home/user/my-project/libs/functions.sh loaded.
+        Breakpoint 1 set in file /home/user/my-project/libs/functions.sh, line 332.
+        Breakpoint 2 set in file /home/user/my-project/main.sh, line 13.
+        bashdb<4> info breakpoints
+        Num Type       Disp Enb What
+        1   breakpoint keep y   /home/user/my-project/libs/functions.sh:332
+        2   breakpoint keep y   /home/user/my-project/main.sh:13
+                stop only if $cmd == "start"
+
+In this example, bashdb shows the two breakpoints presetted by the
+``.bashdbrc`` file when it finishes startup. The ``info breakpoints`` command,
+abbreviated as ``i b``, reveals the second breakpoint is a conditional
+breakpoint.
 
 Invoking the Debugger Initially
 ===============================

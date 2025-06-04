@@ -96,7 +96,6 @@ Num Type       Disp Enb What
 +condition x==1
 ** condition: Bad breakpoint number: x==1
 +condition 4 x==1
-Breakpoint 4 now unconditional.
 +condition bad
 ** condition: Bad breakpoint number: bad
 +condition 30 y==1
@@ -109,6 +108,7 @@ Num Type       Disp Enb What
 ----------------------------
 2   breakpoint keep n   dbg-test1.sh:22
 4   breakpoint keep y   dbg-test1.sh:23
+	stop only if x==1
 5   breakpoint keep n   dbg-test1.sh:23
 	stop only if x==0
 6   breakpoint keep y   dbg-test1.sh:24

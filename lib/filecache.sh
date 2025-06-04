@@ -38,8 +38,8 @@ _Dbg_filecache_reset() {
 }
 _Dbg_filecache_reset
 
-# Check that line $2 is not greater than the number of lines in
-# file $1
+# Check that line $1 is not greater than the number of lines in
+# file $2
 _Dbg_check_line() {
     (( $# != 2 )) && return 1
     typeset -i line_number=$1
