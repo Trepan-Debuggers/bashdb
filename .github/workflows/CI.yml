@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |+
           brew update
-          brew install bash
+          brew install bash@5.2
           brew install autoconf automake texinfo
           # Not installing pygments, because apparently 'osascript' executed during bashdb's init is blocking
           # if there's not user logged in.
