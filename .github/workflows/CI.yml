@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |+
           # brew update  Don't update to get bash 5.2
-          brew search bash
+          ls /opt/homebrew/Cellar/bash
           brew install bash
           brew install autoconf automake texinfo
           # Not installing pygments, because apparently 'osascript' executed during bashdb's init is blocking
