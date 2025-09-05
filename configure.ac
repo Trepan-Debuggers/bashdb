@@ -22,7 +22,7 @@ dnl Process this file with autoconf to produce a configure script.
 define(DEBUGGER, bashdb)
 define(POSIXSHELL, bash)
 define(OK_BASH_VERS, 5.2)
-define(relstatus, 1.1.2)
+define(relstatus, 1.2.0)
 
 AC_INIT([bashdb],[OK_BASH_VERS-relstatus],[https://sourceforge.net/p/bashdb/bugs/new/])
 
