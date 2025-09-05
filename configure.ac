@@ -103,12 +103,12 @@ bash_version=`$SH_PROG --version`
 [bash_minor=`$SH_PROG -c 'echo ${BASH_VERSINFO[1]}'`]
 bash_5_or_greater=no
 case "${bash_major}.${bash_minor}" in
-  'OK_BASH_VERS')
+  'OK_BASH_VERS' | '5.2' )
     bash_5_or_greater=yes
     ;;
   *)
     AC_MSG_WARN([You have Bash $bash_version installed.])
-    AC_MSG_ERROR([This package is only known to work with Bash 5.3])
+    AC_MSG_ERROR([This package is only known to work with Bash 5.2 or Bash 5.3])
     ;;
 esac
 
