@@ -2,14 +2,14 @@
 /.python-version
 /ChangeLog
 /ChangeLog-spell-corrected
+/ChangeLog.orig
 /Makefile
 /Makefile.in
 /aclocal.m4
 /auto*.log
 /autom4te.cache
 /bashdb
-/bashdb-5.*.tar.bz2
-/bashdb-5.*.tar.gz
+/bashdb-5.*
 /bashdb-main.inc
 /bashdb-trace
 /builtin
