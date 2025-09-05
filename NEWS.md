@@ -1,3 +1,17 @@
+Version 5.2-0.1.2.0
+-------------------
+
+- Preset breakpoints in per project .bashdbrc -
+- Fix failure to set conditional breakpoint using condition command
+- Document startup behavior under "entry-exit"
+- Manpage corrections
+
+Version 5.1-0.1.1.2
+-------------------
+
+Lots of changes! To be filled in later.
+
+
 Version 5.0-0.1.1.2 gecko gecko
 -------------------------------
 
