@@ -1,0 +1,824 @@
+--- ChangeLog	2025-09-05 05:15:45.967272657 -0400
++++ ChangeLog-spell-corrected	2025-09-05 05:21:42.727834599 -0400
+@@ -166,7 +166,7 @@
+ 	command/set_sub/listsize.sh, command/set_sub/width.sh,
+ 	command/show_sub/commands.sh, command/signal.sh, init/vars.sh,
+ 	lib/break.sh, lib/display.sh, lib/fns.sh, lib/frame.sh,
+-	lib/help.sh, lib/hist.sh, lib/validate.sh, test/unit/test-fns.sh.in: 
++	lib/help.sh, lib/hist.sh, lib/validate.sh, test/unit/test-fns.sh.in:
+ 	5.2: Avoid pollution with global variables (#40) * Avoid pollution with global variables in info commands * Don't pollute with global variable int_pat This is a global search
+ 	& replace * Don't pollute with global variable _resteglob This is a global
+ 	search & replace * Don't pollute with global variable _seteglob This is a global
+@@ -293,14 +293,14 @@
+ 	docs/syntax/command.rst, docs/syntax/suffixes.rst,
+ 	htdocs/remake/download.html, htdocs/remake/features.html,
+ 	htdocs/remake/index.html, htdocs/remake/mdb-old.html,
+-	htdocs/remake/mdb.html, readthedocs.yaml, test/example/stepping.sh: 
++	htdocs/remake/mdb.html, readthedocs.yaml, test/example/stepping.sh:
+ 	First batch of doc cleanups (#21) * First batch of doc cleanups * zsh{,db} -> bash{,db} and other doc fixes * zsh{,db} -> bash{,db} and other doc fixes * Gratuituous change to get readthe docs to reread?
+ 
+ 2024-02-14  Joachim Ansorg <github@ja-dev.eu>
+ 
+ 	* command/next.sh, command/step.sh, lib/processor.sh,
+ 	test/data/misc-output-50.right: 5.2: Fix step command (#6) * Fix step+ and step- commands in bashdb. Before, step+ and step-
+-	were registered as seperate commands and not as aliases. Also, the
++	were registered as separate commands and not as aliases. Also, the
+ 	suffix matching wasn't working in _Dbg_do_step for suffix values -
+ 	and +.  * Go over docs for next/step... (#20) * Remove "step+" and "step-" from list of commands. They are
+ 	  suffixes to "step".  * Update "step" doc to include "step+", "step-" behavior.  * Go over "step" formatting so this renders nicer.  * Mention "next", "step" "set force"  in "step" and "next" docs --------- Co-authored-by: R. Bernstein <rocky@users.noreply.github.com>
+@@ -323,7 +323,7 @@
+ 
+ 	* .github/workflows/CI.yml, test/example/bug-loc.sh,
+ 	test/integration/test-bug-loc, test/unit/.gitignore,
+-	test/unit/Makefile.am, test/unit/test-cmd-info-variables.sh.in: 
++	test/unit/Makefile.am, test/unit/test-cmd-info-variables.sh.in:
+ 	GitHub Action setup (#15) * GitHub Action setup * Undo variable substitution that got into ".in" * Add message to assertion to debug failing tests * Run unit tests in isolation to avoid side-effects * Don't compare unstable highlighting of Pygments, but only the file
+ 	locations
+ 
+@@ -470,7 +470,7 @@
+ 
+ 2020-10-16  J. Ansorg <github@joachim-ansorg.de>
+ 
+-	* lib/fns.sh, lib/processor.sh, test/unit/test-fns.sh.in: 
++	* lib/fns.sh, lib/processor.sh, test/unit/test-fns.sh.in:
+ 	_Dbg_copies: Use variable _Dbg_result instead of result to avoid
+ 	side-effects with the debugged script.
+ 
+@@ -565,7 +565,7 @@
+ 
+ 2019-11-14  jansorg <github@joachim-ansorg.de>
+ 
+-	* command/info_sub/variables.sh: Support aditional flags for info
++	* command/info_sub/variables.sh: Support additional flags for info
+ 	variables: -a|--indexed, -A|--associative, -t|--trace,
+ 	-p|--properties
+ 
+@@ -596,7 +596,7 @@
+ 
+ 	* lib/save-restore.sh, test/data/bug-args.cmd,
+ 	test/data/bug-args.right, test/example/bug-args.sh.in: Track $0 when
+-	it changes inside debugged progam.
++	it changes inside debugged program.
+ 
+ 2019-11-05  rocky <rocky@gnu.org>
+ 
+@@ -632,7 +632,7 @@
+ 
+ 2019-10-14  rocky <rocky@gnu.org>
+ 
+-	* lib/hook.sh: BASH_REMATCH save/restore hacking...  Determine seting based on BASH_REMATCH value rather than a regexp on
++	* lib/hook.sh: BASH_REMATCH save/restore hacking...  Determine setting based on BASH_REMATCH value rather than a regexp on
+ 	the last bash command. This is flaky, but less so.
+ 
+ 2019-10-14  rocky <rocky@gnu.org>
+@@ -649,7 +649,7 @@
+ 	* configure.ac, test/data/.gitignore, test/data/Makefile.am,
+ 	test/data/bash-rematch.cmd, test/data/bash-rematch.right,
+ 	test/example/bash-rematch.sh, test/integration/.gitignore,
+-	test/integration/Makefile.am, test/integration/test-bash-rematch.in: 
++	test/integration/Makefile.am, test/integration/test-bash-rematch.in:
+ 	Add BASH_REMATCH integration test
+ 
+ 2019-10-10  rocky <rocky@gnu.org>
+@@ -864,7 +864,7 @@
+ 
+ 2017-09-05  rocky <rocky@gnu.org>
+ 
+-	* command/disable.sh, command/enable.sh, lib/break.sh: 
++	* command/disable.sh, command/enable.sh, lib/break.sh:
+ 	enable/disable with no args does all..  This is compatible with gdb. Also we now allow "enable breakpoints"
+ 	as well as "enable".
+ 
+@@ -889,7 +889,7 @@
+ 2017-08-27  rocky <rocky@gnu.org>
+ 
+ 	* command/set_sub/dollar0.sh, compute-prefix.sh, lib/fns.sh,
+-	lib/setshow.sh, test/data/Makefile.am, test/integration/test-sig.in: 
++	lib/setshow.sh, test/data/Makefile.am, test/integration/test-sig.in:
+ 	Misc small bugs
+ 
+ 2017-08-24  rocky <rocky@gnu.org>
+@@ -987,7 +987,7 @@
+ 	test/data/Makefile.am, test/data/bug-set-e.cmd,
+ 	test/data/bug-set-e.right, test/data/sig-bug.cmd,
+ 	test/example/bug-set-e.sh, test/integration/Makefile.am,
+-	test/integration/test-bug-set-e: Fix debugging in the presense of
++	test/integration/test-bug-set-e: Fix debugging in the presence of
+ 	"set -e" Add "set +e" in lib/hook.sh in a judicious place.
+ 
+ 2017-06-19  rocky <rb@dustyfeet.com>
+@@ -1040,7 +1040,7 @@
+ 
+ 	* bashdb-part2.sh, bashdb.in, command/run.sh,
+ 	test/data/brkpt2.right, test/data/bug-break.right,
+-	test/data/bug-source.right, test/data/tbreak.right: Stip off '--'
++	test/data/bug-source.right, test/data/tbreak.right: Strip off '--'
+ 	from args list bashdb.in: stop looking for -L libdir if we hit -- first
+ 
+ 2016-12-08  rocky <rocky@gnu.org>
+@@ -1077,7 +1077,7 @@
+ 
+ 2016-08-13  rocky <rocky@gnu.org>
+ 
+-	* doc/bashdb.texi: Correct decription and use of '--' on invocation
++	* doc/bashdb.texi: Correct description and use of '--' on invocation
+ 
+ 2016-07-13  rocky <rocky@gnu.org>
+ 
+@@ -1178,7 +1178,7 @@
+ 
+ 	* test/data/Makefile.am, test/data/sig-43.cmd,
+ 	test/data/sig-43.right, test/integration/check-common.sh.in,
+-	test/integration/test-sig.in: work aroud bash 4.3 signal handling
++	test/integration/test-sig.in: work around bash 4.3 signal handling
+ 	http://lists.gnu.org/archive/html/bug-bash/2015-08/msg00060.html See
+ 	bug #36 https://sourceforge.net/p/bashdb/bugs/36/ Work on bash 4.4
+ 	coming up...
+@@ -1188,7 +1188,7 @@
+ 	* doc/bashdb-man.pod, test/data/misc-output-41.right,
+ 	test/data/setshow.right, test/data/sig-43.right,
+ 	test/integration/test-sig.in: Nicholas Bamber's from issues #35 and
+-	#36 bashdb-man.pod: spelling mistake SIGXFSZ in some envionments.
++	#36 bashdb-man.pod: spelling mistake SIGXFSZ in some environments.
+ 	Here rather than just filtering out the signal handler from the test
+ 	results we set a handler to make it reproducible.  Debian got SIGSYS
+ 	signal on the kfreebsd platform so we just filtered it out.
+@@ -1236,9 +1236,9 @@
+ 	test/data/sig-Darwin.right, test/data/sig.right,
+ 	test/data/tbreak.right, test/data/watch1.right,
+ 	test/integration/test-bug-loc, test/unit/test-filecache.sh.in,
+-	test/unit/test-get-sourceline.sh.in, test/unit/test-msg.sh.in: 
++	test/unit/test-get-sourceline.sh.in, test/unit/test-msg.sh.in:
+ 	--highlight changed from taking no parameters to
+-	--highlight=dark|light. And we now accomdate dark terminals more
++	--highlight=dark|light. And we now accommodate dark terminals more
+ 	properly.
+ 
+ 2015-01-16  rocky <rocky@gnu.org>
+@@ -1295,7 +1295,7 @@
+ 	test/integration/Makefile.am, test/integration/test-bug-clear: Fix a
+ 	bug where a "clear" command effectively disabled other breakpoints
+ 	in the same file at other lines. Bug reported by Alex.
+-	test/data/bug-loc.right: Highight markup seems to have changed a
++	test/data/bug-loc.right: Highlight markup seems to have changed a
+ 	little which is probably pygments changing. If this causes a problem
+ 	in other setups, we may have to revise this test more.
+ 
+@@ -1321,7 +1321,7 @@
+ 2014-11-03  rocky <rockyb@sourceforge.net>
+ 
+ 	* lib/hook.sh, lib/save-restore.sh, test/data/sig-43.right,
+-	test/data/sig-Darwin.right, test/integration/.gitignore: 
++	test/data/sig-Darwin.right, test/integration/.gitignore:
+ 	Save/restore shell option nullglob.
+ 
+ 2014-11-03  rocky <rockyb@sourceforge.net>
+@@ -1341,7 +1341,7 @@
+ 
+ 2014-09-13  rocky <rocky@gnu.org>
+ 
+-	* test/integration/test-interrupt.in, test/integration/test-sig.in: 
++	* test/integration/test-interrupt.in, test/integration/test-sig.in:
+ 	More OS's where we skip tests.
+ 
+ 2014-09-13  rocky <rocky@gnu.org>
+@@ -1381,7 +1381,7 @@
+ 
+ 2014-06-14  rocky <rocky@gnu.org>
+ 
+-	* doc/bashdb.texi, test/integration/test-file-with-spaces: 
++	* doc/bashdb.texi, test/integration/test-file-with-spaces:
+ 	Adjustments for bash 4.3. Something went on with texinfo too in
+ 	updating to Trusty Tahr.
+ 
+@@ -1422,7 +1422,7 @@
+ 
+ 2013-09-12  R. Bernstein <rocky@gnu.org>
+ 
+-	* Makefile.am, test/integration/Makefile.am, test/unit/Makefile.am: 
++	* Makefile.am, test/integration/Makefile.am, test/unit/Makefile.am:
+ 	Add tests to distribution (make dist)
+ 
+ 2013-05-28  rocky <rocky@gnu.org>
+@@ -1622,7 +1622,7 @@
+ 2011-05-17  rocky <rocky@gnu.org>
+ 
+ 	* command/info_sub/files.sh, lib/file.sh, lib/filecache.sh,
+-	lib/frame.sh, lib/help.sh, lib/processor.sh, lib/save-restore.sh: 
++	lib/frame.sh, lib/help.sh, lib/processor.sh, lib/save-restore.sh:
+ 	typeset -l is lowercase, not local.  Remove typeset -l and define key local to "info files" to fix an
+ 	"info files" bug.
+ 
+@@ -1673,7 +1673,7 @@
+ 
+ 	* ChangeLog, NEWS, command/disable.sh, command/enable.sh,
+ 	command/help.sh, command/trace.sh, command/untrace.sh,
+-	configure.ac, lib/break.sh, lib/processor.sh, test/data/sig.right: 
++	configure.ac, lib/break.sh, lib/processor.sh, test/data/sig.right:
+ 	Allow unique abbreviations of commands in "help"
+ 
+ 2011-05-16  rocky <rocky@gnu.org>
+@@ -1737,7 +1737,7 @@
+ 2011-05-12  rocky <rocky@gnu.org>
+ 
+ 	* command/info_sub/handle.sh, command/info_sub/stack.sh: Cut over
+-	remaning "info" subcommands to newer format.
++	remaining "info" subcommands to newer format.
+ 
+ 2011-05-12  rocky <rocky@gnu.org>
+ 
+@@ -1944,7 +1944,7 @@
+ 
+ 2011-05-05  rocky <rocky@gnu.org>
+ 
+-	* command/set.sh, command/show.sh, lib/Makefile.am, lib/subcmd.sh: 
++	* command/set.sh, command/show.sh, lib/Makefile.am, lib/subcmd.sh:
+ 	Add tab completion for set and show
+ 
+ 2011-05-05  rocky <rocky@gnu.org>
+@@ -1974,7 +1974,7 @@
+ 	command/frame.sh, command/up.sh, init/opts.sh, lib/break.sh,
+ 	lib/complete.sh, lib/help.sh, lib/processor.sh,
+ 	test/data/brkpt2.right, test/data/bug-source.right,
+-	test/data/sig.right, test/data/tbreak.right, test/data/watch1.right: 
++	test/data/sig.right, test/data/tbreak.right, test/data/watch1.right:
+ 	Start to add debugger command completion.
+ 
+ 2011-05-03  rocky <rocky@gnu.org>
+@@ -1991,7 +1991,7 @@
+ 
+ 2011-05-02  rocky <rocky@gnu.org>
+ 
+-	* command/export.sh, lib/fns.sh, test/unit/test-cmd-complete.sh.in: 
++	* command/export.sh, lib/fns.sh, test/unit/test-cmd-complete.sh.in:
+ 	Fix unit test and remove some ksh -n lint warnings.
+ 
+ 2011-05-02  rocky <rocky@gnu.org>
+@@ -2032,7 +2032,7 @@
+ 2011-05-01  rocky <rocky@gnu.org>
+ 
+ 	* ChangeLog, NEWS, bashdb.in, command/run.sh, configure.ac,
+-	test/unit/test-set0.sh.in: More administrivia: bumb version number
++	test/unit/test-set0.sh.in: More administrivia: bump version number
+ 	note what's changed. Correct shunit2 location in test-set0.sh.in
+ 
+ 2011-05-01  rocky <rocky@gnu.org>
+@@ -2065,7 +2065,7 @@
+ 
+ 2011-04-30  rocky <rocky@gnu.org>
+ 
+-	* configure.ac, test/unit/Makefile.am, test/unit/require_me.sh.in: 
++	* configure.ac, test/unit/Makefile.am, test/unit/require_me.sh.in:
+ 	Administrivia: Move require_me.sh to require_me.sh.in to put in
+ 	build directory for "make distcheck" .
+ 
+@@ -2082,7 +2082,7 @@
+ 	test/unit/test-frame.sh.in, test/unit/test-get-sourceline.sh.in,
+ 	test/unit/test-io.sh.in, test/unit/test-msg.sh.in,
+ 	test/unit/test-pre.sh.in, test/unit/test-require.sh.in,
+-	test/unit/test-save-restore.sh.in, test/unit/test-validate.sh.in: 
++	test/unit/test-save-restore.sh.in, test/unit/test-validate.sh.in:
+ 	Improve require. Reorganize code so that initialization code is in
+ 	its own directory.
+ 
+@@ -2317,7 +2317,7 @@
+ 
+ 2011-03-03  rocky <rocky@gnu.org>
+ 
+-	* command/display.sh, command/info.sh, command/info_sub/display.sh: 
++	* command/display.sh, command/info.sh, command/info_sub/display.sh:
+ 	Sync with kshdb.
+ 
+ 2011-03-02  rocky <rocky@gnu.org>
+@@ -2364,7 +2364,7 @@
+ 2011-02-26  rocky <rocky@gnu.org>
+ 
+ 	* command/shell.sh, dbg-opts.sh: Add options and bash options to
+-	debugger "shell" commmand.
++	debugger "shell" command.
+ 
+ 2011-02-26  rocky <rocky@gnu.org>
+ 
+@@ -2444,7 +2444,7 @@
+ 
+ 2011-02-09  rocky <rocky@gnu.org>
+ 
+-	* command/down.sh, command/frame.sh, command/up.sh, lib/validate.sh: 
++	* command/down.sh, command/frame.sh, command/up.sh, lib/validate.sh:
+ 	Better parameter checking on up/down/frame
+ 
+ 2011-02-09  rocky <rocky@gnu.org>
+@@ -2497,7 +2497,7 @@
+ 
+ 2011-01-10  rocky <rocky@gnu.org>
+ 
+-	* ChangeLog, lib/fns.sh, lib/help.sh, lib/hist.sh, lib/processor.sh: 
++	* ChangeLog, lib/fns.sh, lib/help.sh, lib/hist.sh, lib/processor.sh:
+ 	Remove more lint warnings via ksh -n
+ 
+ 2011-01-10  rocky <rocky@gnu.org>
+@@ -2666,7 +2666,7 @@
+ 
+ 2010-11-29  rocky <rocky@gnu.org>
+ 
+-	* command/help.sh, dbg-opts.sh, lib/columnize.sh, lib/list.sh: 
++	* command/help.sh, dbg-opts.sh, lib/columnize.sh, lib/list.sh:
+ 	Adjust column size for initial blanks in "help *".
+ 
+ 2010-11-29  rocky <rocky@gnu.org>
+@@ -2695,7 +2695,7 @@
+ 2010-11-26  rocky <rocky@gnu.org>
+ 
+ 	* bashdb.in, test/data/brkpt2.right, test/data/bug-source.right,
+-	test/data/sig.right, test/data/tbreak.right, test/data/watch1.right: 
++	test/data/sig.right, test/data/tbreak.right, test/data/watch1.right:
+ 	Remove more crud in bashdb.in.
+ 
+ 2010-11-26  rocky <rocky@gnu.org>
+@@ -2709,7 +2709,7 @@
+ 2010-11-25  rocky <rocky@gnu.org>
+ 
+ 	* command/debug.sh, test/data/debug.right, test/example/debug.sh,
+-	test/integration/test-debug, test/integration/test-debug.in: 
++	test/integration/test-debug, test/integration/test-debug.in:
+ 	Reinstate debug command. Apparently "$1"x != x works differently in
+ 	bash 4.2
+ 
+@@ -2722,7 +2722,7 @@
+ 	* test/integration/test-action, test/integration/test-debug,
+ 	test/integration/test-interrupt, test/integration/test-parm,
+ 	test/integration/test-restart, test/integration/test-setshow.in,
+-	test/integration/test-settrace, test/integration/test-watch2: 
++	test/integration/test-settrace, test/integration/test-watch2:
+ 	Integration tests are less convoluted in logic.
+ 
+ 2010-11-24  rocky <rocky@gnu.org>
+@@ -2788,7 +2788,7 @@
+ 	test/integration/test-multi, test/integration/test-restart,
+ 	test/unit/test-bashdb-trace.sh.in: A big cleanup and simplification.
+ 	Replace fixed case-statement command dispatch with an associative
+-	array. Bug in the "list" command not the last postion fixed. Bug in
++	array. Bug in the "list" command not the last position fixed. Bug in
+ 	handling --nx or --no-init (no user profile) fixed. Code is not more
+ 	regular and somewhat simpler.
+ 
+@@ -2896,7 +2896,7 @@
+ 	* bashdb-trace.in, bashdb.in, command/debug.sh,
+ 	command/info_sub/files.sh, command/pwd.sh, command/set.sh,
+ 	command/show.sh, dbg-opts.sh, lib/file.sh, lib/help.sh,
+-	lib/processor.sh, lib/save-restore.sh, test/unit/test-file.sh.in: 
++	lib/processor.sh, lib/save-restore.sh, test/unit/test-file.sh.in:
+ 	Preparation of drying set/show code.
+ 
+ 2010-10-22  rocky <rocky@gnu.org>
+@@ -2951,7 +2951,7 @@
+ 
+ 	* configure.ac, lib/filecache.sh, test/example/Makefile.am,
+ 	test/example/dir with spaces/bug.sh, test/unit/.gitignore,
+-	test/unit/Makefile.am, test/unit/test-get-sourceline.sh.in: 
++	test/unit/Makefile.am, test/unit/test-get-sourceline.sh.in:
+ 	filecache.sh: _Dbg_get_source_line was buggy if directory name had
+ 	embedded spaces.
+ 
+@@ -3068,13 +3068,13 @@
+ 
+ 2010-07-08  rocky <rocky@gnu.org>
+ 
+-	* .gitignore, configure.ac, dbg-main.sh.in => dbg-main.sh: 
++	* .gitignore, configure.ac, dbg-main.sh.in => dbg-main.sh:
+ 	dbg-main.sh is no longer derived.  Default init file is now
+ 	$HOME/.bashdbrc rather than $HOEM/.bashdbinit
+ 
+ 2010-07-08  rocky <rocky@gnu.org>
+ 
+-	* lib/hook.sh, lib/save-restore.sh, lib/sig.sh, test/data/sig.right: 
++	* lib/hook.sh, lib/save-restore.sh, lib/sig.sh, test/data/sig.right:
+ 	Remove duplicate argument-saving routines.
+ 
+ 2010-07-08  rocky <rocky@gnu.org>
+@@ -3084,7 +3084,7 @@
+ 	test/data/watch2.right: All tests now pass. We are back to where we
+ 	were before.  However we now use associative arrays and the new I/O
+ 	fd handling and frame handling is more rational and the code is less
+-	embarassing.
++	embarrassing.
+ 
+ 2010-07-08  rocky <rocky@gnu.org>
+ 
+@@ -3170,7 +3170,7 @@
+ 2010-07-02  rocky <rocky@gnu.org>
+ 
+ 	* command/info.sh, command/where.sh, lib/frame.sh,
+-	lib/processor.sh, lib/save-restore.sh, test/unit/test-frame.sh.in: 
++	lib/processor.sh, lib/save-restore.sh, test/unit/test-frame.sh.in:
+ 	One more towards refactor.
+ 
+ 2010-07-01  rocky <rocky@gnu.org>
+@@ -3219,7 +3219,7 @@
+ 
+ 2010-06-21  R. Bernstein <rocky@gnu.org>
+ 
+-	* command/action.sh, test/data/action.cmd, test/data/action.right: 
++	* command/action.sh, test/data/action.cmd, test/data/action.right:
+ 	Use confirm routine to delete all actions. Better synch with zshdb
+ 	too. Proper count tracing of actions fixed too.
+ 
+@@ -3237,9 +3237,9 @@
+ 
+ 2010-06-21  R. Bernstein <rocky@gnu.org>
+ 
+-	* command/action.sh, lib/action.sh, test/unit/test-action.sh.in: 
++	* command/action.sh, lib/action.sh, test/unit/test-action.sh.in:
+ 	Split off action code from break(pts) and put into appropriate
+-	places in command and lib directoris. Add lib/action.sh unit test
++	places in command and lib directories. Add lib/action.sh unit test
+ 	and that now works.
+ 
+ 2010-06-20  rocky <rocky@gnu.org>
+@@ -3258,7 +3258,7 @@
+ 
+ 2010-06-18  rocky <rocky@gnu.org>
+ 
+-	* test/data/list.cmd, test/data/list.right, test/data/restart.right: 
++	* test/data/list.cmd, test/data/list.right, test/data/restart.right:
+ 	Track changes in test to "list" command and its output.
+ 
+ 2010-06-18  rocky <rocky@gnu.org>
+@@ -3321,7 +3321,7 @@
+ 
+ 2010-06-15  rocky <rocky@gnu.org>
+ 
+-	* command/help.sh, lib/help.sh, test/data/misc-output-41.right: 
++	* command/help.sh, lib/help.sh, test/data/misc-output-41.right:
+ 	Rewrite help system to use an associative array.
+ 
+ 2010-06-14  rocky <rocky@gnu.org>
+@@ -3468,7 +3468,7 @@
+ 	* ChangeLog, bashdb.in, dbg-main.sh.in, test/data/Makefile.am,
+ 	test/data/bugI.cmd, test/data/bugI.right, test/example/Makefile.am,
+ 	test/example/bugI.sh, test/integration/Makefile.am,
+-	test/integration/test-bugI: bashdb.in: Remove variable name confict
++	test/integration/test-bugI: bashdb.in: Remove variable name conflict
+ 	which occurs when the source code uses a variable "i". Stupid huh?
+ 	Thanks to Rob Woolley for isolate the bug and reporting it.
+ 	dbg-main.sh.in: avoid same problem which might occur if someones
+@@ -3515,7 +3515,7 @@
+ 	lib/file.sh, test/data/file with spaces.cmd, test/data/file with
+ 	spaces.right, test/example/file with spaces.sh,
+ 	test/integration/check-common.sh.in,
+-	test/integration/test-file-with-spaces, test/unit/test-file.sh.in: 
++	test/integration/test-file-with-spaces, test/unit/test-file.sh.in:
+ 	Add unit/integration test into git repository. Haven't figured out
+ 	how test which have files with embedded spaces into the tarball
+ 	though.  In the process, a couple more bugs dealing with blanks in command
+@@ -3528,7 +3528,7 @@
+ 
+ 2009-09-20  rocky <rocky@gnu.org>
+ 
+-	* lib/fns.sh: One more place we need to quote variable which contian
++	* lib/fns.sh: One more place we need to quote variable which contain
+ 	file paths.
+ 
+ 2009-09-20  rocky <rocky@gnu.org>
+@@ -3554,7 +3554,7 @@
+ 
+ 2009-08-21  R. Bernstein <rocky@gnu.org>
+ 
+-	* dbg-opts.sh, test/data/sopts.right, test/integration/sopts.tests: 
++	* dbg-opts.sh, test/data/sopts.right, test/integration/sopts.tests:
+ 	Use echo, not print. This is not zsh or ksh. Thanks again to Nicolai
+ 	Lissner.
+ 
+@@ -3634,7 +3634,7 @@
+ 
+ 2009-06-18  rockyb <rockyb>
+ 
+-	* command/info.sh, dbg-init.sh, lib/hook.sh, lib/save-restore.sh: 
++	* command/info.sh, dbg-init.sh, lib/hook.sh, lib/save-restore.sh:
+ 	Clean up code with respect to setting current breakpoint number
+ 
+ 2009-06-16  rockyb <rockyb>
+@@ -3665,7 +3665,7 @@
+ 
+ 2009-03-28  rockyb <rockyb>
+ 
+-	* bashdb-trace.in, dbg-init.sh, test/unit/test-bashdb-trace.sh.in: 
++	* bashdb-trace.in, dbg-init.sh, test/unit/test-bashdb-trace.sh.in:
+ 	Correct test in bashdb-trace: -d twice in a row Bug id 2498103
+ 
+ 2009-03-27  rockyb <rockyb>
+@@ -3785,7 +3785,7 @@
+ 2008-10-20  rockyb <rockyb>
+ 
+ 	* test/data/interrupt.right, test/data/setshow.right,
+-	test/integration/check-common.sh.in, test/integration/setshow.tests: 
++	test/integration/check-common.sh.in, test/integration/setshow.tests:
+ 	Add option to ignore bashdb profile when doing integration tests
+ 
+ 2008-10-20  rockyb <rockyb>
+@@ -3873,7 +3873,7 @@
+ 2008-10-14  rockyb <rockyb>
+ 
+ 	* dbg-pre.sh, test/data/restart.cmd, test/data/restart.right,
+-	test/integration/test-lopts, test/integration/test-restart: 
++	test/integration/test-lopts, test/integration/test-restart:
+ 	Reinstate restart test. Clean up test-lopts a little bit more.
+ 
+ 2008-10-14  rockyb <rockyb>
+@@ -3994,7 +3994,7 @@
+ 2008-09-25  rockyb <rockyb>
+ 
+ 	* test/integration/Makefile.am, test/integration/bug-source.tests,
+-	test/integration/test-bug-source, test/integration/test-bugIFS: 
++	test/integration/test-bug-source, test/integration/test-bugIFS:
+ 	Small test/integration cleanup
+ 
+ 2008-09-25  rockyb <rockyb>
+@@ -4091,7 +4091,7 @@
+ 2008-09-11  rockyb <rockyb>
+ 
+ 	* command/set.sh, command/show.sh, lib/help.sh, lib/processor.sh,
+-	test/data/misc.right, test/data/setshow.right, test/data/sig.right: 
++	test/data/misc.right, test/data/setshow.right, test/data/sig.right:
+ 	.
+ 
+ 2008-09-10  rockyb <rockyb>
+@@ -4112,7 +4112,7 @@
+ 
+ 2008-09-09  rockyb <rockyb>
+ 
+-	* command/show.sh, test/data/misc.right, test/data/setshow.right: 
++	* command/show.sh, test/data/misc.right, test/data/setshow.right:
+ 	Columnize invalid subccommand data error message.
+ 
+ 2008-09-09  rockyb <rockyb>
+@@ -4124,7 +4124,7 @@
+ 2008-09-09  rockyb <rockyb>
+ 
+ 	* command/info.sh, lib/brk.sh, lib/info.sh: ksh and zsh
+-	compatability. Turn a Dbg_msg to a Dbg_errmsg.
++	compatibility. Turn a Dbg_msg to a Dbg_errmsg.
+ 
+ 2008-09-07  rockyb <rockyb>
+ 
+@@ -4152,7 +4152,7 @@
+ 	lib/frame.sh, test/data/brkpt1.right, test/data/list.right,
+ 	test/data/tbreak.cmd, test/data/tbreak.right,
+ 	test/example/interrupt.sh, test/example/interrupt.sh.in,
+-	test/integration/interrupt.tests, test/integration/test-interrupt: 
++	test/integration/interrupt.tests, test/integration/test-interrupt:
+ 	Remove some bugs in file name expansion. Clean up code and align
+ 	more with zshdb.
+ 
+@@ -4298,7 +4298,7 @@
+ 
+ 2008-08-22  rockyb <rockyb>
+ 
+-	* test/.cvsignore, test/data/lopts.right, test/example/interrupt.sh: 
++	* test/.cvsignore, test/data/lopts.right, test/example/interrupt.sh:
+ 	.
+ 
+ 2008-08-22  rockyb <rockyb>
+@@ -4457,7 +4457,7 @@
+ 2008-08-22  rockyb <rockyb>
+ 
+ 	* command/Makefile.am, command/help.sh, command/info.sh,
+-	lib/frame.sh, lib/help.sh, lib/info.sh, test/unit/test-frame.sh.in: 
++	lib/frame.sh, lib/help.sh, lib/info.sh, test/unit/test-frame.sh.in:
+ 	Break out info command, add help. More rigorous unit test for frame
+ 	- more bugs fixed. Give help on aliased commands.
+ 
+@@ -4486,7 +4486,7 @@
+ 	dbg-io.sh, lib/help.sh, lib/msg.sh, lib/sig.sh,
+ 	test/data/complete.right, test/data/misc.right,
+ 	test/data/setshow.right, test/data/sig.right,
+-	test/example/dbg-test2.sh, test/setshow.tests, test/test-setshow: 
++	test/example/dbg-test2.sh, test/setshow.tests, test/test-setshow:
+ 	Small changes to keep up with the Joneses.
+ 
+ 2008-08-20  rockyb <rockyb>
+@@ -4652,11 +4652,11 @@
+ 	lib/dbg-call.sh, test/data/brkpt2.right,
+ 	test/data/bug-source.right, test/data/debug.right,
+ 	test/data/finish.right, test/data/frame.right,
+-	test/data/parm.right, test/data/sig.right, test/data/tbreak.right: 
++	test/data/parm.right, test/data/sig.right, test/data/tbreak.right:
+ 	Move trap DEBUG out of dbg-main.sh and into bashdb in preparation
+ 	for adding code to loop when debugged script exits. Move
+ 	_Dbg_debugger into lib so we can call it even if bashdb was called
+-	initially.  Incompatble change interface to dbg_debugger to set
++	initially.  Incompatible change interface to dbg_debugger to set
+ 	step_ignore.
+ 
+ 2008-08-12  rockyb <rockyb>
+@@ -4985,7 +4985,7 @@
+ 	* test/sig.right, test/tbreak.right, test/unit/Makefile.am,
+ 	test/unit/test-bashdb-trace.sh.in, test/unit/test-fns.sh.in,
+ 	test/unit/test-stack.sh.in: Add generic test of running program
+-	debugged.  test/unit: Hopefully more precice use of src/build
++	debugged.  test/unit: Hopefully more precise use of src/build
+ 	directories
+ 
+ 2008-08-06  rockyb <rockyb>
+@@ -5005,7 +5005,7 @@
+ 
+ 	* command/Makefile.am, command/frame.cmd, lib/log.inc =>
+ 	command/log.cmd, command/restart.cmd, command/up.cmd,
+-	lib/Makefile.am, lib/processor.inc, command/down.cmd => lib/run.inc: 
++	lib/Makefile.am, lib/processor.inc, command/down.cmd => lib/run.inc:
+ 	Move more command things into command.
+ 
+ 2008-08-05  rockyb <rockyb>
+@@ -5090,7 +5090,7 @@
+ 	dbg-complete.inc => lib/complete.inc, dbg-log.inc => lib/log.inc,
+ 	dbg-processor.inc => lib/processor.inc, dbg-sig.inc => lib/sig.inc,
+ 	dbg-tracefn.inc => lib/tracefn.inc, test/sig.right,
+-	test/unit/test-bashdb-trace.sh, test/unit/test-bashdb-trace.sh.in: 
++	test/unit/test-bashdb-trace.sh, test/unit/test-bashdb-trace.sh.in:
+ 	Move more files around.
+ 
+ 2008-08-02  rockyb <rockyb>
+@@ -5120,12 +5120,12 @@
+ 2008-07-29  rockyb <rockyb>
+ 
+ 	* commands/eval.cmd, commands/print.cmd, dbg-file.inc,
+-	dbg-init.inc, dbg-processor.inc, dbg-set-d-vars.inc, test/sig.right: 
++	dbg-init.inc, dbg-processor.inc, dbg-set-d-vars.inc, test/sig.right:
+ 	Code cleanu, better modularization
+ 
+ 2008-07-29  rockyb <rockyb>
+ 
+-	* commands/down.cmd, dbg-init.inc, dbg-processor.inc, dbg-stack.inc: 
++	* commands/down.cmd, dbg-init.inc, dbg-processor.inc, dbg-stack.inc:
+ 	More cleanups (as a result looking at and writing zshdb)
+ 
+ 2008-07-28  rockyb <rockyb>
+@@ -5137,7 +5137,7 @@
+ 	* commands/Makefile.am, commands/backtrace.cmd, commands/down.cmd,
+ 	commands/frame.cmd, commands/up.cmd, dbg-info.inc,
+ 	dbg-processor.inc, dbg-sig.inc, dbg-stack.inc: Move more commands
+-	indo comands. do_stack_trace -> do_backtrace
++	indo commands. do_stack_trace -> do_backtrace
+ 
+ 2008-07-26  rockyb <rockyb>
+ 
+@@ -5203,7 +5203,7 @@
+ 2008-07-13  rockyb <rockyb>
+ 
+ 	* Makefile.am, NEWS, builtin/Makefile.am, dbg-init.inc: Fix
+-	installating built-in's readarray and set0.
++	installing built-in's readarray and set0.
+ 
+ 2008-07-12  rockyb <rockyb>
+ 
+@@ -5283,11 +5283,11 @@
+ 2008-06-06  rockyb <rockyb>
+ 
+ 	* configure.ac, dbg-fns.inc: Replace 'cut' with a parameter
+-	substitution primative. Reduce backtick use.
++	substitution primitive. Reduce backtick use.
+ 
+ 2008-06-05  rockyb <rockyb>
+ 
+-	* dbg-cmds.inc, test/unit/.cvsignore: Remove some depricated
++	* dbg-cmds.inc, test/unit/.cvsignore: Remove some deprecated
+ 	backticks.
+ 
+ 2008-06-05  rockyb <rockyb>
+@@ -5319,7 +5319,7 @@
+ 	* ChangeLog, Makefile.am, configure.ac, dbg-file.inc,
+ 	test/unit/.cvsignore, test/unit/Makefile.am,
+ 	test/unit/test-fns.sh.in, test/unit/test-pre.sh.in: More unit tests.
+-	More ksh93 compatability.
++	More ksh93 compatibility.
+ 
+ 2008-06-01  rockyb <rockyb>
+ 
+@@ -5556,7 +5556,7 @@
+ 2007-11-03  rockyb <rockyb>
+ 
+ 	* emacs/bashdb-test.el.in, emacs/bashdb.el: bashdb.el: make
+-	bashdb-script-name more Lisp idiomatic. We also now parse the whther
++	bashdb-script-name more Lisp idiomatic. We also now parse the whether
+ 	the --annotation option was given and only set multiple windows if
+ 	that is set.  Use gud-target-name in annotation buffers and set gud-target-name in
+ 	those buffers too.  bashdb-test.el.in: modify test of bashdb-script-name for new
+@@ -5704,7 +5704,7 @@
+ 
+ 2007-06-27  rockyb <rockyb>
+ 
+-	* doc/bashdb.texi: Add info links in Eamcs section.
++	* doc/bashdb.texi: Add info links in Emacs section.
+ 
+ 2007-05-14  rockyb <rockyb>
+ 
+@@ -5724,7 +5724,7 @@
+ 
+ 2007-03-03  rockyb <rockyb>
+ 
+-	* dbg-cmds.inc, dbg-fns.inc, dbg-help.inc, dbg-set.inc, dbg-sig.inc: 
++	* dbg-cmds.inc, dbg-fns.inc, dbg-help.inc, dbg-set.inc, dbg-sig.inc:
+ 	Remove some "evil" eval commands that emacs 23 warns about.
+ 
+ 2007-03-03  rockyb <rockyb>
+@@ -5764,7 +5764,7 @@
+ 
+ 2007-03-01  rockyb <rockyb>
+ 
+-	* doc/bashdb.texi, emacs/bashdb-test.el.in, emacs/bashdb.el: 
++	* doc/bashdb.texi, emacs/bashdb-test.el.in, emacs/bashdb.el:
+ 	doc/bashdb.texi: Wrong order of title/info-name for info directory
+ 	listing Thanks to Yaroslav the Wise for catching this.  emacs/*: allow a space in filenames which makes things nicer under
+ 	Microsoft Windows. Add more stringent testing too. Thanks to DaveS.
+@@ -5780,7 +5780,7 @@
+ 
+ 2007-02-18  rockyb <rockyb>
+ 
+-	* dbg-cmds.inc, dbg-sig.inc, test/debug.right, test/sig.right: 
++	* dbg-cmds.inc, dbg-sig.inc, test/debug.right, test/sig.right:
+ 	Initialize more variables.
+ 
+ 2007-02-18  rockyb <rockyb>
+@@ -5972,7 +5972,7 @@
+ 
+ 2006-12-28  rockyb <rockyb>
+ 
+-	* dbg-cmds.inc, doc/Makefile.am, doc/bashdb-man.pod: 
++	* dbg-cmds.inc, doc/Makefile.am, doc/bashdb-man.pod:
+ 	doc/bashdb-man.pod: Document -Y|--vtrace option. Make html/man
+ 	customizations for links. Note unavailability of long options
+ 	sometimes.  doc/Makefile: Remove Perlisms. This is not part of Perl dbg-cmds.inc: correct a comment
+@@ -6067,7 +6067,7 @@
+ 
+ 2006-12-20  rockyb <rockyb>
+ 
+-	* dbg-init.inc: Simplfy regexp and add a signed int pattern.
++	* dbg-init.inc: Simplify regexp and add a signed int pattern.
+ 
+ 2006-12-20  rockyb <rockyb>
+ 
+@@ -6224,7 +6224,7 @@
+ 2006-10-03  rockyb <rockyb>
+ 
+ 	* NEWS, bashdb-trace.in, configure.ac, test/Makefile.am,
+-	test/interrupt.right, test/interrupt.sh.in, test/interrupt.tests: 
++	test/interrupt.right, test/interrupt.sh.in, test/interrupt.tests:
+ 	Add an interrupt test
+ 
+ 2006-10-03  rockyb <rockyb>
+@@ -6299,7 +6299,7 @@
+ 2006-09-03  rockyb <rockyb>
+ 
+ 	* dbg-cmds.inc, dbg-help.inc, dbg-io.inc, dbg-sig.inc,
+-	doc/bashdb.texi, readarray.c, test/sig.cmd, test/sig.right: 
++	doc/bashdb.texi, readarray.c, test/sig.cmd, test/sig.right:
+ 	readarray.c: off-by one error. Was running callback on first read.
+ 	Add gdb-like signal command.
+ 
+@@ -6453,7 +6453,7 @@
+ 
+ 2006-07-21  rockyb <rockyb>
+ 
+-	* test/bugIFS.sh.in: More general substitition for BASH.
++	* test/bugIFS.sh.in: More general substitution for BASH.
+ 
+ 2006-07-21  rockyb <rockyb>
+ 
+@@ -6509,7 +6509,7 @@
+ 
+ 2006-07-13  rockyb <rockyb>
+ 
+-	* dbg-brk.inc, dbg-cmds.inc, test/tbreak.cmd, test/tbreak.right: 
++	* dbg-brk.inc, dbg-cmds.inc, test/tbreak.cmd, test/tbreak.right:
+ 	Don't try to step/next/continue if the program's not running.
+ 
+ 2006-07-13  rockyb <rockyb>
+@@ -6988,7 +6988,7 @@
+ 
+ 2006-01-11  rockyb <rockyb>
+ 
+-	* emacs/.cvsignore: elc-stamp seems to be used in makeing *.elc
++	* emacs/.cvsignore: elc-stamp seems to be used in making *.elc
+ 
+ 2006-01-11  rockyb <rockyb>
+ 
+@@ -7069,17 +7069,16 @@
+ 
+ 2006-01-03  rockyb <rockyb>
+ 
+-	* acinclude.m4, dbg-file.inc, dbg-io.inc, test/run-multi: 
++	* acinclude.m4, dbg-file.inc, dbg-io.inc, test/run-multi:
+ 	dbg-file.inc: reinstate [[ for [. Add \ one other place where it is
+ 	probably needed.  dbg-io.inc: remove a read-only attribute where it shouldn't be. It
+ 	may have to do with a changed scope of local.  test/run-multi: reinstate test.
+ 
+ 2006-01-03  rockyb <rockyb>
+ 
+-	* doc/{bashdb.texi.in => bashdb.texi}: Subtitutions are in
++	* doc/{bashdb.texi.in => bashdb.texi}: Substitutions are in
+ 	macros.texi.in.
+ 
+ 2006-01-02  rockyb <rockyb>
+ 
+ 	* Initial revision
+-
