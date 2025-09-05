@@ -27,8 +27,9 @@ jobs:
         if: runner.os == 'macOS'
         shell: bash
         run: |+
-          brew update
-          brew install bash@5.2
+          # brew update  Don't update to get bash 5.2
+          brew search bash
+          brew install bash
           brew install autoconf automake texinfo
           # Not installing pygments, because apparently 'osascript' executed during bashdb's init is blocking
           # if there's not user logged in.
