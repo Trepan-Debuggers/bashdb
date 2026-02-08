@@ -6,9 +6,9 @@ Here, we have a debugger for Bash 5.2 and higher.
 
 Other branches in this repository support earlier versions of Bash. For example, use branch 4.1 for Bash version 4.1.
 
-The command syntax generally follows that of the [zsh debugger ](https://github.com/rocky/zshdb), trepanning debuggers and, more generally, GNU debugger *gdb*.
+The command syntax generally follows that of the [zsh debugger ](https://github.com/rocky/zshdb), trepanning debuggers, and, more generally, GNU debugger *gdb*.
 
-There are 3 ways to get into the debugger. If bash (with debugger support enabled which is the default) is installed and the debugger are *both* installed properly. Then:
+There are 3 ways to get into the debugger. If bash (with debugger support enabled, which is the default) is installed, and the debugger is installed properly. Then:
 
 ```
    bash --debugger -- bash-script-name script-arg1 script-arg2...
@@ -21,7 +21,7 @@ If bash isn't installed in a way that will find bashdb, then:
 ```
 
 The downside here is that $0 will be "bashdb" not
-bash-script-name. Also call stack will show the invocation to bashdb.
+bash-script-name. Also acall stack will show the invocation to bashdb.
 
 Finally, to invoke the debugger from the script
 
@@ -36,15 +36,14 @@ Finally, to invoke the debugger from the script
   stop_here
 ```
 
-An advantage of the above is that there is no overhead up until you
-invoke the debugger. Typically for large bash programs like
+An advantage of the above is that there is no overhead until you
+invoke the debugger. Typically, for large bash programs like
 configuration scripts, this is a big win.
 
 *IMPORTANT NOTE IF YOU USE THE ABOVE TO DEBUG CONFIGURE SCRIPTS...*
 
 stdin is closed by configure early on. This causes the debugger to quit.
-You can get around this invoking a command script that sets debugger
-up input and output. Run tty to figure out what the terminal tty is set to.
+You can get around this by invoking a command script that sets up the debugger input and output. Run tty to figure out what the terminal tty is set to.
 
 ```
   $ tty
@@ -52,7 +51,7 @@ up input and output. Run tty to figure out what the terminal tty is set to.
   $
 ```
 
-Above it came out to */dev/pts/3*. Let's go with that. Put the folliwng
+Above it came out to */dev/pts/3*. Let's go with that. Put the following
 in a file say */tmp/bashdb-configure*
 
 ```
