@@ -1,7 +1,6 @@
 name: "bashdb CI"
 on:
   push:
-<<<<<<< HEAD
   pull_request:
   workflow_dispatch:
 
@@ -13,19 +12,10 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     name: "Run Tests on ${{ matrix.os }}"
-=======
-
-jobs:
-  linux:
-    name: "Linux"
-    runs-on: ubuntu-latest
-    container: bash:5.1
->>>>>>> 11150b3 (Add GitHub Actions to run tests for bash-5.1 in a Docker container)
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-<<<<<<< HEAD
       - name: Install dependencies for Linux
         if: runner.os == 'Linux'
         shell: bash
@@ -52,20 +42,3 @@ jobs:
       #   env:
       #     VERBOSE: 1
       #   run: make -e -j3 check
-=======
-      - name: Setup Packages
-        shell: bash
-        run: |+
-          apk update
-          apk add build-base automake autoconf libtool texinfo
-
-      - name: Configure
-        shell: bash
-        run: bash ./autogen.sh
-
-      - name: Test
-        shell: bash
-        env:
-          VERBOSE: 1
-        run: make -e -j3 check
->>>>>>> 11150b3 (Add GitHub Actions to run tests for bash-5.1 in a Docker container)
