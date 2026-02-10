@@ -52,7 +52,7 @@ up input and output. Run tty to figure out what the terminal tty is set to.
   $
 ```
 
-Above it came out to */dev/pts/3*. Let's go with that. Put the folliwng
+Above it came out to */dev/pts/3*. Let's go with that. Put the following
 in a file say */tmp/bashdb-configure*
 
 ```

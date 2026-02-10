@@ -27,7 +27,7 @@ Version 5.0-0.1.1.2 gecko gecko
 * Set BASH_REMATCH in eval
 * Add "!" suffix to "kill" command
 * Document fixes and improvements
-* Track $0 when it changes inside debugged progam.
+* Track $0 when it changes inside debugged program.
 
 Version 5.0-0.1.1.1
 --------------------
@@ -76,7 +76,7 @@ Version 4.4-0.94
 -----------------
 August 24, 2017
 
-* Compute prefix better. Should run better on macosx, netbsd, and  Solaris (and possibly others or Linux set up more wierdly) unmodified
+* Compute prefix better. Should run better on macosx, netbsd, and  Solaris (and possibly others or Linux set up more weirdly) unmodified
 
 Version 4.4-0.93
 ----------------
@@ -85,7 +85,7 @@ August 4, 2017
 * add "bash" as an alias for "shell"
 * Respect DARK_BG and use term-background.sh to detect it
   Note: we are more aggressive now about setting highlghting
-* Fix debugging in the presense of "set -e"
+* Fix debugging in the presence of "set -e"
 * Bash 4.4 test fixes
 * Sort completions
 * configure respects --prefix which was broken in autoconf 2.69
@@ -96,7 +96,7 @@ Version 4.2-0.92
 April 30, 2017
 
 * Allow source-code colorization via pygments style. use `set style`
-* Help text now formated via Rst.
+* Help text now formatted via Rst.
 * Paragraph reflow adjusts to line width
 * Revise help docs
 
@@ -107,10 +107,10 @@ May 30, 2016 Mom
 * Better breakpoint deletion status This helps frontends like realgud
 * Nicholas Bamber's from issues #35 and #36 bashdb-man.pod: s
 * Works on bash 4.4
-  pelling mistake SIGXFSZ in some envionments.
+  pelling mistake SIGXFSZ in some environments.
 * Guard againyst install-data running rm / !
 * `--highlight` changed from taking no parameters to
-  `--highlight=dark|light`. And we now accomdate dark terminals more
+  `--highlight=dark|light`. And we now accommodate dark terminals more
     properly.
 * Add `tty set` `tty show`
 * Add sectioning in online help
@@ -373,7 +373,7 @@ Version 3.1 0.04 (initial 3.1 release)
 --------------------------------------
 2006-01-16
 
-* Showing which command on a line with multiple commmands works again.
+* Showing which command on a line with multiple commands works again.
   Reinstate regression tests which use that.
 * Add a loadable routine to read a script into an array fast. This
   speeds up the startup on reading large scripts very much.
@@ -426,7 +426,7 @@ Version 0.43
 * reduce spurious warnings in bash and rebash regression tests.
 * test for null filename in reading in source.
 * Lots of gcc -Wall compiler warnings removed. There were some potential
-  uses of uninitalized variables (if not one outright bug).
+  uses of uninitialized variables (if not one outright bug).
 * fix mis-configuration for OSs that have both GNU gettext and one in libc
 
 Version 0.42
