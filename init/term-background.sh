@@ -232,7 +232,7 @@ csc_compatible_fg_bg() {
 	 return 1
 	 ;;
        *)
-	 # Unkonwn
+	 # Unknown
 	 ;;
   esac
   contour_osc_done=1

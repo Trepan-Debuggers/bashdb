@@ -1,0 +1,31 @@
+#!@SH_PROG@
+# -*- shell-script -*-
+
+test_complete_eval()
+{
+    COMP_LINE='eval?'
+    typeset -a COMPREPLY=()
+    _Dbg_source_line='if [ -d /etc/profile.d ]; then'
+    _Dbg_complete_eval
+    assertEquals '[ -d /etc/profile.d ]' "${COMPREPLY[@]}"
+    typeset -a COMPREPLY=()
+    _Dbg_source_line='x=10'
+    _Dbg_complete_eval
+    assertEquals 'echo 10' "${COMPREPLY[@]}"
+    COMP_LINE='eval'
+    _Dbg_source_line='x=10'
+    _Dbg_complete_eval
+    assertEquals 'x=10' "${COMPREPLY[@]}"
+}
+
+abs_top_srcdir=@abs_top_srcdir@
+# Make sure $abs_top_srcdir has a trailing slash
+abs_top_srcdir=${abs_top_srcdir%%/}/
+. ${abs_top_srcdir}test/unit/helper.sh
+. ${abs_top_srcdir}init/pre.sh
+for file in alias help fns ; do
+    . ${abs_top_srcdir}lib/${file}.sh
+done
+. ${abs_top_srcdir}command/eval.sh
+set -- # reset $# so shunit2 doesn't get confused.
+[[ @CMDLINE_INVOKED@ ]] && . ${shunit_file}

@@ -231,8 +231,12 @@ AC_CONFIG_FILES([test/unit/test-cmd-info-variables.sh],
                 [chmod +x test/unit/test-cmd-info-variables.sh])
 AC_CONFIG_FILES([test/unit/test-cmd-eval.sh],
                 [chmod +x test/unit/test-cmd-eval.sh])
+AC_CONFIG_FILES([test/unit/test-cmd-load.sh],
+                [chmod +x test/unit/test-cmd-load.sh])
 AC_CONFIG_FILES([test/unit/test-columns.sh],
                 [chmod +x test/unit/test-columns.sh])
+AC_CONFIG_FILES([test/unit/test-eval.sh],
+                [chmod +x test/unit/test-eval.sh])
 AC_CONFIG_FILES([test/unit/test-file.sh],
                 [chmod +x test/unit/test-file.sh])
 AC_CONFIG_FILES([test/unit/test-filecache.sh],
@@ -255,6 +259,8 @@ AC_CONFIG_FILES([test/unit/test-require.sh],
 AC_CONFIG_FILES([test/unit/test-run.sh], [chmod +x test/unit/test-run.sh])
 AC_CONFIG_FILES([test/unit/test-save-restore.sh],
                 [chmod +x test/unit/test-save-restore.sh])
+AC_CONFIG_FILES([test/unit/test-set0.sh],
+                [chmod +x test/unit/test-set0.sh])
 AC_CONFIG_FILES([test/unit/test-sort.sh],
                 [chmod +x test/unit/test-sort.sh])
 AC_CONFIG_FILES([test/unit/test-validate.sh],

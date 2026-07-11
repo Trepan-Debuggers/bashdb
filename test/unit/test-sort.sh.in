@@ -1,5 +1,6 @@
 #!@SH_PROG@
 # -*- shell-script -*-
+
 test_sort()
 {
     do_one() {
