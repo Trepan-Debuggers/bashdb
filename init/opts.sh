@@ -1,7 +1,7 @@
 # -*- shell-script -*-
 # debugger command options processing. The bane of programming.
 #
-#   Copyright (C) 2008-2012, 2014-2019, 2021, 2023
+#   Copyright (C) 2008-2012, 2014-2019, 2021, 2023, 2026
 #   Rocky Bernstein <rocky@gnu.org>
 #
 #   This program is free software; you can redistribute it and/or
@@ -78,6 +78,7 @@ eval "_Dbg_orig_script_args=(\"\$@\")"
 # The following globals are set by _Dbg_parse_opts. Any values set are
 # the default values.
 typeset -xa _Dbg_script_args
+typeset -xa _Dbg_subdebug_args;
 
 # Use gdb-style annotate?
 typeset -i _Dbg_set_annotate=0
@@ -183,9 +184,8 @@ _Dbg_parse_options() {
             no-highlight )
                 _Dbg_set_highlight=''   ;;
             init-file )
-                set -x
-                _Dbg_o_init_files+="$OPTLARG"
-                set +x
+                _Dbg_o_init_files+=("$OPTLARG")
+                _Dbg_subdebug_args+=(--init-file "$OPTLARG")
                 ;;
             L | library )               ;;
             V | version )
@@ -250,6 +250,34 @@ welcome to change it and/or distribute copies of it under certain conditions.
     fi
     unset _Dbg_o_annotate _Dbg_o_version _Dbg_o_quiet
     _Dbg_script_args=("$@")
+
+    # Construct cli args to pass to sub-bashdb invocations
+    _Dbg_subdebug=(   # <varname>:<cliarg>
+        _Dbg_o_annotate:-A=
+        _Dbg_set_basename:-B
+        #_Dbg_init_file:--init-file        # Arrays are handled in getopts loop above
+        #--library is handled specially
+        #_Dbg_EXECUTION_STRING:--command=  # Not passed to sub-bashrc's
+        _Dbg_o_nx:--no-init
+        _Dbg_set_style:--style=
+        _Dbg_tty:--tty=
+        _Dbg_tty_in:--tty_in=
+        _Dbg_tmpdir:--tempdir=
+        _Dbg_set_linetrace:--trace
+    )
+    _Dbg_subdebug_args=()
+    local subarg subarg_var subarg_cli
+    for subarg in ${_Dbg_subdebug[@]} ; do
+        declare -n subarg_var=${subarg%:*}
+        subarg_cli=${subarg#*:}
+        if [[ "$subarg_cli" = *= ]] ; then
+            if [[ -n "${subarg_var}" ]] ; then
+                _Dbg_subdebug_args+=("${subarg_cli%=}" "${subarg_var}")
+            fi
+        elif (( subarg_var )) ; then
+            _Dbg_subdebug_args+=("${subarg_cli%}")
+        fi
+    done
 }
 
 if (( _Dbg_have_working_pygmentize )) && [[ -z "$_Dbg_set_highlight" ]] ; then

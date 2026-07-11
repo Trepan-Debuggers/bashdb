@@ -40,7 +40,7 @@ _Dbg_do_debug() {
 
     _Dbg_shell_new_shell_profile
 
-    typeset script_cmd=${@:-$_Dbg_bash_command}
+    typeset script_cmd=${@:--- $_Dbg_bash_command}
 
     # We need to expand variables that might be in $script_cmd.
     # set_Dbg_nested_debug_cmd is set up to to be eval'd below.
@@ -55,7 +55,7 @@ _Dbg_do_debug() {
 	set_Dbg_debug_cmd="typeset _Dbg_debug_cmd=\"$BASH --init-file ${_Dbg_shell_temp_profile} --debugger $script_cmd\"";
     elif [[ $_Dbg_orig_0/// == *bashdb/// ]] ; then
 	# Running "bashdb", so prepend "bash bashdb .."
-	set_Dbg_debug_cmd="typeset _Dbg_debug_cmd=\"$BASH $_Dbg_orig_0 -q -L $_Dbg_libdir $script_cmd\"";
+	set_Dbg_debug_cmd="typeset _Dbg_debug_cmd=\"$BASH $_Dbg_orig_0 -q -L $_Dbg_libdir ${_Dbg_subdebug_args[@]} $script_cmd\"";
     fi
     eval "$_resteglob"
     eval $set_Dbg_debug_cmd
