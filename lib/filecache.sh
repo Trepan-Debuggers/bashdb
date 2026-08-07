@@ -126,50 +126,14 @@ function _Dbg_is_file {
     echo ''
     return 1
   fi
-  # first character might be encoded as \057 == '/',
-  # find_file:0:1 == "\" , true story
-  typeset find_file="$(printf "$1")"
+
   typeset try_find_file
-
-  if [[ -z $find_file ]] ; then
-    _Dbg_errmsg "Internal debug error _Dbg_is_file(): file argument null"
-    echo ''
-    return 1
+  try_find_file="$(_Dbg_resolve_expand_filename "$1")"
+  if [[ -n "$try_find_file" && -n "${_Dbg_filenames["$try_find_file"]}" ]] ; then
+	  echo "$try_find_file"
+	  return 0
   fi
 
-  if [[ ${find_file:0:1} == '/' ]] ; then
-      # Absolute file name
-      try_find_file=$(_Dbg_expand_filename "$find_file")
-      if [[ -n ${_Dbg_filenames[$try_find_file]} ]] ; then
-	  echo "$try_find_file"
-	  return 0
-      fi
-  elif [[ ${find_file:0:1} == '.' ]] ; then
-      # Relative file name
-      try_find_file=$(_Dbg_expand_filename "${_Dbg_init_cwd}/$find_file")
-      # FIXME: turn into common subroutine
-      if [[ -n ${_Dbg_filenames[$try_find_file]} ]] ; then
-	  echo "$try_find_file"
-	  return 0
-      fi
-  else
-    # Resolve file using _Dbg_dir
-    typeset -i n=${#_Dbg_dir[@]}
-    typeset -i i
-    for (( i=0 ; i < n; i++ )) ; do
-      typeset basename="${_Dbg_dir[i]}"
-      if [[  $basename == '\$cdir' ]] ; then
-	basename=$_Dbg_cdir
-      elif [[ $basename == '\$cwd' ]] ; then
-	basename=$(pwd)
-      fi
-      try_find_file="$basename/$find_file"
-      if [[ -f "$try_find_file" ]] ; then
-	  echo "$try_find_file"
-	  return 0
-      fi
-    done
-  fi
   echo ''
   return 1
 }
