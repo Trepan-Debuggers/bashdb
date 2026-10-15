@@ -72,6 +72,8 @@ check_DATA = \
 	multi4.right \
 	parm.cmd \
 	parm.right \
+	preset-brkpt.cmd \
+	preset-brkpt.right \
 	prof1.cmd \
 	prof2.cmd \
 	quit.cmd \
