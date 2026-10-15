@@ -68,7 +68,9 @@ function _Dbg_expand_filename {
   dirname=${dirname:-/}
 
   # Handle tilde expansion in dirname
-  dirname=$(echo $dirname)
+  if [[ "$dirname" == *~* ]]; then
+      dirname=$(echo $dirname)
+  fi
 
   typeset long_path
 
