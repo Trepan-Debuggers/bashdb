@@ -1,0 +1,41 @@
+name: "Bash version compatibility"
+
+on:
+  push:
+    branches: [bash-5.3]
+  pull_request:
+    branches: [bash-5.3]
+  workflow_dispatch:
+    inputs:
+      bash_versions:
+        description: "Comma-separated Bash versions to test"
+        default: "5.0,5.1,5.2,5.3"
+
+jobs:
+  versions:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - id: matrix
+        env:
+          VERSIONS: ${{ inputs.bash_versions || '5.0,5.1,5.2,5.3' }}
+        run: echo "matrix=$(jq -Rc 'split(",") | map(gsub("\\s"; "")) | map(select(. != "")) | unique' <<< "$VERSIONS")" >> "$GITHUB_OUTPUT"
+
+  tests:
+    name: "Bash ${{ matrix.bash }}"
+    needs: versions
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container: bash:${{ matrix.bash }}
+    strategy:
+      fail-fast: false
+      matrix:
+        bash: ${{ fromJSON(needs.versions.outputs.matrix) }}
+    steps:
+      - run: apk add build-base autoconf automake libtool texinfo git coreutils diffutils findutils grep sed gawk perl
+      - uses: actions/checkout@v7
+      - run: bash ./autogen.sh --with-bash="$(command -v bash)"
+      - run: make -j3 check
+        env:
+          VERBOSE: 1
