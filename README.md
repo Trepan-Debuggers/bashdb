@@ -21,7 +21,7 @@ If bash isn't installed in a way that will find bashdb, then:
 ```
 
 The downside here is that $0 will be "bashdb" not
-bash-script-name. Also acall stack will show the invocation to bashdb.
+bash-script-name. Also, a call stack will show the invocation to bashdb.
 
 Finally, to invoke the debugger from the script
 
@@ -51,7 +51,7 @@ You can get around this by invoking a command script that sets up the debugger i
   $
 ```
 
-Above it came out to */dev/pts/3*. Let's go with that. Put the following
+Above, it came out to */dev/pts/3*. Let's go with that. Put the following
 in a file say */tmp/bashdb-configure*
 
 ```
@@ -70,4 +70,4 @@ switch:
 
 See *INSTALL* for installation instructions from a released tarball.
 
-See *README-git.md* for installing from git on github.
+See *README-git.md* for installing from git on GitHub.
